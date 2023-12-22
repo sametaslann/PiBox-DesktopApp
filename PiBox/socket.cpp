@@ -15,11 +15,7 @@ void Socket::run()
             socket->write("MOVE|");
             socket->waitForBytesWritten();
 
-            socket->waitForReadyRead();
-            QByteArray data = socket->readAll();
-            qDebug() << "Received from server: " << data;
-
-            if(ludoController.getPlaneCoordinatesSize()>0 && data == "MOVE")
+            if(ludoController.getPlaneCoordinatesSize()>0)
                 ludoController.movePawn();
 
 
@@ -30,6 +26,20 @@ void Socket::run()
         qDebug() << "Failed to connect to server: " << socket->errorString();
     }
 
+}
+
+QByteArray Socket::read_from_server(){
+
+    socket->waitForReadyRead();
+    QByteArray data = socket->readAll();
+    return data;
+    qDebug() << "Received from server: " << data;
+}
+
+void Socket::write_to_server(const std::string request){
+
+    socket->write("MOVE|");
+    socket->waitForBytesWritten();
 }
 
 

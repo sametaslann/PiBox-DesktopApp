@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    socketThread.start();
+    //socketThread.start();
 
 
     return app.exec();

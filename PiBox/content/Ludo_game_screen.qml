@@ -11,9 +11,6 @@ Rectangle {
     color: "transparent"
 
 
-
-
-     
     View3D {
         id: view3D
         anchors.fill: parent
@@ -78,5 +75,5 @@ Rectangle {
         }
     }
 
-  
+
 }

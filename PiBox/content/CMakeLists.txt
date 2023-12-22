@@ -10,6 +10,14 @@ qt6_add_qml_module(content
     RESOURCE_PREFIX "/qt/qml"
     QML_FILES
         App.qml
-        Screen01.ui.qml
+        Screen01.qml
 
+
+)
+find_package(Qt6 6.2 REQUIRED COMPONENTS Core Gui Qml Quick)
+target_link_libraries(PiBoxApp PRIVATE
+    Qt6::Core
+    Qt6::Gui
+    Qt6::Qml
+    Qt6::Quick
 )

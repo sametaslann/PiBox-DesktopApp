@@ -1,22 +1,30 @@
-
-
-/*
-This is a UI file (.ui.qml) that is intended to be edited in Qt Design Studio only.
-It is supposed to be strictly declarative and only uses a subset of QML. If you edit
-this file manually, you might introduce QML code that is not supported by Qt Design Studio.
-Check out https://doc.qt.io/qtcreator/creator-quick-ui-forms.html for details on .ui.qml files.
-*/
 import QtQuick 6.5
 import QtQuick.Controls 6.5
 import QtQuick3D 6.5
 import PiBox
 import Quick3DAssets.Ludo0
+import QtQuick3D.Helpers
 
 Rectangle {
     width: Constants.width
     height: Constants.height
 
     color: Constants.backgroundColor
+
+
+    MouseArea {
+        anchors.fill: parent
+        hoverEnabled: true
+        acceptedButtons: Qt.AllButtons
+
+
+        //onClicked: {
+            // Your onClick logic here
+            //console.log("here");
+            //ludoController.movePawn()
+       // }
+    }
+
 
     View3D {
         id: view3D
@@ -30,6 +38,23 @@ Rectangle {
             antialiasingQuality: SceneEnvironment.High
         }
 
+        camera: cameraNode
+        Node {
+            id: originNode
+            PerspectiveCamera {
+                id: cameraNode
+                z: 100
+            }
+        }
+
+        OrbitCameraController {
+            anchors.fill: parent
+            origin: originNode
+            camera: cameraNode
+        }
+
+
+
         Node {
             id: scene
             DirectionalLight {
@@ -40,16 +65,6 @@ Rectangle {
                 eulerRotation.z: 0.00002
                 eulerRotation.y: -0.00001
                 eulerRotation.x: -60.65488
-            }
-
-            PerspectiveCamera {
-                id: sceneCamera
-                x: -0
-                y: 159.953
-                eulerRotation.z: 0.00001
-                eulerRotation.y: -0
-                eulerRotation.x: -33.23155
-                z: 290.7511
             }
 
             Ludo0 {

@@ -17,7 +17,6 @@ add_subdirectory(asset_imports)
 target_link_libraries(PiBoxApp PRIVATE
     contentplugin
     PiBoxplugin
-    Quick3DAssets_Ludoplugin
     Quick3DAssets_Ludo0plugin
     Quick3DAssets_Pawnplugin
 

@@ -48,6 +48,7 @@ Page {
 
                 anchors.centerIn: parent
                 onClicked : {
+                    socket_comm.start(); // start new thread
                     pageLoader.source = "Ludo_Loby_Screen.qml";
                 }
             }
@@ -136,7 +137,7 @@ Page {
 
                 anchors.centerIn: parent
                 onClicked : {
-                    pageLoader.source = "Ludo_Loby_Screen.qml";
+                    pageLoader.source = "Okey_loby_screen.qml";
                 }
             }
             ComboBox {

@@ -18,6 +18,7 @@ target_link_libraries(PiBoxApp PRIVATE
     contentplugin
     PiBoxplugin
     Quick3DAssets_Ludo0plugin
+    Quick3DAssets_Okeyplugin
     Quick3DAssets_Pawnplugin
 
 )

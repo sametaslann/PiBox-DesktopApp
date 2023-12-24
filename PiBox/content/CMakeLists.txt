@@ -10,16 +10,21 @@ qt6_add_qml_module(content
     RESOURCE_PREFIX "/qt/qml"
     QML_FILES
         App.qml
-        Login_screen.qml
         Game_Choose_Screen.qml
+        Login_screen.qml
+        Ludo_game_screen.qml
         Ludo_Loby_Screen.qml
-        RESOURCES images/OIG.jpeg images/OIG1.jpeg images/OIG2.jpeg images/OIG3.jpeg images/unnamed.png
-        QML_FILES Ludo_game_screen.qml
-)
-find_package(Qt6 6.2 REQUIRED COMPONENTS Core Gui Qml Quick)
-target_link_libraries(PiBoxApp PRIVATE
-    Qt6::Core
-    Qt6::Gui
-    Qt6::Qml
-    Qt6::Quick
+        Okey_game_screen.qml
+        Okey_loby_screen.qml
+        Screen01.qml
+        Screen01.ui.qml
+        images/Ludo_screen.qml
+    RESOURCES
+        images/OIG.jpeg
+        images/OIG1.jpeg
+        images/OIG2.jpeg
+        images/OIG3.jpeg
+        images/unnamed.png
+        images/wood.jpg
+
 )

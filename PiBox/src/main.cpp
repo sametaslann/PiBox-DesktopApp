@@ -26,6 +26,8 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("ludoController", &ludoController);
 
     Socket socketThread(ludoController);
+    engine.rootContext()->setContextProperty("socket_comm", &socketThread);
+    //socketThread.start();
 
 
     const QUrl url(u"qrc:/qt/qml/Main/main.qml"_qs);
@@ -47,7 +49,7 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    //socketThread.start();
+
 
 
     return app.exec();

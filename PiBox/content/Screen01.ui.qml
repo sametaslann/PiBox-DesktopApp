@@ -11,6 +11,9 @@ import QtQuick.Controls 6.5
 import QtQuick3D 6.5
 import PiBox
 import Quick3DAssets.Ludo0
+//import Quick3DAssets.Okey
+import Quick3DAssets.Okey
+
 
 Rectangle {
     width: Constants.width

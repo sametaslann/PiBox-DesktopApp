@@ -32,7 +32,12 @@ Rectangle {
             id: originNode
             PerspectiveCamera {
                 id: cameraNode
-                z: 100
+                x: -0
+                y: 69.378
+                eulerRotation.z: 0.00001
+                eulerRotation.y: -0
+                eulerRotation.x: -20.30178
+                z: 261.68396
             }
         }
 

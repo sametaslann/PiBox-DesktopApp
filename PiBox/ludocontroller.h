@@ -23,8 +23,9 @@ public:
 
     QVector3D cameraPosition() const;
     void setCameraPosition(const QVector3D &position);
-    void movePawn();
+    //void movePawn();
     size_t getPlaneCoordinatesSize();
+    void movePawn(const char *pawnName, const char *destination);
 
 public slots:
     void setPlaneCoordinates(const QVector<QVector3D> &newPlaneCoordinates);
@@ -36,6 +37,7 @@ signals:
 private:
     QVector3D m_cameraPosition;
     QVector<QVector3D> planeCoordinates;
+
 };
 
 #endif // LUDOCONTROLLER_H

@@ -3,7 +3,6 @@ import Qt3D.Render
 import QtQuick3D
 import Quick3DAssets.Pawn
 import QtQuick.Controls
-
 // Nodes:
 import QtQuick.Studio.Components
 

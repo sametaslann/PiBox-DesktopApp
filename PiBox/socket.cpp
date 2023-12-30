@@ -16,51 +16,120 @@ void Socket::connect_to_server()
 
 bool Socket::login_request(const QString &username, const QString  &password){
 
-
     qDebug() << "Username:" << username;
-    qDebug() << "Password:" << password;
+    qDebug() << "Password:" << password;  
     return 1;
 }
 
-void Socket::run()
+
+Socket::Socket(LudoController &controller, OkeyController &okeyController, QObject *parent)
+    :QObject{parent}, ludoController(controller), okeyController(okeyController) {
+
+    connect_to_server();
+
+    //okeyWorker.moveToThread(&thread1);
+    //worker2.moveToThread(&thread2);
+
+
+
+}
+
+void Socket::stopOkey(){
+    qDebug() << "stoppp";
+    okeyWorker->requestInterruption();
+}
+
+void Socket::startOkey()
 {
-    QByteArray data;
+    if(!isConnectedSuccesfully){
+        okeyWorker = new OkeyWorker(okeyController, *socket);
+        okeyWorker->start();
+    }
+    else
+    {
+        //pop-up
+    }
+
 
     if(isConnectedSuccesfully){
 
-        // Example: Send and receive data in a loop
-        while (true) {
+       /* if(1)
+        {
+            while(isLudoActive())
+            {
+                socket->write("GETLUDOBOARD|");
+                socket->waitForBytesWritten();
 
-            socket->write("GETBOARD|");
-            socket->waitForBytesWritten();
+                socket->waitForReadyRead();
+                data = socket->readAll();
 
-            socket->waitForReadyRead();
-            data = socket->readAll();
+                qDebug() << "Received from server: " << data;
+                std::vector<char*> params = split(data.data(), "|");
 
-            qDebug() << "Received from server: " << data;
-            std::vector<char*> params = split(data.data(), "|");
+                if(std::strcmp(params[0], "MOVE") == 0){
 
-            if(std::strcmp(params[0], "MOVE") == 0){
+                    if(ludoController.getPlaneCoordinatesSize()>0)
+                        ludoController.movePawn(params[1], params[2]);
+                }
 
-                if(ludoController.getPlaneCoordinatesSize()>0)
-                    ludoController.movePawn(params[1], params[2]);
+                foreach (char* a, params) {
+                    qDebug() << a;
+                }
+
+                QThread::sleep(1);
             }
-
-            foreach (char* a, params) {
-                qDebug() << a;
-            }
-
-            sleep(1);
         }
 
+        else if(1)
+        {
+            while(isOkeyActive())
+            {
+                socket->write("GETOKEYBOARD|");
+                socket->waitForBytesWritten();
+
+                socket->waitForReadyRead();
+                data = socket->readAll();
+
+                qDebug() << "Received from server: " << data;
+                std::vector<char*> params = split(data.data(), "/");
+
+                if(std::strcmp(params[0], "MOVE") == 0){
+
+                    if(ludoController.getPlaneCoordinatesSize()>0)
+                        ludoController.movePawn(params[1], params[2]);
+                }
+
+                foreach (char* a, params) {
+                    qDebug() << a;
+                }
+
+                QThread::sleep(1);
+            }
+        }
+        else if(1)
+        {
+
+            while(isOkeyActive())
+            {
+                qDebug() << "Debug-1";
+                QByteArray datax = "OK/R9|R10|R11|R12|E|Y10|Y11/E|E|E|E|E|B2|B3|E|E|E|E|E/R9|R10|R11|R12|E|Y10|Y11/R9|R10|R11|R12|E|Y10|Y11/R1|K1|Y1|B1/K12|B11";
+
+
+                qDebug() << datax.data();
+                std::vector<char*> params = split(datax.data(), "/");
+
+                foreach (char* a, params) {
+                    qDebug() << a;
+                }
+
+                QThread::sleep(1);
+            }
+        }*/
     }
     else
     {
         qDebug()<< "Pop-up will appear";
     }
-
-
-
 
 }
 
@@ -69,7 +138,6 @@ QByteArray Socket::read_from_server(){
     socket->waitForReadyRead();
     QByteArray data = socket->readAll();
     return data;
-
 }
 
 void Socket::write_to_server(const char *request){
@@ -78,16 +146,19 @@ void Socket::write_to_server(const char *request){
     socket->waitForBytesWritten();
 }
 
+
 std::vector<char*> Socket::split(char *str, const char *delimiter)
 {
+    qDebug() << "Debug1";
     std::vector<char*> tokens;
-
+    qDebug() << delimiter;
     char *ptr = std::strtok(str,delimiter);
-
+    qDebug() << "Debug1.5";
     while(ptr!=nullptr){
         tokens.push_back(ptr);
         ptr = std::strtok(nullptr, delimiter);
     }
+    qDebug() << "Debug2";
     return tokens;
 
 }

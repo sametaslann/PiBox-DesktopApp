@@ -137,6 +137,7 @@ Page {
 
                 anchors.centerIn: parent
                 onClicked : {
+                    //socket_comm.startOkey();
                     pageLoader.source = "Okey_loby_screen.qml";
                 }
             }
@@ -187,5 +188,9 @@ Page {
                 Qt.createComponent("Login_screen.qml").createObject(parent);
             }
         }
+    }
+
+    Item {
+        id: __materialLibrary__
     }
 }

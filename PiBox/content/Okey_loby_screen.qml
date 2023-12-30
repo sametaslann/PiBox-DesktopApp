@@ -32,8 +32,7 @@ Page {
                 y: 0
                 width: 1225
                 height: 571
-
-                source: "Okey_game_screen.qml"
+                source: "qrc:/qt/qml/Quick3DAssets/Okey/Okey.qml"
             }
 
             Text {
@@ -119,6 +118,8 @@ Page {
             font.pointSize: 27
 
             onClicked : {
+                socket_comm.stopOkey();
+                //okeyController.moveTile();
                 pageLoader.source = "Game_Choose_Screen.qml";
             }
 

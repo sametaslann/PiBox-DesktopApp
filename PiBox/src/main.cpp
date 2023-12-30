@@ -7,6 +7,7 @@
 
 #include "app_environment.h"
 #include "ludocontroller.h"
+#include "okeycontroller.h"
 #include "import_qml_components_plugins.h"
 #include "import_qml_plugins.h"
 #include "socket.h"
@@ -25,8 +26,13 @@ int main(int argc, char *argv[])
     LudoController ludoController; // Instantiate the custom C++ object
     engine.rootContext()->setContextProperty("ludoController", &ludoController);
 
-    Socket socketThread(ludoController);
+    OkeyController okeyController; // Instantiate the custom C++ object
+    engine.rootContext()->setContextProperty("okeyController", &okeyController);
+
+    Socket socketThread(ludoController, okeyController);
     engine.rootContext()->setContextProperty("socket_comm", &socketThread);
+
+
     //socketThread.start();
 
 
@@ -43,14 +49,8 @@ int main(int argc, char *argv[])
     engine.addImportPath(":/");
     engine.load(url);
 
-
-
     if (engine.rootObjects().isEmpty()) {
         return -1;
     }
-
-
-
-
     return app.exec();
 }

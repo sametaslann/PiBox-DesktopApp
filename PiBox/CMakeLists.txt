@@ -15,7 +15,10 @@ endif()
 
 qt_add_executable(PiBoxApp src/main.cpp
     ludocontroller.h ludocontroller.cpp
-    socket.h socket.cpp)
+    socket.h socket.cpp
+    okeycontroller.h okeycontroller.cpp
+    okeyworker.h okeyworker.cpp
+    ludoworker.h ludoworker.cpp)
 
 qt_add_resources(PiBoxApp "configuration"
     PREFIX "/"

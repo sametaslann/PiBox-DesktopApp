@@ -10,33 +10,32 @@
 class LudoController : public QObject
 {
     Q_OBJECT
-    QML_ELEMENT
-    Q_PROPERTY(QVector3D cameraPosition READ cameraPosition WRITE setCameraPosition NOTIFY cameraPositionChanged)
-    //Q_PROPERTY(QQuickItem *plates READ getPlates NOTIFY platesChanged)
+
+    Q_PROPERTY(QQmlListProperty<QObject> plates READ getPlates NOTIFY platesChanged)
+    Q_PROPERTY(QQmlListProperty<QObject> pawns READ getPawns NOTIFY pawnsChanged)
+
 
 
 public:
     explicit LudoController(QObject *parent = nullptr);
 
+    QList<QObject*> plates;
+    QList<QObject*> pawns;
 
-    void printInfo();
+    QQmlListProperty<QObject> getPlates();
+    QQmlListProperty<QObject> getPawns();
 
-    QVector3D cameraPosition() const;
-    void setCameraPosition(const QVector3D &position);
-    //void movePawn();
-    size_t getPlaneCoordinatesSize();
-    void movePawn(const char *pawnName, const char *destination);
 
 public slots:
-    void setPlaneCoordinates(const QVector<QVector3D> &newPlaneCoordinates);
 
 signals:
-    void cameraPositionChanged();
-    void pawnMoved(const QVector3D &position);
+    void platesChanged();
+    void pawnsChanged();
+
+
 
 private:
-    QVector3D m_cameraPosition;
-    QVector<QVector3D> planeCoordinates;
+
 
 };
 

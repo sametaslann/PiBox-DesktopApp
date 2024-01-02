@@ -1,5 +1,9 @@
 #include "socket.h"
 
+Socket::Socket(LudoController &controller, OkeyController &okeyController, QObject *parent)
+    :QObject{parent}, ludoController(controller), okeyController(okeyController) {
+    connect_to_server();
+}
 
 void Socket::connect_to_server()
 {
@@ -20,118 +24,109 @@ bool Socket::login_request(const QString &username, const QString  &password){
     qDebug() << "Password:" << password;  
     return 1;
 }
+void Socket::startLudo()
+{
+    if(!isConnectedSuccesfully){
 
-
-Socket::Socket(LudoController &controller, OkeyController &okeyController, QObject *parent)
-    :QObject{parent}, ludoController(controller), okeyController(okeyController) {
-
-    connect_to_server();
-
-    //okeyWorker.moveToThread(&thread1);
-    //worker2.moveToThread(&thread2);
-
-
+        ludoWorker = new LudoWorker(ludoController, *socket);
+        connect(ludoWorker, &LudoWorker::animatePawn, this, &Socket::handleAnimatePawns);
+        ludoWorker->start();
+    }
+    else
+    {
+        QMessageBox::critical(nullptr, "Connection Error", "Failed to connect to the server. Please check your connection.");
+    }
 
 }
-
-void Socket::stopOkey(){
-    qDebug() << "stoppp";
-    okeyWorker->requestInterruption();
+void Socket::stopLudo(){
+    if(!isConnectedSuccesfully)
+        ludoWorker->requestInterruption();
 }
 
 void Socket::startOkey()
 {
     if(!isConnectedSuccesfully){
         okeyWorker = new OkeyWorker(okeyController, *socket);
-        okeyWorker->start();
+        connect(okeyWorker, &OkeyWorker::animateTile, this, &Socket::handleAnimateTiles);
+        okeyWorker->start();        
     }
     else
     {
-        //pop-up
-    }
-
-
-    if(isConnectedSuccesfully){
-
-       /* if(1)
-        {
-            while(isLudoActive())
-            {
-                socket->write("GETLUDOBOARD|");
-                socket->waitForBytesWritten();
-
-                socket->waitForReadyRead();
-                data = socket->readAll();
-
-                qDebug() << "Received from server: " << data;
-                std::vector<char*> params = split(data.data(), "|");
-
-                if(std::strcmp(params[0], "MOVE") == 0){
-
-                    if(ludoController.getPlaneCoordinatesSize()>0)
-                        ludoController.movePawn(params[1], params[2]);
-                }
-
-                foreach (char* a, params) {
-                    qDebug() << a;
-                }
-
-                QThread::sleep(1);
-            }
-        }
-
-        else if(1)
-        {
-            while(isOkeyActive())
-            {
-                socket->write("GETOKEYBOARD|");
-                socket->waitForBytesWritten();
-
-                socket->waitForReadyRead();
-                data = socket->readAll();
-
-                qDebug() << "Received from server: " << data;
-                std::vector<char*> params = split(data.data(), "/");
-
-                if(std::strcmp(params[0], "MOVE") == 0){
-
-                    if(ludoController.getPlaneCoordinatesSize()>0)
-                        ludoController.movePawn(params[1], params[2]);
-                }
-
-                foreach (char* a, params) {
-                    qDebug() << a;
-                }
-
-                QThread::sleep(1);
-            }
-        }
-        else if(1)
-        {
-
-            while(isOkeyActive())
-            {
-                qDebug() << "Debug-1";
-                QByteArray datax = "OK/R9|R10|R11|R12|E|Y10|Y11/E|E|E|E|E|B2|B3|E|E|E|E|E/R9|R10|R11|R12|E|Y10|Y11/R9|R10|R11|R12|E|Y10|Y11/R1|K1|Y1|B1/K12|B11";
-
-
-                qDebug() << datax.data();
-                std::vector<char*> params = split(datax.data(), "/");
-
-                foreach (char* a, params) {
-                    qDebug() << a;
-                }
-
-                QThread::sleep(1);
-            }
-        }*/
-    }
-    else
-    {
-        qDebug()<< "Pop-up will appear";
+         QMessageBox::critical(nullptr, "Connection Error", "Failed to connect to the server. Please check your connection.");
     }
 
 }
+
+void Socket::stopOkey(){
+    if(!isConnectedSuccesfully)
+    {
+         okeyWorker->requestInterruption();
+         okeyWorker->terminate();
+    }
+
+}
+
+void Socket::handleAnimateTiles(QObject *sourceTile, QObject *destinationTile) {
+
+    QParallelAnimationGroup *parallelGroup = new QParallelAnimationGroup;
+
+    QPropertyAnimation *animationX = new QPropertyAnimation(sourceTile, "x");
+    animationX->setStartValue(sourceTile->property("x"));
+    animationX->setEndValue(destinationTile->property("x"));
+    animationX->setDuration(500); // 100 milliseconds
+
+    QPropertyAnimation *animationY = new QPropertyAnimation(sourceTile, "y");
+    animationY->setStartValue(sourceTile->property("y"));
+    animationY->setEndValue(destinationTile->property("y"));
+    animationY->setDuration(100); // 100 milliseconds
+
+    QPropertyAnimation *animationZ = new QPropertyAnimation(sourceTile, "z");
+    animationZ->setStartValue(sourceTile->property("z"));
+    animationZ->setEndValue(destinationTile->property("z"));
+    animationZ->setDuration(500); // 100 milliseconds
+
+    QPropertyAnimation *animationRotation = new QPropertyAnimation(destinationTile, "rotation");
+    animationRotation->setStartValue(sourceTile->property("rotation"));
+    animationRotation->setEndValue(destinationTile->property("rotation"));
+    animationRotation->setDuration(100); // 100 milliseconds
+
+    // Add animations to the parallel group
+    parallelGroup->addAnimation(animationX);
+    parallelGroup->addAnimation(animationY);
+    parallelGroup->addAnimation(animationZ);
+    parallelGroup->addAnimation(animationRotation);
+
+    // Start parallel animations
+    parallelGroup->start();
+
+}
+
+void Socket::handleAnimatePawns(QObject *sourcePawn, QObject *destPlate) {
+
+
+    QParallelAnimationGroup *parallelGroup = new QParallelAnimationGroup;
+
+    QPropertyAnimation *animationX = new QPropertyAnimation(sourcePawn, "x");
+    animationX->setStartValue(sourcePawn->property("x"));
+    animationX->setEndValue(destPlate->property("x"));
+    animationX->setDuration(500);
+
+
+    QPropertyAnimation *animationZ = new QPropertyAnimation(sourcePawn, "z");
+    animationZ->setStartValue(sourcePawn->property("z"));
+    animationZ->setEndValue(destPlate->property("z"));
+    animationZ->setDuration(500); // 100 milliseconds
+
+    // Add animations to the parallel group
+    parallelGroup->addAnimation(animationX);
+
+    parallelGroup->addAnimation(animationZ);
+
+    // Start parallel animations
+    parallelGroup->start();
+
+}
+
 
 QByteArray Socket::read_from_server(){
 

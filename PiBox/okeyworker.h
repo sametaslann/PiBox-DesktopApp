@@ -6,6 +6,7 @@
 #include <QTcpSocket>
 #include <QThread>
 #include <QTimer>
+#include<QSpotLight>
 
 class OkeyWorker : public QThread
 {
@@ -25,8 +26,11 @@ private:
 
     int charToInt(char c);
     bool updateBoard(std::vector<char *> playerString, QList<QObject *> playerBoard);
-signals:
+    bool isFirst = false;
 
+    QObject *findSourceTile(char *tileString);
+signals:
+    void animateTile(QObject *sourceTile, QObject *destinationTile);
 };
 
 #endif // OKEYWORKER_H

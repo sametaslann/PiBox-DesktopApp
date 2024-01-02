@@ -2,5 +2,6 @@
 ### Do not change
 
 add_subdirectory(Ludo0)
+add_subdirectory(Mesa_80cm)
 add_subdirectory(Okey)
 add_subdirectory(Pawn)

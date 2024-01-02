@@ -33,7 +33,7 @@ Page {
                 width: 1225
                 height: 571
 
-                source: "Game_test.qml"
+                source: "Ludo_game_screen.qml"
             }
 
             Text {
@@ -62,8 +62,14 @@ Page {
                 y: -26
                 width: 80
                 height: 20
-                text: "Player1"
                 font.pixelSize: 16
+
+                Connections {
+                        target: socket_comm
+                        onNewDataReceived: {
+                            textEdit.text = player1
+                        }
+                    }
             }
 
             TextEdit {
@@ -72,8 +78,14 @@ Page {
                 y: -26
                 width: 80
                 height: 20
-                text: "Player2"
                 font.pixelSize: 16
+
+                Connections {
+                        target: socket_comm
+                        onNewDataReceived: {
+                            textEdit1.text = player2
+                        }
+                    }
             }
 
             TextEdit {
@@ -82,8 +94,14 @@ Page {
                 y: 341
                 width: 80
                 height: 20
-                text: "Player3"
                 font.pixelSize: 16
+
+                Connections {
+                        target: socket_comm
+                        onNewDataReceived: {
+                            textEdit2.text = player3
+                        }
+                    }
             }
 
             TextEdit {
@@ -92,8 +110,14 @@ Page {
                 y: 339
                 width: 80
                 height: 20
-                text: "Player4"
                 font.pixelSize: 16
+
+                Connections {
+                        target: socket_comm
+                        onNewDataReceived: {
+                            textEdit3.text = player4
+                        }
+                    }
             }
         }
         Loader{

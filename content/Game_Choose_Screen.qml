@@ -23,7 +23,7 @@ Page {
             y: 252
             width: 486
             height: 536
-            source: "images/OIG (1).jpeg"
+            source: "images/OIG1.jpeg"
             fillMode: Image.PreserveAspectFit
 
             Text {
@@ -48,7 +48,9 @@ Page {
 
                 anchors.centerIn: parent
                 onClicked : {
+                    //socket_comm.start(); // start new thread
                     pageLoader.source = "Ludo_Loby_Screen.qml";
+
                 }
             }
             ComboBox {
@@ -109,7 +111,7 @@ Page {
             y: 252
             width: 486
             height: 536
-            source: "images/OIG (2).jpeg"
+            source: "images/OIG2.jpeg"
             fillMode: Image.PreserveAspectFit
 
             Text {
@@ -136,7 +138,8 @@ Page {
 
                 anchors.centerIn: parent
                 onClicked : {
-                    pageLoader.source = "Ludo_Loby_Screen.qml";
+                    //socket_comm.startOkey();
+                    pageLoader.source = "Okey_loby_screen.qml";
                 }
             }
             ComboBox {
@@ -186,5 +189,9 @@ Page {
                 Qt.createComponent("Login_screen.qml").createObject(parent);
             }
         }
+    }
+
+    Item {
+        id: __materialLibrary__
     }
 }

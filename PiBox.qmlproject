@@ -1,8 +1,8 @@
 import QmlProject
 
 Project {
-    mainFile: "main.qml"
-    mainUiFile: "main.qml"
+    mainFile: "content/App.qml"
+    mainUiFile: "content/Screen01.ui.qml"
 
     /* Include .qml, .js, and image files from current directory and subdirectories */
     QmlFiles {
@@ -91,9 +91,9 @@ Project {
     /* Required for deployment */
     targetDirectory: "/opt/PiBox"
 
-    qdsVersion: "4.1"
+    qdsVersion: "4.3"
 
-    quickVersion: "6.2"
+    quickVersion: "6.5"
 
     /* If any modules the project imports require widgets (e.g. QtCharts), widgetApp must be true */
     widgetApp: true

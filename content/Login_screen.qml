@@ -68,16 +68,15 @@ Item {
 
             anchors.centerIn: parent
             onClicked: {
-                Qt.createComponent("Game_Choose_Screen.qml").createObject(parent)
-                /* enteredusername = username.text;
-                var enteredpassword = password.text;
-                if(enteredusername == "admin" && enteredpassword == "123456"){
-                    Qt.createComponent("Game_Choose_Screen.qml").createObject(parent)
+                const res = socket_comm.login_request(username.text, password.text);
 
+                if(res)
+                {
+                    Qt.createComponent("Game_Choose_Screen.qml").createObject(parent)
                 }
-                else{
-                    console.log("Username or password is wrong, Check it pls.");
-                }*/
+
+
+
             }
         }
     }

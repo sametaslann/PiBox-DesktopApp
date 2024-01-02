@@ -1,0 +1,3835 @@
+import QtQuick
+import QtQuick3D
+import QtQuick3D.Helpers
+import QtQuick.Timeline
+
+Rectangle {
+    width: Constants.width
+    height: Constants.height
+    color: "transparent"
+
+    View3D {
+        id: view3D
+        anchors.fill: parent
+        anchors.rightMargin: -8
+        anchors.bottomMargin: 8
+        anchors.leftMargin: 8
+        anchors.topMargin: -8
+
+        environment: sceneEnvironment
+        SceneEnvironment {
+            id: sceneEnvironment
+            antialiasingQuality: SceneEnvironment.High
+            antialiasingMode: SceneEnvironment.MSAA
+        }
+        camera: cameraNode
+        Node {
+            id: originNode
+            PerspectiveCamera {
+                id: cameraNode
+                x: -1.628
+                y: 360.235
+                eulerRotation.z: 0.00001
+                eulerRotation.y: -0
+                eulerRotation.x: -20.30178
+                z: 991.08215
+            }
+        }
+
+        OrbitCameraController {
+            anchors.fill: parent
+            anchors.rightMargin: 64
+            anchors.bottomMargin: 16
+            anchors.leftMargin: -64
+            anchors.topMargin: -16
+            origin: originNode
+            camera: cameraNode
+        }
+
+
+        Node {
+            id: scene
+            Node {
+                id: node
+                scale.z: 10
+                scale.y: 10
+                scale.x: 10
+
+                // Tiles
+
+
+                // Nodes:
+
+
+            }
+
+            Node {
+                id: throweds
+                x: 0
+                y: 5.018
+                z: -0
+                eulerRotation.z: 90
+                eulerRotation.y: -90
+                eulerRotation.x: -90
+
+
+
+                Model {
+                    id: thrown1
+                    x: -27.377
+                    y: 26.286
+                    z: -4.24272
+                    source: "#Rectangle"
+                    scale.z: 0.03
+                    scale.y: 0.03917
+                    scale.x: 0.0302
+                    materials: material__43_material
+
+                }
+
+
+                Model {
+                    id: thrown2
+                    x: -26.2369327545166
+                    y: -23.051246643066406
+                    z: -0.68475
+                    source: "#Rectangle"
+                    scale.z: 0.03
+                    scale.y: 0.03917
+                    scale.x: 0.0302
+                    materials: material__43_material
+
+                }
+
+                Model {
+                    id: thrown3
+                    x: 23.467208862304688
+                    y: -17.408266067504883
+                    z: -4.519038200378418
+                    source: "#Rectangle"
+                    scale.z: 0.03
+                    scale.y: 0.03917
+                    scale.x: 0.0302
+                    materials: material__43_material
+
+                }
+
+                Model {
+                    id: thrown4
+                    x: 23.319265365600586
+                    y: 20.62446403503418
+                    z: -4.300281047821045
+                    source: "#Rectangle"
+                    scale.z: 0.03
+                    scale.y: 0.03917
+                    scale.x: 0.0302
+                    materials: material__43_material
+
+                }
+            }
+
+            Model {
+                id: middle
+                x: 0.546051025390625
+                y: 2.6752543449401855
+                z: -2.2896223068237305
+                source: "#Rectangle"
+                eulerRotation.z: -0.00045
+                eulerRotation.y: -0.00043
+                eulerRotation.x: 87.40143
+                scale.z: 0.03
+                scale.y: 0.03917
+                scale.x: 0.0302
+                materials: material__43_material
+
+            }
+
+
+            Node {
+                id: __materialLibrary__
+
+                PrincipledMaterial {
+                    id: material__43_material
+                    objectName: "material__43_material"
+                    baseColor: "#adad81"
+                }
+
+                PrincipledMaterial {
+                    id: material__47_material
+                    objectName: "material__47_material"
+                    baseColor: "#f72424"
+                }
+
+                PrincipledMaterial {
+                    id: material__46_material
+                    objectName: "material__46_material"
+                    baseColor: "#0615d2"
+                }
+
+                PrincipledMaterial {
+                    id: material__45_material
+                    objectName: "material__45_material"
+                    baseColor: "#ecb317"
+                }
+
+                PrincipledMaterial {
+                    id: material__44_material
+                    objectName: "material__44_material"
+                    baseColor: "#000000"
+                }
+
+                PrincipledMaterial {
+                    id: material__1006_material
+                    baseColorMap: wood
+                    objectName: "material__1006_material"
+                    baseColor: "#ff808080"
+
+                    Texture {
+                        id: wood
+                        source: "images/wood.jpg"
+                    }
+
+
+
+                }
+
+                PrincipledMaterial {
+                    id: material__1040_Slot__2_material
+                    objectName: "material__1040_Slot__2_material"
+                    baseColor: "#ff000000"
+                }
+
+                PrincipledMaterial {
+                    id: material__1040_Slot__2_material99
+                    objectName: "material__1040_Slot__2_material99"
+                    baseColor: "#ff000000"
+                }
+
+                PrincipledMaterial {
+                    id: material__1040_Slot__2_material103
+                    objectName: "material__1040_Slot__2_material103"
+                    baseColor: "#ff000000"
+                }
+
+                PrincipledMaterial {
+                    id: material__1040_Slot__2_material191
+                    objectName: "material__1040_Slot__2_material191"
+                    baseColor: "#ff000000"
+                }
+            }
+
+            Node{
+                id:red_tiles
+                x: -0
+                y: 100.671
+                z: 0
+
+
+
+                Model {
+                    id: red13_2
+                    objectName: R13
+                    x: 3.445
+                    y: -2.0800323486328125
+                    z: 29.39335
+                    rotation: Qt.quaternion(0.986495, -0.163791, 0, 0)
+                    scale.x: 1
+                    scale.y: 1
+                    scale.z: 1
+                    source: "meshes/box209.mesh"
+                    materials: [
+                        material__43_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: red12_2
+                    objectName: R12
+                    x: 1.831
+                    y: 19.089
+                    z: 42.63709
+                    rotation: Qt.quaternion(0.696147, -0.124016, -0.124016, 0.696147)
+                    source: "meshes/box040.mesh"
+                    materials: [
+                        material__43_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: red11_2
+                    objectName: R11
+                    x: -1.706
+                    y: -2.0800323486328125
+                    z: 29.39335
+                    rotation: Qt.quaternion(0.986495, -0.163791, 0, 0)
+                    scale.x: 1
+                    scale.y: 1
+                    scale.z: 1
+                    source: "meshes/box207.mesh"
+                    materials: [
+                        material__43_material,
+                        material__47_material
+                    ]
+                }
+
+
+
+
+                Model {
+                    id: red10_2
+                    objectName: R10
+                    x: -1.979
+                    y: 0.30108642578125
+                    z: -1.04468
+                    rotation: Qt.quaternion(0.5, -0.5, 0.5, -0.5)
+                    source: "meshes/box206.mesh"
+                    materials: [
+                        material__43_material,
+                        material__47_material
+                    ]
+                }
+
+
+
+
+
+
+                Model {
+                    id: red9_2
+                    objectName: R9
+                    x: -2.071575164794922
+                    y: -0.26318359375
+                    z: 0.7634716033935547
+                    rotation: Qt.quaternion(0.5, -0.5, 0.5, -0.5)
+                    source: "meshes/box029.mesh"
+                    materials: [
+                        material__43_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: red8_2
+                    objectName: R8
+                    x: -1.6224632263183594
+                    y: 0.13681793212890625
+                    z: -2.2023
+                    rotation: Qt.quaternion(0.5, -0.5, 0.5, -0.5)
+                    source: "meshes/box198.mesh"
+                    materials: [
+                        material__43_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: red7_2
+                    objectName: R7
+                    x: -1.9361724853515625
+                    y: 0.5028839111328125
+                    z: 0.2018265724182129
+                    rotation: Qt.quaternion(0.432663, -0.432663, 0.559287, -0.559287)
+                    source: "meshes/box199.mesh"
+                    materials: [
+                        material__43_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: red6_2
+                    objectName: R6
+                    x: 7.957
+                    y: 0.235
+                    z: 33.3136
+                    rotation: Qt.quaternion(0.986495, -0.163791, 0, 0)
+                    scale.x: 1
+                    scale.y: 1
+                    scale.z: 1
+                    source: "meshes/box200.mesh"
+                    materials: [
+                        material__43_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: red5_2
+                    objectName: R5
+                    x: -1.7993850708007812
+                    y: 0.4885540008544922
+                    z: -0.4435267448425293
+                    rotation: Qt.quaternion(0.5, -0.5, 0.5, -0.5)
+                    source: "meshes/box201.mesh"
+                    materials: [
+                        material__43_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: red4_2
+                    objectName: R4
+                    x: -1.917
+                    y: 0.584
+                    z: 0.22477006912231445
+                    rotation: Qt.quaternion(0.457188, -0.457188, 0.539425, -0.539425)
+                    source: "meshes/box202.mesh"
+                    materials: [
+                        material__43_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: red3_2
+                    objectName: R3
+                    x: -2.2009201049804688
+                    y: -0.5127716064453125
+                    z: 0.03719758987426758
+                    rotation: Qt.quaternion(0.584257, -0.398301, 0.584257, -0.398301)
+                    source: "meshes/box203.mesh"
+                    materials: [
+                        material__43_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: red2_2
+                    objectName: R2
+                    x: -2.1840057373046875
+                    y: -0.106
+                    z: -1.32607
+                    rotation: Qt.quaternion(0.5, -0.5, 0.5, -0.5)
+                    source: "meshes/box204.mesh"
+                    materials: [
+                        material__43_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: red1_2
+                    objectName: R1
+                    x: -1.7031669616699219
+                    y: -1.1002922058105469
+                    z: -1.38058
+                    rotation: Qt.quaternion(0.622495, -0.622495, 0.33541, -0.33541)
+                    source: "meshes/box205.mesh"
+                    materials: [
+                        material__43_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: red13_1
+                    objectName: R13
+                    x: 16.666
+                    y: 2.0866127014160156
+                    z: 20.86667
+                    rotation: Qt.quaternion(-1.92103e-07, 3.17371e-08, -0.162999, 0.986626)
+                    scale.x: 1
+                    scale.y: 1
+                    scale.z: 1
+                    source: "meshes/box041.mesh"
+                    materials: [
+                        material__43_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: red12_1
+                    objectName: R12
+                    x: 0.891
+                    y: -2.0800323486328125
+                    z: 29.39335
+                    rotation: Qt.quaternion(0.986495, -0.163791, 0, 0)
+                    scale.x: 1
+                    scale.y: 1
+                    scale.z: 1
+                    source: "meshes/box208.mesh"
+                    materials: [
+                        material__43_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: red11_1
+                    objectName: R11
+                    x: 12.027
+                    y: -0.125762939453125
+                    z: 24.87505
+                    rotation: Qt.quaternion(-1.92103e-07, 3.17371e-08, -0.162999, 0.986626)
+                    scale.x: 1
+                    scale.y: 1
+                    scale.z: 1
+                    source: "meshes/box039.mesh"
+                    materials: [
+                        material__43_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: red10_1
+                    objectName: R10
+                    x: -18.93
+                    y: -0.19949722290039062
+                    z: 24.78575
+                    rotation: Qt.quaternion(-1.92103e-07, 3.17371e-08, -0.162999, 0.986626)
+                    scale.x: 1
+                    scale.y: 1
+                    scale.z: 1
+                    source: "meshes/box038.mesh"
+                    materials: [
+                        material__43_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+
+
+                    id: red9_1
+                    objectName: R9
+                    x: -15.893
+                    y: -0.19949722290039062
+                    z: 24.78575
+                    rotation: Qt.quaternion(-1.92103e-07, 3.17371e-08, -0.162999, 0.986626)
+                    scale.x: 1
+                    scale.y: 1
+                    scale.z: 1
+                    source: "meshes/box029.mesh"
+                    materials: [
+                        material__43_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: red8_1
+                    objectName: R8
+                    x: -12.904
+                    y: -0.19949722290039062
+                    z: 24.78575
+                    rotation: Qt.quaternion(-1.92103e-07, 3.17371e-08, -0.162999, 0.986626)
+                    scale.x: 1
+                    scale.y: 1
+                    scale.z: 1
+                    source: "meshes/box030.mesh"
+                    materials: [
+                        material__43_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: red7_1
+                    objectName: R7
+                    x: -9.915
+                    y: -0.23827362060546875
+                    z: 24.8999
+                    rotation: Qt.quaternion(-1.92103e-07, 3.17371e-08, -0.162999, 0.986626)
+                    scale.x: 1
+                    scale.y: 1
+                    scale.z: 1
+                    source: "meshes/box031.mesh"
+                    materials: [
+                        material__43_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: red6_1
+                    objectName: R6
+                    x: -1.731
+                    y: 1.982
+                    z: 46.59627
+                    rotation: Qt.quaternion(0.697629, -0.115385, 0.115385, -0.697629)
+                    source: "meshes/box032.mesh"
+                    materials: [
+                        material__43_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: red5_1
+                    objectName: R5
+                    x: -1.731
+                    y: 4.534
+                    z: 46.59627
+                    rotation: Qt.quaternion(0.697629, -0.115385, 0.115385, -0.697629)
+                    source: "meshes/box033.mesh"
+                    materials: [
+                        material__43_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: red4_1
+                    objectName: R4
+                    x: -1.731
+                    y: 7.105
+                    z: 46.59627
+                    rotation: Qt.quaternion(0.697629, -0.115385, 0.115385, -0.697629)
+                    source: "meshes/box034.mesh"
+                    materials: [
+                        material__43_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: red3_1
+                    objectName: R3
+
+                    x: -1.731
+                    y: 9.689
+                    z: 46.59627
+                    rotation: Qt.quaternion(0.697629, -0.115385, 0.115385, -0.697629)
+                    source: "meshes/box035.mesh"
+                    materials: [
+                        material__43_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: red2_1
+                    objectName: R2
+                    x: -1.731
+                    y: 12.258
+                    z: 46.59627
+                    rotation: Qt.quaternion(0.697629, -0.115385, 0.115385, -0.697629)
+                    source: "meshes/box036.mesh"
+                    materials: [
+                        material__43_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: red1_1
+                    objectName: R1
+                    x: -1.731
+                    y: 14.829
+                    z: 46.59627
+                    rotation: Qt.quaternion(0.697629, -0.115385, 0.115385, -0.697629)
+                    source: "meshes/box037.mesh"
+                    materials: [
+                        material__43_material,
+                        material__47_material
+                    ]
+                }
+            }
+
+            Node{
+                id:blue_tiles
+                x: -0
+                y: 100.671
+                z: 0
+
+                Component.onCompleted: {
+                    okeyController.blueTiles = blue_tiles.children
+                }
+
+                Model {
+                    id: blue13_2
+                    objectName: B13
+                    x: 1.942
+                    y: -2.336
+                    z: -1.38268
+                    rotation: Qt.quaternion(0.513054, 0.513055, -0.486596, -0.486595)
+                    source: "meshes/box222.mesh"
+                    materials: [
+                        material__43_material,
+                        material__46_material,
+                        material__47_material
+                    ]
+                }
+
+
+
+
+
+                Model {
+                    id: blue12_2
+                    objectName: B12
+                    x: 1.9421195983886719
+                    y: -2.339210033416748
+                    z: -2.4541854858398438
+                    rotation: Qt.quaternion(-0.5, -0.5, 0.5, 0.5)
+                    source: "meshes/box221.mesh"
+                    materials: [
+                        material__43_material,
+                        material__46_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: blue11_2
+                    objectName: B11
+                    x: 1.989
+                    y: -2.358
+                    z: -0.95452
+                    rotation: Qt.quaternion(-0.5, -0.5, 0.5, 0.5)
+                    source: "meshes/box220.mesh"
+                    materials: [
+                        material__43_material,
+                        material__46_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: blue10_2
+                    objectName: B10
+                    x: 2.331
+                    y: -2.337
+                    z: -0.44466
+                    rotation: Qt.quaternion(-0.5, -0.5, 0.5, 0.5)
+                    source: "meshes/box219.mesh"
+                    materials: [
+                        material__43_material,
+                        material__46_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: blue9_2
+                    objectName: B9
+                    x: 2.046
+                    y: -2.264
+                    z: 0.34334
+                    rotation: Qt.quaternion(-0.483769, -0.483769, 0.515721, 0.515721)
+                    source: "meshes/box210.mesh"
+                    materials: [
+                        material__43_material,
+                        material__46_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: blue8_2
+                    objectName: B8
+                    x: 2.12
+                    y: -2.529
+                    z: 0.65008
+                    rotation: Qt.quaternion(-0.5, -0.5, 0.5, 0.5)
+                    source: "meshes/box211.mesh"
+                    materials: [
+                        material__43_material,
+                        material__46_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: blue7_2
+                    objectName: B7
+                    x: -2.064
+                    y: -19.648
+                    z: 46.65701
+                    rotation: Qt.quaternion(0.697629, -0.115385, 0.115385, -0.697629)
+                    source: "meshes/box212.mesh"
+                    materials: [
+                        material__43_material,
+                        material__46_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: blue6_2
+                    objectName: B6
+                    x: -0.2125701904296875
+                    y: 1.093
+                    z: 32.02631
+                    rotation: Qt.quaternion(0.696147, -0.124016, -0.124016, 0.696147)
+                    source: "meshes/box046.mesh"
+                    materials: [
+                        material__43_material,
+                        material__46_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: blue5_2
+                    objectName: B5
+                    x: -0.2125701904296875
+                    y: -1.896
+                    z: 32.02631
+                    rotation: Qt.quaternion(0.696147, -0.124016, -0.124016, 0.696147)
+                    source: "meshes/box047.mesh"
+                    materials: [
+                        material__43_material,
+                        material__46_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: blue4_2
+                    objectName: B4
+                    x: -14.619
+                    y: 0.361
+                    z: 33.24143
+                    rotation: Qt.quaternion(0.986495, -0.163791, 0, 0)
+                    scale.x: 1
+                    scale.y: 1
+                    scale.z: 1
+                    source: "meshes/box215.mesh"
+                    materials: [
+                        material__43_material,
+                        material__46_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: blue3_2
+                    objectName: B3
+                    x: 2.177
+                    y: -5.948
+                    z: 42.66562
+                    rotation: Qt.quaternion(0.696147, -0.124016, -0.124016, 0.696147)
+                    source: "meshes/box049.mesh"
+                    materials: [
+                        material__43_material,
+                        material__46_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: blue2_2
+                    objectName: B2
+                    x: -0.212066650390625
+                    y: -18.61
+                    z: 31.89041
+                    rotation: Qt.quaternion(0.696147, -0.124016, -0.124016, 0.696147)
+                    source: "meshes/box050.mesh"
+                    materials: [
+                        material__43_material,
+                        material__46_material,
+                        material__47_material
+                    ]
+                }
+
+
+                Model {
+                    id: blue1_2
+                    objectName: B1
+                    x: -2.064
+                    y: -14.187
+                    z: 46.65701
+                    rotation: Qt.quaternion(0.697629, -0.115385, 0.115385, -0.697629)
+                    source: "meshes/box218.mesh"
+                    materials: [
+                        material__43_material,
+                        material__46_material,
+                        material__47_material
+                    ]
+                }
+
+
+
+
+
+
+
+
+
+
+                Model {
+                    id: blue13_1
+                    objectName: B13
+                    x: 11.132
+                    y: 2.26190185546875
+                    z: 20.92621
+                    rotation: Qt.quaternion(-1.92103e-07, 3.17371e-08, -0.162999, 0.986626)
+                    scale.x: 1
+                    scale.y: 1
+                    scale.z: 1
+                    source: "meshes/box055.mesh"
+                    materials: [
+                        material__43_material,
+                        material__46_material,
+                        material__47_material
+                    ]
+                }
+                Model {
+                    id: blue12_1
+                    objectName: B12
+                    x: 1.824
+                    y: 13.395
+                    z: 42.56289
+                    rotation: Qt.quaternion(0.696147, -0.124016, -0.124016, 0.696147)
+                    source: "meshes/box054.mesh"
+                    materials: [
+                        material__43_material,
+                        material__46_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: blue11_1
+                    objectName: B11
+                    x: 0.304
+                    y: -19.281
+                    z: 50.57509
+                    rotation: Qt.quaternion(0.697629, -0.115385, 0.115385, -0.697629)
+                    source: "meshes/box053.mesh"
+                    materials: [
+                        material__43_material,
+                        material__46_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: blue10_1
+                    objectName: B10
+                    x: 0.304
+                    y: -16.756
+                    z: 50.57509
+                    rotation: Qt.quaternion(0.697629, -0.115385, 0.115385, -0.697629)
+                    source: "meshes/box052.mesh"
+                    materials: [
+                        material__43_material,
+                        material__46_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: blue9_1
+                    objectName: B9
+                    x: 0.304
+                    y: -14.071
+                    z: 50.57509
+                    rotation: Qt.quaternion(0.697629, -0.115385, 0.115385, -0.697629)
+                    source: "meshes/box043.mesh"
+                    materials: [
+                        material__43_material,
+                        material__46_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: blue8_1
+                    objectName: B8
+                    x: 0.304
+                    y: -11.379
+                    z: 50.57509
+                    rotation: Qt.quaternion(0.697629, -0.115385, 0.115385, -0.697629)
+                    source: "meshes/box044.mesh"
+                    materials: [
+                        material__43_material,
+                        material__46_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: blue7_1
+                    objectName: B7
+                    x: -18.933
+                    y: 2.114
+                    z: 21.4006
+                    rotation: Qt.quaternion(-1.92103e-07, 3.17371e-08, -0.162999, 0.986626)
+                    scale.x: 1
+                    scale.y: 1
+                    scale.z: 1
+                    source: "meshes/box045.mesh"
+                    materials: [
+                        material__43_material,
+                        material__46_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: blue6_1
+                    objectName: B6
+                    x: 0.328
+                    y: 0.174
+                    z: 33.34115
+                    rotation: Qt.quaternion(0.986495, -0.163791, 0, 0)
+                    scale.x: 1
+                    scale.y: 1
+                    scale.z: 1
+                    source: "meshes/box213.mesh"
+                    materials: [
+                        material__43_material,
+                        material__46_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: blue5_1
+                    objectName: B5
+                    x: -12.005
+                    y: 0.359
+                    z: 33.26247
+                    rotation: Qt.quaternion(0.986495, -0.163791, 0, 0)
+                    scale.x: 1
+                    scale.y: 1
+                    scale.z: 1
+                    source: "meshes/box214.mesh"
+                    materials: [
+                        material__43_material,
+                        material__46_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: blue4_1
+                    objectName: B4
+                    x: -16.304
+                    y: 2.114
+                    z: 21.4006
+                    rotation: Qt.quaternion(-1.92103e-07, 3.17371e-08, -0.162999, 0.986626)
+                    scale.x: 1
+                    scale.y: 1
+                    scale.z: 1
+                    source: "meshes/box048.mesh"
+                    materials: [
+                        material__43_material,
+                        material__46_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: blue3_1
+                    objectName: B3
+                    x: -2.055
+                    y: -16.99
+                    z: 46.68192
+                    rotation: Qt.quaternion(0.697629, -0.115385, 0.115385, -0.697629)
+                    source: "meshes/box216.mesh"
+                    materials: [
+                        material__43_material,
+                        material__46_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: blue2_1
+                    objectName: B2
+                    x: -17.288
+                    y: 0.339
+                    z: 33.22096
+                    rotation: Qt.quaternion(0.986495, -0.163791, 0, 0)
+                    scale.x: 1
+                    scale.y: 1
+                    scale.z: 1
+                    source: "meshes/box217.mesh"
+                    materials: [
+                        material__43_material,
+                        material__46_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: blue1_1
+                    objectName: B1
+                    x: -13.499
+                    y: 2.114
+                    z: 21.4006
+                    rotation: Qt.quaternion(-1.92103e-07, 3.17371e-08, -0.162999, 0.986626)
+                    scale.x: 1
+                    scale.y: 1
+                    scale.z: 1
+                    source: "meshes/box051.mesh"
+                    materials: [
+                        material__43_material,
+                        material__46_material,
+                        material__47_material
+                    ]
+                }
+            }
+
+            Node{
+                id:black_tiles
+                x: -0
+                y: 100.671
+                z: 0
+                Component.onCompleted: {
+                    okeyController.blackTiles = black_tiles.children
+                }
+                Model {
+                    id: black13_2
+                    objectName: K13
+                    x: -0.197
+                    y: -9.188
+                    z: 31.93985
+                    rotation: Qt.quaternion(0.696147, -0.124016, -0.124016, 0.696147)
+                    source: "meshes/box025.mesh"
+                    materials: [
+                        material__43_material,
+                        material__44_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: black12_2
+                    objectName: K12
+                    x: 1.868
+                    y: 16.262
+                    z: 42.57914
+                    rotation: Qt.quaternion(0.696147, -0.124016, -0.124016, 0.696147)
+                    source: "meshes/box024.mesh"
+                    materials: [
+                        material__43_material,
+                        material__44_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: black11_2
+                    objectName: K11
+                    x: -0.45388031005859375
+                    y: 19.203
+                    z: 31.78114
+                    rotation: Qt.quaternion(0.696147, -0.124016, -0.124016, 0.696147)
+                    source: "meshes/box023.mesh"
+                    materials: [
+                        material__43_material,
+                        material__44_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: black10_2
+                    objectName: K10
+                    x: -0.4619598388671875
+                    y: 16.605
+                    z: 31.8031
+                    rotation: Qt.quaternion(0.696147, -0.124016, -0.124016, 0.696147)
+                    source: "meshes/box022.mesh"
+                    materials: [
+                        material__43_material,
+                        material__44_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: black9_2
+                    objectName: K9
+                    x: -0.45388031005859375
+                    y: 13.963
+                    z: 31.78114
+                    rotation: Qt.quaternion(0.696147, -0.124016, -0.124016, 0.696147)
+                    source: "meshes/box013.mesh"
+                    materials: [
+                        material__43_material,
+                        material__44_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: black8_2
+                    objectName: K8
+                    x: -0.45388031005859375
+                    y: 11.235
+                    z: 31.78114
+                    rotation: Qt.quaternion(0.696147, -0.124016, -0.124016, 0.696147)
+                    source: "meshes/box014.mesh"
+                    materials: [
+                        material__43_material,
+                        material__44_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: black7_2
+                    objectName: K7
+                    x: 0.152
+                    y: 0.716
+                    z: 50.65482
+                    rotation: Qt.quaternion(0.697629, -0.115385, 0.115385, -0.697629)
+                    source: "meshes/box186.mesh"
+                    materials: [
+                        material__43_material,
+                        material__44_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: black6_2
+                    objectName: K6
+                    x: 2.86
+                    y: 0.204
+                    z: 33.32595
+                    rotation: Qt.quaternion(0.986495, -0.163791, 0, 0)
+                    scale.x: 1
+                    scale.y: 1
+                    scale.z: 1
+                    source: "meshes/box187.mesh"
+                    materials: [
+                        material__43_material,
+                        material__44_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: black5_2
+                    objectName: K5
+                    x: 14.331
+                    y: 0.329
+                    z: 33.41193
+                    rotation: Qt.quaternion(0.986495, -0.163791, 0, 0)
+                    scale.x: 1
+                    scale.y: 1
+                    scale.z: 1
+                    source: "meshes/box188.mesh"
+                    materials: [
+                        material__43_material,
+                        material__44_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: black4_2
+                    objectName: K4
+                    x: 1.979705810546875
+                    y: -11.303
+                    z: 27.92514
+                    rotation: Qt.quaternion(0.696147, -0.124016, -0.124016, 0.696147)
+                    source: "meshes/box018.mesh"
+                    materials: [
+                        material__43_material,
+                        material__44_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: black3_2
+                    objectName: K3
+                    x: 1.979705810546875
+                    y: -13.854
+                    z: 27.92514
+                    rotation: Qt.quaternion(0.696147, -0.124016, -0.124016, 0.696147)
+                    source: "meshes/box019.mesh"
+                    materials: [
+                        material__43_material,
+                        material__44_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: black2_2
+                    objectName: K2
+                    x: 1.979705810546875
+                    y: -16.465
+                    z: 27.92513
+                    rotation: Qt.quaternion(0.696147, -0.124016, -0.124016, 0.696147)
+                    source: "meshes/box020.mesh"
+                    materials: [
+                        material__43_material,
+                        material__44_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: black1_2
+                    objectName: K1
+                    x: 1.979705810546875
+                    y: -19.029
+                    z: 27.92513
+                    rotation: Qt.quaternion(0.696147, -0.124016, -0.124016, 0.696147)
+                    source: "meshes/box021.mesh"
+                    materials: [
+                        material__43_material,
+                        material__44_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: black13_1
+                    objectName: K13
+                    x: 19.279
+                    y: 4.001
+                    z: 10.84257
+                    rotation: Qt.quaternion(0.986495, -0.163791, 0, 0)
+                    scale.x: 1
+                    scale.y: 1
+                    scale.z: 1
+                    source: "meshes/box196.mesh"
+                    materials: [
+                        material__43_material,
+                        material__44_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: black12_1
+                    objectName: K12
+                    x: 16.716
+                    y: -2.1383819580078125
+                    z: 29.44992
+                    rotation: Qt.quaternion(0.986495, -0.163791, 0, 0)
+                    scale.x: 1
+                    scale.y: 1
+                    scale.z: 1
+                    source: "meshes/box195.mesh"
+                    materials: [
+                        material__43_material,
+                        material__44_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: black11_1
+                    objectName: K11
+                    x: 14.095
+                    y: -2.138
+                    z: 29.44992
+                    rotation: Qt.quaternion(0.986495, -0.163791, 0, 0)
+                    scale.x: 1
+                    scale.y: 1
+                    scale.z: 1
+                    source: "meshes/box194.mesh"
+                    materials: [
+                        material__43_material,
+                        material__44_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: black10_1
+                    objectName: K10
+                    x: 11.393
+                    y: -2.138
+                    z: 29.44992
+                    rotation: Qt.quaternion(0.986495, -0.163791, 0, 0)
+                    scale.x: 1
+                    scale.y: 1
+                    scale.z: 1
+                    source: "meshes/box193.mesh"
+                    materials: [
+                        material__43_material,
+                        material__44_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: black9_1
+                    objectName: K9
+                    x: 2.409
+                    y: -4.699
+                    z: 57.29129
+                    rotation: Qt.quaternion(0.697629, -0.115385, 0.115385, -0.697629)
+                    source: "meshes/box184.mesh"
+                    materials: [
+                        material__43_material,
+                        material__44_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: black8_1
+                    objectName: K8
+                    x: 0.152
+                    y: -1.952
+                    z: 50.65482
+                    rotation: Qt.quaternion(0.697629, -0.115385, 0.115385, -0.697629)
+                    source: "meshes/box185.mesh"
+                    materials: [
+                        material__43_material,
+                        material__44_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: black7_1
+                    objectName: K7
+                    x: -2.31
+                    y: -0.32831573486328125
+                    z: 25.02201
+                    rotation: Qt.quaternion(-1.92103e-07, 3.17371e-08, -0.162999, 0.986626)
+                    scale.x: 1
+                    scale.y: 1
+                    scale.z: 1
+                    source: "meshes/box015.mesh"
+                    materials: [
+                        material__43_material,
+                        material__44_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: black6_1
+                    objectName: K6
+                    x: 0.679
+                    y: -0.32831573486328125
+                    z: 25.02201
+                    rotation: Qt.quaternion(-1.92103e-07, 3.17371e-08, -0.162999, 0.986626)
+                    scale.x: 1
+                    scale.y: 1
+                    scale.z: 1
+                    source: "meshes/box016.mesh"
+                    materials: [
+                        material__43_material,
+                        material__44_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: black5_1
+                    objectName: K5
+                    x: 3.668
+                    y: -0.32831573486328125
+                    z: 25.02201
+                    rotation: Qt.quaternion(-1.92103e-07, 3.17371e-08, -0.162999, 0.986626)
+                    scale.x: 1
+                    scale.y: 1
+                    scale.z: 1
+                    source: "meshes/box017.mesh"
+                    materials: [
+                        material__43_material,
+                        material__44_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: black4_1
+                    objectName: K4
+                    x: 0.273
+                    y: 10.051
+                    z: 50.5834
+                    rotation: Qt.quaternion(0.697629, -0.115385, 0.115385, -0.697629)
+                    source: "meshes/box189.mesh"
+                    materials: [
+                        material__43_material,
+                        material__44_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: black3_1
+                    objectName: K3
+                    x: 0.273
+                    y: 12.672
+                    z: 50.5834
+                    rotation: Qt.quaternion(0.697629, -0.115385, 0.115385, -0.697629)
+                    source: "meshes/box190.mesh"
+                    materials: [
+                        material__43_material,
+                        material__44_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: black2_1
+                    objectName: K2
+                    x: 0.273
+                    y: 15.258
+                    z: 50.5834
+                    rotation: Qt.quaternion(0.697629, -0.115385, 0.115385, -0.697629)
+                    source: "meshes/box191.mesh"
+                    materials: [
+                        material__43_material,
+                        material__44_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: black1_1
+                    objectName: K1
+                    x: 0.273
+                    y: 17.86
+                    z: 50.5834
+                    rotation: Qt.quaternion(0.697629, -0.115385, 0.115385, -0.697629)
+                    source: "meshes/box192.mesh"
+                    materials: [
+                        material__43_material,
+                        material__44_material,
+                        material__47_material
+                    ]
+                }
+            }
+
+            Node{
+                id:yellow_tiles
+                x: -0
+                y: 100.671
+                z: 0
+
+                Component.onCompleted: {
+                    okeyController.yellowTiles = yellow_tiles.children
+                }
+
+
+                Model {
+                    id: yellow13_2
+                    objectName: Y13
+                    x: 1.942
+                    y: -2.397538661956787
+                    z: 0.92153
+                    rotation: Qt.quaternion(-0.5, -0.5, 0.5, 0.5)
+                    source: "meshes/box235.mesh"
+                    materials: [
+                        material__43_material,
+                        material__45_material,
+                        material__47_material
+                    ]
+                }
+                Model {
+                    id: yellow12_2
+                    objectName: Y12
+                    x: 1.942
+                    y: -2.528
+                    z: 2.2375
+                    rotation: Qt.quaternion(-0.5, -0.5, 0.5, 0.5)
+                    source: "meshes/box234.mesh"
+                    materials: [
+                        material__43_material,
+                        material__45_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: yellow11_2
+                    objectName: Y11
+                    x: 1.942
+                    y: -2.540078639984131
+                    z: 1.43091
+                    rotation: Qt.quaternion(-0.5, -0.5, 0.5, 0.5)
+                    source: "meshes/box233.mesh"
+                    materials: [
+                        material__43_material,
+                        material__45_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: yellow10_2
+                    objectName: Y10
+                    x: -9.943
+                    y: -2.0320587158203125
+                    z: 29.35654
+                    rotation: Qt.quaternion(0.986495, -0.163791, 0, 0)
+                    scale.x: 1
+                    scale.y: 1
+                    scale.z: 1
+                    source: "meshes/box232.mesh"
+                    materials: [
+                        material__43_material,
+                        material__45_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: yellow9_2
+                    objectName: Y9
+                    x: -12.647
+                    y: -2.0320587158203125
+                    z: 29.35654
+                    rotation: Qt.quaternion(0.986495, -0.163791, 0, 0)
+                    scale.x: 1
+                    scale.y: 1
+                    scale.z: 1
+                    source: "meshes/box223.mesh"
+                    materials: [
+                        material__43_material,
+                        material__45_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: yellow8_2
+                    objectName: Y8
+                    x: -15.338
+                    y: -2.0320587158203125
+                    z: 29.35654
+                    rotation: Qt.quaternion(0.986495, -0.163791, 0, 0)
+                    scale.x: 1
+                    scale.y: 1
+                    scale.z: 1
+                    source: "meshes/box224.mesh"
+                    materials: [
+                        material__43_material,
+                        material__45_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: yellow7_2
+                    objectName: Y7
+                    x: -18.056
+                    y: -2.0320587158203125
+                    z: 29.35654
+                    rotation: Qt.quaternion(0.986495, -0.163791, 0, 0)
+                    scale.x: 1
+                    scale.y: 1
+                    scale.z: 1
+                    source: "meshes/box225.mesh"
+                    materials: [
+                        material__43_material,
+                        material__45_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: yellow6_2
+                    objectName: Y6
+                    x: 5.37
+                    y: 0.222
+                    z: 33.34837
+                    rotation: Qt.quaternion(0.986495, -0.163791, 0, 0)
+                    scale.x: 1
+                    scale.y: 1
+                    scale.z: 1
+                    source: "meshes/box226.mesh"
+                    materials: [
+                        material__43_material,
+                        material__45_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: yellow5_2
+                    objectName: Y5
+                    x: 2.161
+                    y: -0.675
+                    z: 42.66856
+                    rotation: Qt.quaternion(0.696147, -0.124016, -0.124016, 0.696147)
+                    source: "meshes/box061.mesh"
+                    materials: [
+                        material__43_material,
+                        material__45_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: yellow4_2
+                    objectName: Y4
+                    x: 2.04
+                    y: -2.438
+                    z: 2.50078
+                    rotation: Qt.quaternion(0.517312, 0.517313, -0.482066, -0.482066)
+                    source: "meshes/box228.mesh"
+                    materials: [
+                        material__43_material,
+                        material__45_material,
+                        material__47_material
+                    ]
+                }
+
+
+                Model {
+                    id: yellow3_2
+                    objectName: Y3
+                    x: 2.089
+                    y: -2.6762328147888184
+                    z: 3.22945
+                    rotation: Qt.quaternion(-0.5, -0.5, 0.5, 0.5)
+                    source: "meshes/box229.mesh"
+                    materials: [
+                        material__43_material,
+                        material__45_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: yellow2_2
+                    objectName: Y2
+                    x: 1.729
+                    y: -2.3517050743103027
+                    z: 3.69477
+                    rotation: Qt.quaternion(-0.5, -0.5, 0.5, 0.5)
+                    source: "meshes/box230.mesh"
+                    materials: [
+                        material__43_material,
+                        material__45_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: yellow1_2
+                    objectName: Y1
+                    x: -1.7289924621582031
+                    y: 2.7118306159973145
+                    z: -2.4541854858398438
+                    rotation: Qt.quaternion(0.5, -0.5, 0.5, -0.5)
+                    source: "meshes/box231.mesh"
+                    materials: [
+                        material__43_material,
+                        material__45_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: yellow13_1
+                    objectName: Y13
+                    x: 13.86
+                    y: 2.25341796875
+                    z: 20.92333
+                    rotation: Qt.quaternion(-1.92103e-07, 3.17371e-08, -0.162999, 0.986626)
+                    scale.x: 1
+                    scale.y: 1
+                    scale.z: 1
+                    source: "meshes/box069.mesh"
+                    materials: [
+                        material__43_material,
+                        material__45_material,
+                        material__47_material
+                    ]
+                }
+
+
+                Model {
+                    id: yellow12_1
+                    objectName: Y12
+                    x: 1.795
+                    y: 10.665
+                    z: 42.60069
+                    rotation: Qt.quaternion(0.696147, -0.124016, -0.124016, 0.696147)
+                    source: "meshes/box068.mesh"
+                    materials: [
+                        material__43_material,
+                        material__45_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: yellow11_1
+                    objectName: Y11
+                    x: -2.038
+                    y: -6.641
+                    z: 46.49592
+                    rotation: Qt.quaternion(0.697629, -0.115385, 0.115385, -0.697629)
+                    source: "meshes/box067.mesh"
+                    materials: [
+                        material__43_material,
+                        material__45_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: yellow10_1
+                    objectName: Y10
+                    x: -10.149
+                    y: 1.9170074462890625
+                    z: 20.9711
+                    rotation: Qt.quaternion(-1.92103e-07, 3.17371e-08, -0.162999, 0.986626)
+                    scale.x: 1
+                    scale.y: 1
+                    scale.z: 1
+                    source: "meshes/box066.mesh"
+                    materials: [
+                        material__43_material,
+                        material__45_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: yellow9_1
+                    objectName: Y9
+                    x: -7.586
+                    y: 1.9170074462890625
+                    z: 20.9711
+                    rotation: Qt.quaternion(-1.92103e-07, 3.17371e-08, -0.162999, 0.986626)
+                    scale.x: 1
+                    scale.y: 1
+                    scale.z: 1
+                    source: "meshes/box057.mesh"
+                    materials: [
+                        material__43_material,
+                        material__45_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: yellow8_1
+                    objectName: Y8
+                    x: -4.939
+                    y: 1.9170074462890625
+                    z: 20.9711
+                    rotation: Qt.quaternion(-1.92103e-07, 3.17371e-08, -0.162999, 0.986626)
+                    scale.x: 1
+                    scale.y: 1
+                    scale.z: 1
+                    source: "meshes/box058.mesh"
+                    materials: [
+                        material__43_material,
+                        material__45_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: yellow7_1
+                    objectName: Y7
+                    x: -2.31
+                    y: 1.9170074462890625
+                    z: 20.9711
+                    rotation: Qt.quaternion(-1.92103e-07, 3.17371e-08, -0.162999, 0.986626)
+                    scale.x: 1
+                    scale.y: 1
+                    scale.z: 1
+                    source: "meshes/box059.mesh"
+                    materials: [
+                        material__43_material,
+                        material__45_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: yellow6_1
+                    objectName: Y6
+                    x: 0.23
+                    y: 1.9170074462890625
+                    z: 20.9711
+                    rotation: Qt.quaternion(-1.92103e-07, 3.17371e-08, -0.162999, 0.986626)
+                    scale.x: 1
+                    scale.y: 1
+                    scale.z: 1
+                    source: "meshes/box060.mesh"
+                    materials: [
+                        material__43_material,
+                        material__45_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: yellow5_1
+                    objectName: Y5
+                    x: -2.1
+                    y: -3.826
+                    z: 46.50729
+                    rotation: Qt.quaternion(0.696898, -0.119721, 0.119721, -0.696898)
+                    scale.x: 1
+                    scale.y: 1
+                    scale.z: 1
+                    source: "meshes/box227.mesh"
+                    materials: [
+                        material__43_material,
+                        material__45_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: yellow4_1
+                    objectName: Y4
+                    x: 2.148
+                    y: -3.29
+                    z: 42.65721
+                    rotation: Qt.quaternion(0.696147, -0.124016, -0.124016, 0.696147)
+                    source: "meshes/box062.mesh"
+                    materials: [
+                        material__43_material,
+                        material__45_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: yellow3_1
+                    objectName: Y3
+                    x: 14.582
+                    y: -0.22174835205078125
+                    z: 24.84244
+                    rotation: Qt.quaternion(-1.92103e-07, 3.17371e-08, -0.162999, 0.986626)
+                    scale.x: 1
+                    scale.y: 1
+                    scale.z: 1
+                    source: "meshes/box063.mesh"
+                    materials: [
+                        material__43_material,
+                        material__45_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: yellow2_1
+                    objectName: Y2
+                    x: -0.08087158203125
+                    y: -16.056
+                    z: 31.93884
+                    rotation: Qt.quaternion(0.696147, -0.124016, -0.124016, 0.696147)
+                    source: "meshes/box064.mesh"
+                    materials: [
+                        material__43_material,
+                        material__45_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: yellow1_1
+                    objectName: Y1
+                    x: 17.34
+                    y: -0.22174835205078125
+                    z: 24.84244
+                    rotation: Qt.quaternion(-1.92103e-07, 3.17371e-08, -0.162999, 0.986626)
+                    scale.x: 1
+                    scale.y: 1
+                    scale.z: 1
+                    source: "meshes/box065.mesh"
+                    materials: [
+                        material__43_material,
+                        material__45_material,
+                        material__47_material
+                    ]
+                }
+            }
+            Node{
+                id:fake_tiles
+                x: -0
+                y: 100.671
+                z: 0
+
+                Component.onCompleted: {
+                    okeyController.fakeTiles = fake_tiles.children
+                }
+
+                Model {
+                    id: fake_2
+                    objectName: F
+                    x: -0.0864105224609375
+                    y: -6.348
+                    z: 31.98071
+                    rotation: Qt.quaternion(0.696147, -0.124016, -0.124016, 0.696147)
+                    source: "meshes/box027.mesh"
+                    materials: [
+                        material__43_material,
+                        material__44_material,
+                        material__47_material
+                    ]
+                }
+
+                Model {
+                    id: fake_1 // f0_1
+                    objectName: F
+                    x: -2.191
+                    y: -9.541
+                    z: 46.68422
+                    rotation: Qt.quaternion(0.697629, -0.115385, 0.115385, -0.697629)
+                    source: "meshes/box042.mesh"
+                    materials: [
+                        material__43_material,
+                        material__44_material,
+                        material__47_material
+                    ]
+                }
+
+            }
+            Node{
+                id: players
+                x: 0
+                y: 5.018
+                z: -0
+                eulerRotation.z: 90
+                eulerRotation.y: -90
+                eulerRotation.x: -90
+
+                Node {
+                    id: player1
+                    x: 0.3458123207092285
+                    y: 43.94361877441406
+                    z: 0.2561922073364258
+                    Model {
+                        id: player1_cells
+                        x: -0
+                        y: 0.001373291015625
+                        z: -3.57119
+                        rotation: Qt.quaternion(4.37114e-08, 0, 0, 1)
+                        source: "meshes/box127.mesh"
+                        materials: [
+                            material__1006_material,
+                            material__43_material,
+                            material__1040_Slot__2_material
+                        ]
+
+                        Component.onCompleted: {
+                            okeyController.player1Cells = player1_cells.children
+                        }
+
+                        Model {
+                            id: p1_cell13
+                            x: 19.22
+                            y: -0.927
+                            source: "#Rectangle"
+                            z: 4.379
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p1_cell12
+                            x: 16.539
+                            y: -0.927
+                            source: "#Rectangle"
+                            z: 4.37901
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p1_cell1
+                            x: 13.599
+                            y: -0.927
+                            source: "#Rectangle"
+                            z: 4.379
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p1_cell2
+                            x: 10.616
+                            y: -0.945
+                            source: "#Rectangle"
+                            z: 4.34386
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p1_cell3
+                            x: 7.275
+                            y: -0.927
+                            source: "#Rectangle"
+                            z: 4.379
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p1_cell4
+                            x: 4.594
+                            y: -0.927
+                            source: "#Rectangle"
+                            z: 4.379
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p1_cell5
+                            x: 1.654
+                            y: -0.927
+                            source: "#Rectangle"
+                            z: 4.379
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p1_cell6
+                            x: -1.329
+                            y: -0.945
+                            source: "#Rectangle"
+                            z: 4.34386
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p1_cell7
+                            x: -4.71
+                            y: -0.927
+                            source: "#Rectangle"
+                            z: 4.379
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p1_cell8
+                            x: -7.391
+                            y: -0.927
+                            source: "#Rectangle"
+                            z: 4.379
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p1_cell9
+                            x: -10.331
+                            y: -0.927
+                            source: "#Rectangle"
+                            z: 4.379
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p1_cell10
+                            x: -13.314
+                            y: -0.945
+                            source: "#Rectangle"
+                            z: 4.34386
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p1_cell11
+                            x: -16.389
+                            y: -0.927
+                            source: "#Rectangle"
+                            z: 4.379
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p1_cell14
+                            x: -19.372
+                            y: -0.945
+                            source: "#Rectangle"
+                            z: 4.34386
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p1_cell15
+                            x: 18.922
+                            y: 0.935
+                            source: "#Rectangle"
+                            z: 8.29348
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p1_cell16
+                            x: 16.241
+                            y: 0.935
+                            source: "#Rectangle"
+                            z: 8.29348
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p1_cell17
+                            x: 13.301
+                            y: 0.935
+                            source: "#Rectangle"
+                            z: 8.29348
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p1_cell18
+                            x: 10.318
+                            y: 0.917
+                            source: "#Rectangle"
+                            z: 8.25833
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p1_cell19
+                            x: 6.977
+                            y: 0.935
+                            source: "#Rectangle"
+                            z: 8.29347
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p1_cell20
+                            x: 4.296
+                            y: 0.935
+                            source: "#Rectangle"
+                            z: 8.29347
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p1_cell21
+                            x: 1.356
+                            y: 0.935
+                            source: "#Rectangle"
+                            z: 8.29348
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p1_cell22
+                            x: -1.627
+                            y: 0.917
+                            source: "#Rectangle"
+                            z: 8.25834
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p1_cell23
+                            x: -5.008
+                            y: 0.935
+                            source: "#Rectangle"
+                            z: 8.29348
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p1_cell24
+                            x: -7.689
+                            y: 0.935
+                            source: "#Rectangle"
+                            z: 8.29348
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p1_cell25
+                            x: -10.629
+                            y: 0.935
+                            source: "#Rectangle"
+                            z: 8.29348
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p1_cell26
+                            x: -13.612
+                            y: 0.917
+                            source: "#Rectangle"
+                            z: 8.25834
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p1_cell27
+                            x: -16.687
+                            y: 0.935
+                            source: "#Rectangle"
+                            z: 8.29348
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p1_cell28
+                            x: -19.67
+                            y: 0.917
+                            source: "#Rectangle"
+                            z: 8.25834
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+
+
+                    }
+
+
+                }
+                Node {
+                    id: player2
+                    x: -42.4509391784668
+                    y: -0.8284931182861328
+                    z: 0.2561922073364258
+
+
+                    Model {
+                        id: player2_cells
+                        x: -0.001373291015625
+                        z: -5
+                        rotation: Qt.quaternion(0.707107, 0, 0, -0.707107)
+                        source: "meshes/box129.mesh"
+                        materials: [
+                            material__1006_material,
+                            material__43_material,
+                            material__1040_Slot__2_material191
+                        ]
+
+                        Component.onCompleted: {
+                            okeyController.player2Cells = player2_cells.children
+                        }
+
+
+                        Model {
+                            id: p2_cell1
+                            x: 19.22
+                            y: -0.927
+                            source: "#Rectangle"
+                            z: 4.379
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p2_cell2
+                            x: 16.539
+                            y: -0.927
+                            source: "#Rectangle"
+                            z: 4.37901
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p2_cell3
+                            x: 13.599
+                            y: -0.927
+                            source: "#Rectangle"
+                            z: 4.379
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p2_cell4
+                            x: 10.616
+                            y: -0.945
+                            source: "#Rectangle"
+                            z: 4.34386
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p2_cell5
+                            x: 7.275
+                            y: -0.927
+                            source: "#Rectangle"
+                            z: 4.379
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p2_cell6
+                            x: 4.594
+                            y: -0.927
+                            source: "#Rectangle"
+                            z: 4.379
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p2_cell7
+                            x: 1.654
+                            y: -0.927
+                            source: "#Rectangle"
+                            z: 4.379
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p2_cell8
+                            x: -1.329
+                            y: -0.945
+                            source: "#Rectangle"
+                            z: 4.34386
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p2_cell9
+                            x: -4.71
+                            y: -0.927
+                            source: "#Rectangle"
+                            z: 4.379
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p2_cell10
+                            x: -7.391
+                            y: -0.927
+                            source: "#Rectangle"
+                            z: 4.379
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p2_cell11
+                            x: -10.331
+                            y: -0.927
+                            source: "#Rectangle"
+                            z: 4.379
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p2_cell12
+                            x: -13.314
+                            y: -0.945
+                            source: "#Rectangle"
+                            z: 4.34386
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p2_cell13
+                            x: -16.389
+                            y: -0.927
+                            source: "#Rectangle"
+                            z: 4.379
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p2_cell14
+                            x: -19.372
+                            y: -0.945
+                            source: "#Rectangle"
+                            z: 4.34386
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p2_cell15
+                            x: 18.922
+                            y: 0.935
+                            source: "#Rectangle"
+                            z: 8.29348
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p2_cell16
+                            x: 16.241
+                            y: 0.935
+                            source: "#Rectangle"
+                            z: 8.29348
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p2_cell17
+                            x: 13.301
+                            y: 0.935
+                            source: "#Rectangle"
+                            z: 8.29348
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p2_cell18
+                            x: 10.318
+                            y: 0.917
+                            source: "#Rectangle"
+                            z: 8.25833
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p2_cell19
+                            x: 6.977
+                            y: 0.935
+                            source: "#Rectangle"
+                            z: 8.29347
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p2_cell20
+                            x: 4.296
+                            y: 0.935
+                            source: "#Rectangle"
+                            z: 8.29347
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p2_cell21
+                            x: 1.356
+                            y: 0.935
+                            source: "#Rectangle"
+                            z: 8.29348
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p2_cell22
+                            x: -1.627
+                            y: 0.917
+                            source: "#Rectangle"
+                            z: 8.25834
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p2_cell23
+                            x: -5.008
+                            y: 0.935
+                            source: "#Rectangle"
+                            z: 8.29348
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p2_cell24
+                            x: -7.689
+                            y: 0.935
+                            source: "#Rectangle"
+                            z: 8.29348
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p2_cell25
+                            x: -10.629
+                            y: 0.935
+                            source: "#Rectangle"
+                            z: 8.29348
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p2_cell26
+                            x: -13.612
+                            y: 0.917
+                            source: "#Rectangle"
+                            z: 8.25834
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p2_cell27
+                            x: -16.687
+                            y: 0.935
+                            source: "#Rectangle"
+                            z: 8.29348
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p2_cell28
+                            x: -19.67
+                            y: 0.917
+                            source: "#Rectangle"
+                            z: 8.25834
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+                    }
+                }
+
+                Node {
+                    id: player3
+                    x: 0.279
+                    y: -43.619
+                    eulerRotation.z: -0
+                    eulerRotation.y: 0.00002
+                    eulerRotation.x: -0.03997
+                    z: 0.30097
+
+
+                    Model {
+                        id: player3_cells
+                        y: -0.001373291015625
+                        z: -5
+                        source: "meshes/box001.mesh"
+                        eulerRotation.z: 0.00066
+                        eulerRotation.y: -0.00064
+                        eulerRotation.x: -.21097
+                        materials: [
+                            material__1006_material,
+                            material__43_material,
+                            material__1040_Slot__2_material103
+                        ]
+
+                        Component.onCompleted: {
+                            okeyController.player3Cells = player3_cells.children
+                        }
+
+                        Model {
+                            id: p3_cell13
+                            x: 19.22
+                            y: -0.927
+                            source: "#Rectangle"
+                            z: 4.379
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p3_cell12
+                            x: 16.539
+                            y: -0.927
+                            source: "#Rectangle"
+                            z: 4.37901
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p3_cell1
+                            x: 13.599
+                            y: -0.927
+                            source: "#Rectangle"
+                            z: 4.379
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p3_cell2
+                            x: 10.616
+                            y: -0.945
+                            source: "#Rectangle"
+                            z: 4.34386
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p3_cell3
+                            x: 7.275
+                            y: -0.927
+                            source: "#Rectangle"
+                            z: 4.379
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p3_cell4
+                            x: 4.594
+                            y: -0.927
+                            source: "#Rectangle"
+                            z: 4.379
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p3_cell5
+                            x: 1.654
+                            y: -0.927
+                            source: "#Rectangle"
+                            z: 4.379
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p3_cell6
+                            x: -1.329
+                            y: -0.945
+                            source: "#Rectangle"
+                            z: 4.34386
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p3_cell7
+                            x: -4.71
+                            y: -0.927
+                            source: "#Rectangle"
+                            z: 4.379
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p3_cell8
+                            x: -7.391
+                            y: -0.927
+                            source: "#Rectangle"
+                            z: 4.379
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p3_cell9
+                            x: -10.331
+                            y: -0.927
+                            source: "#Rectangle"
+                            z: 4.379
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p3_cell10
+                            x: -13.314
+                            y: -0.945
+                            source: "#Rectangle"
+                            z: 4.34386
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p3_cell11
+                            x: -16.389
+                            y: -0.927
+                            source: "#Rectangle"
+                            z: 4.379
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p3_cell14
+                            x: -19.372
+                            y: -0.945
+                            source: "#Rectangle"
+                            z: 4.34386
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p3_cell15
+                            x: 18.922
+                            y: 0.935
+                            source: "#Rectangle"
+                            z: 8.29348
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p3_cell16
+                            x: 16.241
+                            y: 0.935
+                            source: "#Rectangle"
+                            z: 8.29348
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p3_cell17
+                            x: 13.301
+                            y: 0.935
+                            source: "#Rectangle"
+                            z: 8.29348
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p3_cell18
+                            x: 10.318
+                            y: 0.917
+                            source: "#Rectangle"
+                            z: 8.25833
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p3_cell19
+                            x: 6.977
+                            y: 0.935
+                            source: "#Rectangle"
+                            z: 8.29347
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p3_cell20
+                            x: 4.296
+                            y: 0.935
+                            source: "#Rectangle"
+                            z: 8.29347
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p3_cell21
+                            x: 1.356
+                            y: 0.935
+                            source: "#Rectangle"
+                            z: 8.29348
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p3_cell22
+                            x: -1.627
+                            y: 0.917
+                            source: "#Rectangle"
+                            z: 8.25834
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p3_cell23
+                            x: -5.008
+                            y: 0.935
+                            source: "#Rectangle"
+                            z: 8.29348
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p3_cell24
+                            x: -7.689
+                            y: 0.935
+                            source: "#Rectangle"
+                            z: 8.29348
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p3_cell25
+                            x: -10.629
+                            y: 0.935
+                            source: "#Rectangle"
+                            z: 8.29348
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p3_cell26
+                            x: -13.612
+                            y: 0.917
+                            source: "#Rectangle"
+                            z: 8.25834
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p3_cell27
+                            x: -16.687
+                            y: 0.935
+                            source: "#Rectangle"
+                            z: 8.29348
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p3_cell28
+                            x: -19.67
+                            y: 0.917
+                            source: "#Rectangle"
+                            z: 8.25834
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+
+
+                    }
+                }
+
+                Node {
+                    id: player4
+                    x: 42.086
+                    y: -0.807
+                    eulerRotation.z: -0
+                    eulerRotation.y: 0.00002
+                    eulerRotation.x: 0.19028
+                    z: -6.0835
+
+
+                    Model {
+                        id: player4_cells
+                        x: 0.001373291015625
+                        y: -0
+                        z: 1.45132
+                        rotation: Qt.quaternion(0.707107, 0, 0, 0.707107)
+                        source: "meshes/box128.mesh"
+                        materials: [
+                            material__1006_material,
+                            material__43_material,
+                            material__1040_Slot__2_material99
+                        ]
+                        Component.onCompleted: {
+                            okeyController.player4Cells = player4_cells.children
+                        }
+
+                        Model {
+                            id: p4_cell13
+                            x: 19.22
+                            y: -0.927
+                            source: "#Rectangle"
+                            z: 4.379
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p4_cell12
+                            x: 16.539
+                            y: -0.927
+                            source: "#Rectangle"
+                            z: 4.37901
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p4_cell1
+                            x: 13.599
+                            y: -0.927
+                            source: "#Rectangle"
+                            z: 4.379
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p4_cell2
+                            x: 10.616
+                            y: -0.945
+                            source: "#Rectangle"
+                            z: 4.34386
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p4_cell3
+                            x: 7.275
+                            y: -0.927
+                            source: "#Rectangle"
+                            z: 4.379
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p4_cell4
+                            x: 4.594
+                            y: -0.927
+                            source: "#Rectangle"
+                            z: 4.379
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p4_cell5
+                            x: 1.654
+                            y: -0.927
+                            source: "#Rectangle"
+                            z: 4.379
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p4_cell6
+                            x: -1.329
+                            y: -0.945
+                            source: "#Rectangle"
+                            z: 4.34386
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p4_cell7
+                            x: -4.71
+                            y: -0.927
+                            source: "#Rectangle"
+                            z: 4.379
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p4_cell8
+                            x: -7.391
+                            y: -0.927
+                            source: "#Rectangle"
+                            z: 4.379
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p4_cell9
+                            x: -10.331
+                            y: -0.927
+                            source: "#Rectangle"
+                            z: 4.379
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p4_cell10
+                            x: -13.314
+                            y: -0.945
+                            source: "#Rectangle"
+                            z: 4.34386
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p4_cell11
+                            x: -16.389
+                            y: -0.927
+                            source: "#Rectangle"
+                            z: 4.379
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p4_cell14
+                            x: -19.372
+                            y: -0.945
+                            source: "#Rectangle"
+                            z: 4.34386
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p4_cell15
+                            x: 18.922
+                            y: 0.935
+                            source: "#Rectangle"
+                            z: 8.29348
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p4_cell16
+                            x: 16.241
+                            y: 0.935
+                            source: "#Rectangle"
+                            z: 8.29348
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p4_cell17
+                            x: 13.301
+                            y: 0.935
+                            source: "#Rectangle"
+                            z: 8.29348
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p4_cell18
+                            x: 10.318
+                            y: 0.917
+                            source: "#Rectangle"
+                            z: 8.25833
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p4_cell19
+                            x: 6.977
+                            y: 0.935
+                            source: "#Rectangle"
+                            z: 8.29347
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p4_cell20
+                            x: 4.296
+                            y: 0.935
+                            source: "#Rectangle"
+                            z: 8.29347
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p4_cell21
+                            x: 1.356
+                            y: 0.935
+                            source: "#Rectangle"
+                            z: 8.29348
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p4_cell22
+                            x: -1.627
+                            y: 0.917
+                            source: "#Rectangle"
+                            z: 8.25834
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p4_cell23
+                            x: -5.008
+                            y: 0.935
+                            source: "#Rectangle"
+                            z: 8.29348
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p4_cell24
+                            x: -7.689
+                            y: 0.935
+                            source: "#Rectangle"
+                            z: 8.29348
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p4_cell25
+                            x: -10.629
+                            y: 0.935
+                            source: "#Rectangle"
+                            z: 8.29348
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p4_cell26
+                            x: -13.612
+                            y: 0.917
+                            source: "#Rectangle"
+                            z: 8.25834
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p4_cell27
+                            x: -16.687
+                            y: 0.935
+                            source: "#Rectangle"
+                            z: 8.29348
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                        Model {
+                            id: p4_cell28
+                            x: -19.67
+                            y: 0.917
+                            source: "#Rectangle"
+                            z: 8.25834
+                            scale.z: 0.03
+                            scale.y: 0.03917
+                            scale.x: 0.0302
+                            materials: material__43_material
+                            eulerRotation.z: -0.00006
+                            eulerRotation.y: -0.00009
+                            eulerRotation.x: 62.93387
+                        }
+
+                    }
+                }
+            }
+
+
+
+
+        }
+
+
+        DirectionalLight {
+            id: directionalLight2
+            x: -4
+            y: 903.238
+            z: 1122.3479
+            eulerRotation.z: 0.00001
+            eulerRotation.y: -0.00001
+            eulerRotation.x: -62.28382
+        }
+
+        DirectionalLight {
+            id: directionalLight3
+            x: -143.434
+            y: 706.918
+            z: -1033.84485
+            eulerRotation.z: 121.91115
+            eulerRotation.y: 160.63445
+            eulerRotation.x: -27.09429
+        }
+        DirectionalLight {
+            id: directionalLight1
+            x: 780.197
+            y: 1070.734
+            z: 0
+            eulerRotation.z: -87.26819
+            eulerRotation.y: 87.98039
+            eulerRotation.x: -47.64975
+        }
+        DirectionalLight {
+            id: directionalLight
+            x: -889.202
+            y: 1070.734
+            eulerRotation.z: 87.91602
+            eulerRotation.y: -89.02125
+            eulerRotation.x: -28.00166
+            z: 30.54141
+        }
+    }
+}
+

@@ -20,10 +20,13 @@ qt6_add_qml_module(content
         Screen01.ui.qml
         images/Ludo_screen.qml
     RESOURCES
+        images/back.jpg
         images/OIG.jpeg
         images/OIG1.jpeg
         images/OIG2.jpeg
         images/OIG3.jpeg
+        images/okey.jpg
+        images/table.png
         images/unnamed.png
         images/wood.jpg
 

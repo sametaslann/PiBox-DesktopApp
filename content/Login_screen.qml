@@ -13,7 +13,7 @@ Item {
         y: 0
         width: 1920
         height: 1080
-        source: "images/OIG.jpeg"
+        source: "images/back.jpg"
         scale: 1
         transformOrigin: Item.Center
         fillMode: Image.Stretch
@@ -36,7 +36,10 @@ Item {
             width: 315
             height: 78
             placeholderText: qsTr("Username")
+
+
         }
+
 
         TextField {
             id: password
@@ -51,7 +54,7 @@ Item {
         Loader {
             id: pageLoader
         }
-        Button {
+        RoundButton {
             id: button
             x: 886
             y: 714
@@ -61,9 +64,11 @@ Item {
             font.pointSize: 17
 
             anchors.fill: parent
-            anchors.rightMargin: 819
+            anchors.rightMargin: 847
             anchors.bottomMargin: 302
-            anchors.leftMargin: 841
+            anchors.verticalCenterOffset: 0
+            anchors.horizontalCenterOffset: -28
+            anchors.leftMargin: 814
             anchors.topMargin: 722
 
             anchors.centerIn: parent

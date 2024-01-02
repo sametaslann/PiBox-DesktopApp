@@ -12,7 +12,7 @@ Page {
         y: 0
         width: 1920
         height: 1080
-        source: "images/OIG.jpeg"
+        source: "images/back.jpg"
         fillMode: Image.Stretch
         transformOrigin: Item.Center
         scale: 1
@@ -35,15 +35,15 @@ Page {
                 textFormat: Text.RichText
             }
 
-            Button {
+            RoundButton {
                 id: button
                 x: 246
                 y: 644
                 width: 248
                 height: 84
                 text: "View Loby"
-                anchors.verticalCenterOffset: 418
-                anchors.horizontalCenterOffset: 135
+                anchors.verticalCenterOffset: 425
+                anchors.horizontalCenterOffset: 0
                 font.pointSize: 17
 
                 anchors.centerIn: parent
@@ -66,17 +66,16 @@ Page {
                                 ListElement { text: "Öğe 3" }
                             }
             }
-            Button {
+            RoundButton {
                 id: button3
                 x: 0
                 y: 644
                 width: 248
                 height: 84
                 text: "Add New Loby"
-                anchors.verticalCenterOffset: 418
-                anchors.horizontalCenterOffset: -119
+                anchors.verticalCenterOffset: 515
+                anchors.horizontalCenterOffset: 0
                 font.pointSize: 17
-                visible: false
                 anchors.centerIn: parent
                 onClicked : {
                     comboBox.model.append({ "text": "Yeni Öğe" })
@@ -111,7 +110,7 @@ Page {
             y: 252
             width: 486
             height: 536
-            source: "images/OIG2.jpeg"
+            source: "images/table.png"
             fillMode: Image.PreserveAspectFit
 
             Text {
@@ -125,15 +124,15 @@ Page {
                 textFormat: Text.RichText
             }
 
-            Button {
+            RoundButton {
                 id: button1
                 x: 238
                 y: 642
                 width: 248
                 height: 84
                 text: "View Loby"
-                anchors.verticalCenterOffset: 416
-                anchors.horizontalCenterOffset: 126
+                anchors.verticalCenterOffset: 412
+                anchors.horizontalCenterOffset: 0
                 font.pointSize: 17
 
                 anchors.centerIn: parent
@@ -155,17 +154,16 @@ Page {
                                 ListElement { text: "Öğe 3" }
                             }
             }
-            Button {
+            RoundButton {
                 id: button4
                 x: -9
                 y: 642
                 width: 248
                 height: 84
                 text: "Add New Loby"
-                anchors.verticalCenterOffset: 416
-                anchors.horizontalCenterOffset: -119
+                anchors.verticalCenterOffset: 510
+                anchors.horizontalCenterOffset: 0
                 font.pointSize: 17
-                visible: false
                 anchors.centerIn: parent
                 onClicked : {
                     comboBox.model.append({ text: "Yeni Öğe" })

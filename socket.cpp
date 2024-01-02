@@ -25,7 +25,9 @@ void Socket::newDataReceived(QString &player1, QString &player2, QString &player
 
     QList<QByteArray> list = authResp.split('|');
 
-    //ok|#lobi|oyun türü|empty|empty|emtpy|empty
+    //ok/#lobi|oyun türü|empty|empty|emtpy|empty/#lobi|oyun türü|empty|empty|emtpy|empty
+
+    //create lobi, istek at, CREATELOBBY|Token|oyun türü
 
     QString lobi_number = QString(list.at(1));
     QString game_type = QString(list.at(2));

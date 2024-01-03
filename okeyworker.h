@@ -6,7 +6,7 @@
 #include <QTcpSocket>
 #include <QThread>
 #include <QTimer>
-
+#include <string>
 #include<QSpotLight>
 
 
@@ -15,7 +15,7 @@ class OkeyWorker : public QThread
     Q_OBJECT
 public:
 
-    explicit OkeyWorker(OkeyController &controller, QTcpSocket &socket, QObject *parent = nullptr);
+    explicit OkeyWorker(OkeyController &controller, QTcpSocket &socket, QString token, QObject *parent = nullptr);
 
 public slots:
     void run() override;
@@ -30,6 +30,7 @@ private:
     bool updateBoard(std::vector<char *> playerString, QList<QObject *> playerBoard);
 
     bool isFirst = false;
+    QString token;
 
     QObject *findSourceTile(char *tileString);
 signals:

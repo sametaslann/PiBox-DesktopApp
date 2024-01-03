@@ -1,7 +1,7 @@
 #include "okeyworker.h"
 
 
-OkeyWorker::OkeyWorker(OkeyController &controller, QTcpSocket &socket, QObject *parent): okeyController(controller), socket(socket) {}
+OkeyWorker::OkeyWorker(OkeyController &controller, QTcpSocket &socket, QString token, QObject *parent): okeyController(controller), socket(socket), token(token) {}
 
 void OkeyWorker::run()
 {
@@ -9,7 +9,12 @@ void OkeyWorker::run()
     while(!isInterruptionRequested())
     {
 
-        /*socket.write("GETOKEYBOARD|");
+        //std::string request = "GETGAMEBOARD|"+ token.toStdString();
+        char request[256];
+        std::sprintf(request, "GETGAMEBOARD|%s", token.toStdString().c_str());
+
+
+        socket.write(request);
         socket.waitForBytesWritten();
 
         socket.waitForReadyRead();
@@ -20,15 +25,15 @@ void OkeyWorker::run()
 
         foreach (char* a, params) {
             qDebug() << a;
-        }*/
+        }
 
-        qDebug() << "Itarated";
+        //qDebug() << "Itarated";
 
-        QByteArray datax = "OK/B4_1|Y10_2|B13_1|K5_2|R4_1|R10_1|K11_2|B6_2|Y5_2|K9_2|K6_2|Y13_1|B12_1|B1_2|E|E|E|E|E|E|E|E|E|E|E|E|E|E|E|E/K2_1|B6_1|R8_2|B13_2|Y6_2|K1_1|K4_2|Y11_1|K2_2|Y3_1|K4_1|B3_2|Y10_1|R13_2|E|E|E|E|E|E|E|E|E|E|E|E|E|E|E|E/B2_1|R8_1|B1_1|Y7_2|Y2_1|B3_1|R7_1|R12_1|R5_1|Y2_2|B4_2|R5_2|Y7_1|K5_1|E|E|E|E|E|E|E|E|E|E|E|E|E|E|E|E/B11_1|Y9_2|B7_1|R3_2|Y1_2|K3_2|B10_1|B8_1|R6_1|Y1_1|B8_2|R9_2|R2_1|B2_2|E|E|E|E|E|E|E|E|E|E|E|E|E|E|E|E/R1_1|R2_1|R3_1|R4_1/Y8_1|B7_2/huseyin";
+        //QByteArray datax = "OK/B4_1|Y10_2|B13_1|K5_2|R4_1|R10_1|K11_2|B6_2|Y5_2|K9_2|K6_2|Y13_1|B12_1|B1_2|E|E|E|E|E|E|E|E|E|E|E|E|E|E|E|E/K2_1|B6_1|R8_2|B13_2|Y6_2|K1_1|K4_2|Y11_1|K2_2|Y3_1|K4_1|B3_2|Y10_1|R13_2|E|E|E|E|E|E|E|E|E|E|E|E|E|E|E|E/B2_1|R8_1|B1_1|Y7_2|Y2_1|B3_1|R7_1|R12_1|R5_1|Y2_2|B4_2|R5_2|Y7_1|K5_1|E|E|E|E|E|E|E|E|E|E|E|E|E|E|E|E/B11_1|Y9_2|B7_1|R3_2|Y1_2|K3_2|B10_1|B8_1|R6_1|Y1_1|B8_2|R9_2|R2_1|B2_2|E|E|E|E|E|E|E|E|E|E|E|E|E|E|E|E/R1_1|R2_1|R3_1|R4_1/Y8_1|B7_2/huseyin";
 
         //qDebug() << datax.data();
 
-        std::vector<char*> lines = split(datax.data(), "/");
+        std::vector<char*> lines = split(data.data(), "/");
 
         if(strcmp(lines.at(0),"OK") ==0)
         {

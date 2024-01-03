@@ -22,7 +22,7 @@
     void Socket::connect_to_server()
     {
         socket = new QTcpSocket();
-        socket->connectToHost("127.0.0.1", 8080);
+        socket->connectToHost("10.42.0.1", 8080);
     
         if(socket->waitForConnected())
              qDebug() << "Connection established to server";
@@ -126,7 +126,7 @@ Socket::Socket(LudoController &controller, OkeyController &okeyController, QObje
 
 void Socket::startLudo()
 {
-    if(!isConnectedSuccesfully){
+    if(isConnectedSuccesfully){
 
         ludoWorker = new LudoWorker(ludoController, *socket);
         connect(ludoWorker, &LudoWorker::animatePawn, this, &Socket::handleAnimatePawns);
@@ -139,13 +139,13 @@ void Socket::startLudo()
 
 }
 void Socket::stopLudo(){
-    if(!isConnectedSuccesfully)
+    if(isConnectedSuccesfully)
         ludoWorker->requestInterruption();
 }
 
 void Socket::startOkey()
 {
-    if(!isConnectedSuccesfully){
+    if(isConnectedSuccesfully){
         okeyWorker = new OkeyWorker(okeyController, *socket);
         connect(okeyWorker, &OkeyWorker::animateTile, this, &Socket::handleAnimateTiles);
         okeyWorker->start();        
@@ -158,7 +158,7 @@ void Socket::startOkey()
 }
 
 void Socket::stopOkey(){
-    if(!isConnectedSuccesfully)
+    if(isConnectedSuccesfully)
     {
          okeyWorker->requestInterruption();
          okeyWorker->terminate();

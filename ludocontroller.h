@@ -11,13 +11,16 @@ class LudoController : public QObject
 {
     Q_OBJECT
 
+
     Q_PROPERTY(QQmlListProperty<QObject> plates READ getPlates NOTIFY platesChanged)
     Q_PROPERTY(QQmlListProperty<QObject> pawns READ getPawns NOTIFY pawnsChanged)
 
 
 
+
 public:
     explicit LudoController(QObject *parent = nullptr);
+
 
     QList<QObject*> plates;
     QList<QObject*> pawns;
@@ -35,6 +38,7 @@ signals:
 
 
 private:
+
 
 
 };

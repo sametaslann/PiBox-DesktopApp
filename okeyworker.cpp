@@ -1,5 +1,6 @@
 #include "okeyworker.h"
 
+
 OkeyWorker::OkeyWorker(OkeyController &controller, QTcpSocket &socket, QObject *parent): okeyController(controller), socket(socket) {}
 
 void OkeyWorker::run()
@@ -20,18 +21,22 @@ void OkeyWorker::run()
         foreach (char* a, params) {
             qDebug() << a;
         }*/
+
         qDebug() << "Itarated";
 
         QByteArray datax = "OK/B4_1|Y10_2|B13_1|K5_2|R4_1|R10_1|K11_2|B6_2|Y5_2|K9_2|K6_2|Y13_1|B12_1|B1_2|E|E|E|E|E|E|E|E|E|E|E|E|E|E|E|E/K2_1|B6_1|R8_2|B13_2|Y6_2|K1_1|K4_2|Y11_1|K2_2|Y3_1|K4_1|B3_2|Y10_1|R13_2|E|E|E|E|E|E|E|E|E|E|E|E|E|E|E|E/B2_1|R8_1|B1_1|Y7_2|Y2_1|B3_1|R7_1|R12_1|R5_1|Y2_2|B4_2|R5_2|Y7_1|K5_1|E|E|E|E|E|E|E|E|E|E|E|E|E|E|E|E/B11_1|Y9_2|B7_1|R3_2|Y1_2|K3_2|B10_1|B8_1|R6_1|Y1_1|B8_2|R9_2|R2_1|B2_2|E|E|E|E|E|E|E|E|E|E|E|E|E|E|E|E/R1_1|R2_1|R3_1|R4_1/Y8_1|B7_2/huseyin";
 
         //qDebug() << datax.data();
+
         std::vector<char*> lines = split(datax.data(), "/");
 
         if(strcmp(lines.at(0),"OK") ==0)
         {
 
+
             std::vector<char*> playerTexts = split(lines.at(7), "|");
             okeyController.setPlayer3Text(playerTexts[0]);
+
 
             std::vector<char*> player1String = split(lines.at(1), "|");
             updateBoard(player1String, okeyController.player1Cells);
@@ -44,6 +49,7 @@ void OkeyWorker::run()
 
             std::vector<char*> player4String = split(lines.at(4), "|");
             updateBoard(player4String, okeyController.player4Cells);
+
 
             std::vector<char*> thrownsString = split(lines.at(5), "|");
             updateBoard(thrownsString, okeyController.throwns);
@@ -63,6 +69,7 @@ void OkeyWorker::run()
         isFirst = false;
      }
     qDebug()<< "finished";
+
 }
 
 bool OkeyWorker::updateBoard(std::vector<char*> playerString, QList<QObject*> playerBoard)
@@ -76,10 +83,13 @@ bool OkeyWorker::updateBoard(std::vector<char*> playerString, QList<QObject*> pl
          foreach(char*a , playerString)
          {
 
+
             if(a[0] == 'E' || strlen(a) < 4){
+
                 counter++;
                 continue;
             }
+
 
 
 
@@ -97,6 +107,7 @@ bool OkeyWorker::updateBoard(std::vector<char*> playerString, QList<QObject*> pl
                 emit animateTile(sourceTile, destinationTile);
                 QThread::msleep(300);
             }
+
             counter++;
          }
 
@@ -113,6 +124,7 @@ bool OkeyWorker::updateBoard(std::vector<char*> playerString, QList<QObject*> pl
 int OkeyWorker::charToInt(char c){
     return (int)c - '0';
 }
+
 
 QObject* OkeyWorker::findSourceTile(char* tileString){
 
@@ -152,10 +164,13 @@ QObject* OkeyWorker::findSourceTile(char* tileString){
 
 
 
+
 std::vector<char*> OkeyWorker::split(char *str, const char *delimiter)
 {
 
      std::vector<char*> tokens;
+
+
 
      char *ptr = std::strtok(str,delimiter);
 

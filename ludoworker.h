@@ -2,6 +2,7 @@
 #define LUDOWORKER_H
 
 #include <QObject>
+
 #include "ludocontroller.h"
 #include <QTcpSocket>
 #include <QThread>
@@ -26,6 +27,7 @@ private:
 
 signals:
     void animatePawn(QObject *sourcePawn, QObject *destPawn);
+
 
 };
 

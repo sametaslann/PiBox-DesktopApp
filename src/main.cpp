@@ -11,6 +11,7 @@
 #include "import_qml_components_plugins.h"
 #include "import_qml_plugins.h"
 #include "socket.h"
+
 #include <QQmlContext>
 
 
@@ -28,6 +29,8 @@ int main(int argc, char *argv[])
 
     OkeyController okeyController; // Instantiate the custom C++ object
     engine.rootContext()->setContextProperty("okeyController", &okeyController);
+
+
 
     Socket socketThread(ludoController, okeyController);
     engine.rootContext()->setContextProperty("socket_comm", &socketThread);
@@ -52,8 +55,6 @@ int main(int argc, char *argv[])
     if (engine.rootObjects().isEmpty()) {
         return -1;
     }
-
-
 
     return app.exec();
 }

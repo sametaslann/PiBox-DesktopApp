@@ -2,11 +2,13 @@ import QtQuick
 import QtQuick3D
 import QtQuick3D.Helpers
 import QtQuick.Timeline
+
 import Quick3DAssets.Mesa_80cm
 
 import QtQuick.Controls 6.5
 import QtQuick.Layouts
 import QtQuick.Studio.Components
+
 
 Rectangle {
     width: Constants.width
@@ -32,12 +34,14 @@ Rectangle {
             id: originNode
             PerspectiveCamera {
                 id: cameraNode
+
                 x: 53.724
                 y: 17.755
                 eulerRotation.z: -2.82732
                 eulerRotation.y: 41.21214
                 eulerRotation.x: -17.14724
                 z: 55.93619
+
             }
         }
 
@@ -57,9 +61,6 @@ Rectangle {
             eulerRotation.z: 0
             eulerRotation.y: 0
             eulerRotation.x: -90
-
-
-
 
             Node {
                 id: throwns
@@ -1029,10 +1030,12 @@ Rectangle {
                     id: material__1040_Slot__2_material191
                     objectName: "material__1040_Slot__2_material191"
                     baseColor: "#ff000000"
+
                 }
             }
 
             Node{
+
                 id:red_tiles
                 x: 0
                 y: 0
@@ -1094,11 +1097,13 @@ Rectangle {
                     source: "meshes/box035.mesh"
                     materials: [
                         material__43_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
                     id: red4_1
                     eulerRotation.z: 0
                     eulerRotation.y: 0
@@ -1130,11 +1135,13 @@ Rectangle {
                     source: "meshes/box033.mesh"
                     materials: [
                         material__43_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
                     id: red6_1
                     eulerRotation.z: 0
                     eulerRotation.y: 0
@@ -1148,11 +1155,13 @@ Rectangle {
                     source: "meshes/box032.mesh"
                     materials: [
                         material__43_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
                     id: red7_1
                     eulerRotation.z: 90.00129
                     eulerRotation.y: 90.00129
@@ -1169,11 +1178,13 @@ Rectangle {
                     source: "meshes/box031.mesh"
                     materials: [
                         material__43_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
                     id: red8_1
                     eulerRotation.z: 90.00027
                     eulerRotation.y: 90.00027
@@ -1190,11 +1201,13 @@ Rectangle {
                     source: "meshes/box030.mesh"
                     materials: [
                         material__43_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
 
 
                     id: red9_1
@@ -1236,11 +1249,13 @@ Rectangle {
                     source: "meshes/box038.mesh"
                     materials: [
                         material__43_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
                     id: red11_1
                     eulerRotation.z: 0
                     eulerRotation.y: 0
@@ -1258,11 +1273,13 @@ Rectangle {
                     source: "meshes/box039.mesh"
                     materials: [
                         material__43_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
                     id: red12_1
                     eulerRotation.z: 0
                     eulerRotation.y: 0
@@ -1280,11 +1297,13 @@ Rectangle {
 
                     materials: [
                         material__43_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
                     id: red13_1
                     eulerRotation.z: 0
                     eulerRotation.y: 0
@@ -1302,11 +1321,13 @@ Rectangle {
                     source: "meshes/box041.mesh"
                     materials: [
                         material__43_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
                     id: red1_2
                     eulerRotation.z: 0
                     eulerRotation.y: 0
@@ -1320,11 +1341,13 @@ Rectangle {
                     source: "meshes/box205.mesh"
                     materials: [
                         material__43_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
                     id: red2_2
                     eulerRotation.z: 0
                     eulerRotation.y: 0
@@ -1338,11 +1361,13 @@ Rectangle {
                     source: "meshes/box204.mesh"
                     materials: [
                         material__43_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
                     id: red3_2
                     eulerRotation.z: 0
                     eulerRotation.y: 0
@@ -1356,11 +1381,13 @@ Rectangle {
                     source: "meshes/box203.mesh"
                     materials: [
                         material__43_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
                     id: red4_2
                     eulerRotation.z: 90.00225
                     eulerRotation.y: 90.00225
@@ -1374,11 +1401,13 @@ Rectangle {
                     source: "meshes/box202.mesh"
                     materials: [
                         material__43_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
                     id: red5_2
                     eulerRotation.z: 90.00033
                     eulerRotation.y: 90.00017
@@ -1392,11 +1421,13 @@ Rectangle {
 
                     materials: [
                         material__43_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
                     id: red6_2
                     eulerRotation.z: 90.00043
                     eulerRotation.y: 90.00043
@@ -1412,11 +1443,13 @@ Rectangle {
                     source: "meshes/box200.mesh"
                     materials: [
                         material__43_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
                     id: red7_2
                     eulerRotation.z: 0
                     eulerRotation.y: 0
@@ -1430,11 +1463,13 @@ Rectangle {
                     source: "meshes/box199.mesh"
                     materials: [
                         material__43_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
                     id: red8_2
                     eulerRotation.z: 0
                     eulerRotation.y: 0
@@ -1447,11 +1482,13 @@ Rectangle {
                     source: "meshes/box198.mesh"
                     materials: [
                         material__43_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
                     id: red9_2
                     eulerRotation.z: 0
                     eulerRotation.y: 0
@@ -1464,11 +1501,13 @@ Rectangle {
                     source: "meshes/box029.mesh"
                     materials: [
                         material__43_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
                     id: red10_2
                     eulerRotation.z: 0
                     eulerRotation.y: 0
@@ -1482,11 +1521,13 @@ Rectangle {
                     source: "meshes/box206.mesh"
                     materials: [
                         material__43_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
                     id: red11_2
                     eulerRotation.z: 90.00149
                     eulerRotation.y: 90.00149
@@ -1503,11 +1544,13 @@ Rectangle {
                     source: "meshes/box207.mesh"
                     materials: [
                         material__43_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
                     id: red12_2
                     eulerRotation.z: 0
                     eulerRotation.y: 0
@@ -1543,18 +1586,22 @@ Rectangle {
                     source: "meshes/box209.mesh"
                     materials: [
                         material__43_material,
+
                         material__47_material
                     ]
                 }
             }
 
             Node{
+
                 id:blue_tiles
+
                 x: 0
                 y: 0
                 z: 0
 
                 Component.onCompleted: {
+
                     okeyController.blueTiles = blue_tiles.children
                 }
 
@@ -1580,6 +1627,7 @@ Rectangle {
                     ]
                 }
                 Model {
+
                     id: blue2_1
                     eulerRotation.z: 90.00417
                     eulerRotation.y: 90.00417
@@ -1595,11 +1643,13 @@ Rectangle {
                     materials: [
                         material__43_material,
                         material__46_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
                     id: blue3_1
                     eulerRotation.z: 0
                     eulerRotation.y: 0
@@ -1612,11 +1662,13 @@ Rectangle {
                     materials: [
                         material__43_material,
                         material__46_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
                     id: blue4_1
                     eulerRotation.z: 90.00266
                     eulerRotation.y: 90.00266
@@ -1632,11 +1684,13 @@ Rectangle {
                     materials: [
                         material__43_material,
                         material__46_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
                     id: blue5_1
                     eulerRotation.z: 90.0011
                     eulerRotation.y: 90.0011
@@ -1651,11 +1705,13 @@ Rectangle {
                     materials: [
                         material__43_material,
                         material__46_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
                     id: blue6_1
                     eulerRotation.z: 90.00607
                     eulerRotation.y: 90.00607
@@ -1670,11 +1726,13 @@ Rectangle {
                     materials: [
                         material__43_material,
                         material__46_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
                     id: blue7_1
                     eulerRotation.z: 90.00313
                     eulerRotation.y: 90.00313
@@ -1690,11 +1748,13 @@ Rectangle {
                     materials: [
                         material__43_material,
                         material__46_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
                     id: blue8_1
                     eulerRotation.z: 0
                     eulerRotation.y: 0
@@ -1707,11 +1767,13 @@ Rectangle {
                     materials: [
                         material__43_material,
                         material__46_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
                     id: blue9_1
                     eulerRotation.z: 0
                     eulerRotation.y: 0
@@ -1724,11 +1786,13 @@ Rectangle {
                     materials: [
                         material__43_material,
                         material__46_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
                     id: blue10_1
                     eulerRotation.z: 0
                     eulerRotation.y: 0
@@ -1742,11 +1806,13 @@ Rectangle {
                     materials: [
                         material__43_material,
                         material__46_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
                     id: blue11_1
                     eulerRotation.z: 0
                     eulerRotation.y: 0
@@ -1760,11 +1826,13 @@ Rectangle {
                     materials: [
                         material__43_material,
                         material__46_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
                     id: blue12_1
                     eulerRotation.z: 0
                     eulerRotation.y: 0
@@ -1778,11 +1846,13 @@ Rectangle {
                     materials: [
                         material__43_material,
                         material__46_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
                     id: blue13_1
                     eulerRotation.z: 0
                     eulerRotation.y: 0
@@ -1799,9 +1869,11 @@ Rectangle {
                     materials: [
                         material__43_material,
                         material__46_material,
+
                         material__47_material
                     ]
                 }
+
 
                 Model {
                     id: blue1_2
@@ -1833,11 +1905,13 @@ Rectangle {
                     materials: [
                         material__43_material,
                         material__46_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
                     id: blue3_2
                     eulerRotation.z: 0
                     eulerRotation.y: 0
@@ -1850,11 +1924,13 @@ Rectangle {
                     materials: [
                         material__43_material,
                         material__46_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
                     id: blue4_2
                     eulerRotation.z: 90.00121
                     eulerRotation.y: 90.00121
@@ -1869,11 +1945,13 @@ Rectangle {
                     materials: [
                         material__43_material,
                         material__46_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
                     id: blue5_2
                     eulerRotation.z: 90.00169
                     eulerRotation.y: 90.00169
@@ -1886,11 +1964,13 @@ Rectangle {
                     materials: [
                         material__43_material,
                         material__46_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
                     id: blue6_2
                     eulerRotation.z: 90.00097
                     eulerRotation.y: 90.00097
@@ -1903,11 +1983,13 @@ Rectangle {
                     materials: [
                         material__43_material,
                         material__46_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
                     id: blue7_2
                     eulerRotation.z: 0
                     eulerRotation.y: 0
@@ -1920,11 +2002,13 @@ Rectangle {
                     materials: [
                         material__43_material,
                         material__46_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
                     id: blue8_2
                     eulerRotation.z: 0
                     eulerRotation.y: 0
@@ -1936,11 +2020,13 @@ Rectangle {
                     materials: [
                         material__43_material,
                         material__46_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
                     id: blue9_2
                     eulerRotation.z: 0
                     eulerRotation.y: 0
@@ -1953,11 +2039,13 @@ Rectangle {
                     materials: [
                         material__43_material,
                         material__46_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
                     id: blue10_2
                     eulerRotation.z: 0
                     eulerRotation.y: 0
@@ -1970,11 +2058,13 @@ Rectangle {
                     materials: [
                         material__43_material,
                         material__46_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
                     id: blue11_2
                     eulerRotation.z: 0
                     eulerRotation.y: 0
@@ -1987,11 +2077,13 @@ Rectangle {
                     materials: [
                         material__43_material,
                         material__46_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
                     id: blue12_2
                     eulerRotation.z: 0
                     eulerRotation.y: 0
@@ -2004,11 +2096,13 @@ Rectangle {
                     materials: [
                         material__43_material,
                         material__46_material,
+
                         material__47_material
                     ]
                 }
 
                 Model {
+
                     id: blue13_2
                     eulerRotation.z: 0
                     eulerRotation.y: 0
@@ -2023,10 +2117,12 @@ Rectangle {
                     materials: [
                         material__43_material,
                         material__46_material,
+
                         material__47_material
                     ]
                 }
             }
+
 
             Node{
                 id:black_tiles
@@ -2064,6 +2160,7 @@ Rectangle {
                     z: 1.09963
 
                     source: "meshes/box191.mesh"
+
                     materials: [
                         material__43_material,
                         material__44_material,
@@ -2072,6 +2169,7 @@ Rectangle {
                 }
 
                 Model {
+
                     id: black3_1
                     eulerRotation.z: 0
                     eulerRotation.y: 0
@@ -2081,12 +2179,14 @@ Rectangle {
                     z: 1.09963
 
                     source: "meshes/box190.mesh"
+
                     materials: [
                         material__43_material,
                         material__44_material,
                         material__47_material
                     ]
                 }
+
 
                 Model {
                     id: black4_1
@@ -3519,21 +3619,26 @@ Rectangle {
                             id: p1_cell20
                             source: "meshes/box038.mesh"
                             scale.z: 1
+
                             scale.y: 1
                             scale.x: 1
                             materials: [
                                 material__47_material
                             ]
+
                             x: 7.787
                             y: 39.464
                             z: -1.42795
+
                             eulerRotation.z: 179.74937
                             eulerRotation.y: -0.12148
                             eulerRotation.x: 20.08637
                         }
 
                         Model {
+
                             id: p1_cell21
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -3541,6 +3646,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: 5.129
                             y: 39.366
                             z: -1.46765
@@ -3699,10 +3805,12 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             eulerRotation.z: 179.74937
                             eulerRotation.y: -0.12148
                             eulerRotation.x: 20.08637
                         }
+
                     }
 
                     Node {
@@ -3809,6 +3917,7 @@ Rectangle {
 
                         Model {
                             id: p2_cell3
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -3816,6 +3925,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: -41.303
                             y: 12.977
                             z: 1.23837
@@ -3826,6 +3936,7 @@ Rectangle {
 
                         Model {
                             id: p2_cell4
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -3833,6 +3944,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: -41.303
                             y: 10.29
                             z: 1.23793
@@ -3840,9 +3952,11 @@ Rectangle {
                             eulerRotation.y: 19.28593
                             eulerRotation.x: 0.01063
 
+
                         }
 
                         Model {
+
                             id: p2_cell5
                             source: "meshes/box038.mesh"
                             scale.z: 1
@@ -3851,6 +3965,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: -41.288
                             y: 7.639
                             z: 1.27979
@@ -3868,6 +3983,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: -41.302
                             y: 5.07
                             z: 1.23849
@@ -3878,6 +3994,7 @@ Rectangle {
 
                         Model {
                             id: p2_cell7
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -3885,6 +4002,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: -41.306
                             y: 2.485
                             z: 1.22726
@@ -3895,6 +4013,7 @@ Rectangle {
 
                         Model {
                             id: p2_cell8
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -3902,6 +4021,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: -41.321
                             y: -0.077
                             z: 1.18519
@@ -3919,6 +4039,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: -41.335
                             y: -2.652
                             z: 1.14334
@@ -3929,6 +4050,7 @@ Rectangle {
 
                         Model {
                             id: p2_cell10
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -3936,6 +4058,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: -41.322
                             y: -5.307
                             z: 1.18291
@@ -3946,6 +4069,7 @@ Rectangle {
 
                         Model {
                             id: p2_cell11
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -3953,6 +4077,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: -41.308
                             y: -7.981
                             z: 1.22191
@@ -3963,6 +4088,7 @@ Rectangle {
 
                         Model {
                             id: p2_cell12
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -3970,6 +4096,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: -41.322
                             y: -10.541
                             z: 1.18024
@@ -3980,6 +4107,7 @@ Rectangle {
 
                         Model {
                             id: p2_cell13
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -3987,6 +4115,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: -41.295
                             y: -13.213
                             z: 1.2592
@@ -3997,6 +4126,7 @@ Rectangle {
 
                         Model {
                             id: p2_cell14
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -4004,6 +4134,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: -41.281
                             y: -15.732
                             z: 1.29765
@@ -4014,6 +4145,7 @@ Rectangle {
 
                         Model {
                             id: p2_cell15
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -4021,6 +4153,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: -41.264
                             y: -18.431
                             z: 1.34732
@@ -4031,6 +4164,7 @@ Rectangle {
 
                         Model {
                             id: p2_cell16
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -4038,6 +4172,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: -43.972
                             y: 19.105
                             z: -2.69969
@@ -4055,6 +4190,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: -43.403
                             y: 16.796
                             z: -3.0407
@@ -4065,6 +4201,7 @@ Rectangle {
 
                         Model {
                             id: p2_cell18
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -4072,6 +4209,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: -43.426
                             y: 14.049
                             z: -3.10607
@@ -4082,6 +4220,7 @@ Rectangle {
 
                         Model {
                             id: p2_cell19
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -4089,6 +4228,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: -43.403
                             y: 11.357
                             z: -3.04178
@@ -4099,6 +4239,7 @@ Rectangle {
 
                         Model {
                             id: p2_cell20
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -4106,6 +4247,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: -43.404
                             y: 8.726
                             z: -3.04241
@@ -4116,6 +4258,7 @@ Rectangle {
 
                         Model {
                             id: p2_cell21
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -4123,6 +4266,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: -43.403
                             y: 6.068
                             z: -3.04128
@@ -4133,6 +4277,7 @@ Rectangle {
 
                         Model {
                             id: p2_cell22
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -4140,6 +4285,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: -43.406
                             y: 3.424
                             z: -3.05056
@@ -4150,6 +4296,7 @@ Rectangle {
 
                         Model {
                             id: p2_cell23
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -4157,6 +4304,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: -43.442
                             y: 0.794
                             z: -3.15377
@@ -4167,6 +4315,7 @@ Rectangle {
 
                         Model {
                             id: p2_cell24
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -4174,6 +4323,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: -43.4
                             y: -1.905
                             z: -3.03351
@@ -4184,6 +4334,7 @@ Rectangle {
 
                         Model {
                             id: p2_cell25
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -4191,6 +4342,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: -43.386
                             y: -4.536
                             z: -2.99222
@@ -4201,6 +4353,7 @@ Rectangle {
 
                         Model {
                             id: p2_cell26
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -4208,6 +4361,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: -43.397
                             y: -7.11
                             z: -3.02594
@@ -4218,6 +4372,7 @@ Rectangle {
 
                         Model {
                             id: p2_cell27
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -4225,6 +4380,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: -43.404
                             y: -9.743
                             z: -3.04455
@@ -4235,6 +4391,7 @@ Rectangle {
 
                         Model {
                             id: p2_cell28
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -4242,28 +4399,33 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: -43.406
                             y: -12.515
                             z: -3.05009
                             eulerRotation.z: -89.99853
                             eulerRotation.y: 19.28593
                             eulerRotation.x: 0.01063
+
                         }
 
 
 
                         Model {
+
                             id: p2_cell29
                             x: -43.406
                             y: -15.346
                             source: "meshes/box038.mesh"
                             z: -3.05061
+
                             scale.z: 1
                             scale.y: 1
                             scale.x: 1
                             materials: [
                                 material__47_material
                             ]
+
                             eulerRotation.z: -89.99853
                             eulerRotation.y: 19.28593
                             eulerRotation.x: 0.01063
@@ -4275,10 +4437,12 @@ Rectangle {
                             y: -18.485
                             source: "meshes/box038.mesh"
                             z: -3.05118
+
                             scale.z: 1
                             scale.y: 1
                             scale.x: 1
                             materials: [
+
                                 material__47_material
                             ]
                             eulerRotation.z: -89.99853
@@ -4390,6 +4554,7 @@ Rectangle {
                         }
                         Model {
                             id: p3_cell1
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -4397,6 +4562,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: -17.984
                             y: -37.851
                             z: 1.23953
@@ -4407,6 +4573,7 @@ Rectangle {
 
                         Model {
                             id: p3_cell2
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -4414,6 +4581,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: -15.155
                             y: -37.857
                             z: 1.23978
@@ -4424,6 +4592,7 @@ Rectangle {
 
                         Model {
                             id: p3_cell3
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -4431,6 +4600,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: -12.374
                             y: -37.864
                             z: 1.23837
@@ -4441,6 +4611,7 @@ Rectangle {
 
                         Model {
                             id: p3_cell4
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -4448,6 +4619,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: -9.687
                             y: -37.87
                             z: 1.23793
@@ -4455,10 +4627,13 @@ Rectangle {
                             eulerRotation.y: 0.05295
                             eulerRotation.x: -19.28586
 
+
                         }
 
                         Model {
+
                             id: p3_cell5
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -4466,6 +4641,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: -7.036
                             y: -37.86
                             z: 1.27979
@@ -4476,6 +4652,7 @@ Rectangle {
 
                         Model {
                             id: p3_cell6
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -4483,6 +4660,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: -4.467
                             y: -37.88
                             z: 1.23849
@@ -4493,6 +4671,7 @@ Rectangle {
 
                         Model {
                             id: p3_cell7
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -4500,6 +4679,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: -1.882
                             y: -37.889
                             z: 1.22726
@@ -4510,6 +4690,7 @@ Rectangle {
 
                         Model {
                             id: p3_cell8
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -4517,6 +4698,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: 0.68
                             y: -37.909
                             z: 1.1852
@@ -4527,11 +4709,13 @@ Rectangle {
 
                         Model {
                             id: p3_cell9
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
                             scale.x: 1
                             materials: [
+
                                 material__47_material
                             ]
                             x: 3.255
@@ -4544,6 +4728,7 @@ Rectangle {
 
                         Model {
                             id: p3_cell10
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -4551,6 +4736,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: 5.91
                             y: -37.921
                             z: 1.18292
@@ -4561,6 +4747,7 @@ Rectangle {
 
                         Model {
                             id: p3_cell11
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -4568,6 +4755,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: 8.584
                             y: -37.913
                             z: 1.22192
@@ -4578,6 +4766,7 @@ Rectangle {
 
                         Model {
                             id: p3_cell12
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -4585,6 +4774,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: 11.144
                             y: -37.932
                             z: 1.18025
@@ -4595,6 +4785,7 @@ Rectangle {
 
                         Model {
                             id: p3_cell13
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -4602,6 +4793,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: 13.816
                             y: -37.911
                             z: 1.25922
@@ -4612,6 +4804,7 @@ Rectangle {
 
                         Model {
                             id: p3_cell14
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -4619,6 +4812,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: 16.335
                             y: -37.902
                             z: 1.29767
@@ -4629,6 +4823,7 @@ Rectangle {
 
                         Model {
                             id: p3_cell15
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -4636,6 +4831,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: 19.034
                             y: -37.891
                             z: 1.34734
@@ -4646,6 +4842,7 @@ Rectangle {
 
                         Model {
                             id: p3_cell16
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -4653,6 +4850,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: -18.507
                             y: -40.52
                             z: -2.6997
@@ -4663,6 +4861,7 @@ Rectangle {
 
                         Model {
                             id: p3_cell17
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -4670,6 +4869,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: -16.197
                             y: -39.956
                             z: -3.04071
@@ -4680,6 +4880,7 @@ Rectangle {
 
                         Model {
                             id: p3_cell18
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -4687,6 +4888,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: -13.45
                             y: -39.985
                             z: -3.10608
@@ -4697,6 +4899,7 @@ Rectangle {
 
                         Model {
                             id: p3_cell19
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -4704,6 +4907,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: -10.758
                             y: -39.968
                             z: -3.04178
@@ -4714,6 +4918,7 @@ Rectangle {
 
                         Model {
                             id: p3_cell20
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -4721,6 +4926,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: -8.127
                             y: -39.974
                             z: -3.04241
@@ -4731,6 +4937,7 @@ Rectangle {
 
                         Model {
                             id: p3_cell21
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -4738,6 +4945,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: -5.469
                             y: -39.979
                             z: -3.04128
@@ -4748,6 +4956,7 @@ Rectangle {
 
                         Model {
                             id: p3_cell22
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -4755,6 +4964,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: -2.825
                             y: -39.987
                             z: -3.05056
@@ -4765,6 +4975,7 @@ Rectangle {
 
                         Model {
                             id: p3_cell23
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -4772,6 +4983,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: -0.195
                             y: -40.029
                             z: -3.15377
@@ -4782,6 +4994,7 @@ Rectangle {
 
                         Model {
                             id: p3_cell24
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -4789,6 +5002,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: 2.504
                             y: -39.992
                             z: -3.0335
@@ -4799,6 +5013,7 @@ Rectangle {
 
                         Model {
                             id: p3_cell25
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -4806,6 +5021,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: 5.135
                             y: -39.984
                             z: -2.99221
@@ -4816,6 +5032,7 @@ Rectangle {
 
                         Model {
                             id: p3_cell26
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -4823,6 +5040,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: 7.709
                             y: -40
                             z: -3.02593
@@ -4833,6 +5051,7 @@ Rectangle {
 
                         Model {
                             id: p3_cell27
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -4840,6 +5059,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: 10.342
                             y: -40.012
                             z: -3.04454
@@ -4850,6 +5070,7 @@ Rectangle {
 
                         Model {
                             id: p3_cell28
+
                             source: "meshes/box038.mesh"
                             scale.z: 1
                             scale.y: 1
@@ -4857,6 +5078,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             x: 13.114
                             y: -40.02
                             z: -3.05008
@@ -4868,6 +5090,7 @@ Rectangle {
 
 
                         Model {
+
                             id: p3_cell29
                             x: 15.945
                             y: -40.026
@@ -4879,6 +5102,7 @@ Rectangle {
                             materials: [
                                 material__47_material
                             ]
+
                             eulerRotation.z: -0.1286
                             eulerRotation.y: 0.05295
                             eulerRotation.x: -19.28586
@@ -4890,10 +5114,12 @@ Rectangle {
                             y: -40.033
                             source: "meshes/box038.mesh"
                             z: -3.05116
+
                             scale.z: 1
                             scale.y: 1
                             scale.x: 1
                             materials: [
+
                                 material__47_material
                             ]
                             eulerRotation.z: -0.1286
@@ -4937,6 +5163,7 @@ Rectangle {
                             }
                         }
                     }
+
 
 
                     Model {
@@ -5468,13 +5695,16 @@ Rectangle {
                             scale.y: 1
                             scale.x: 1
                             materials: [
+
                                 material__47_material
                             ]
+
                             eulerRotation.z: 89.95972
                             eulerRotation.y: -19.28592
                             eulerRotation.x: -0.02518
                         }
                     }
+
 
 
                 }
@@ -5488,11 +5718,14 @@ Rectangle {
         }
 
 
+
         DirectionalLight {
             id: directionalLight2
             x: -4
             y: 903.238
+
             visible: false
+
             z: 1122.3479
             eulerRotation.z: 0.00001
             eulerRotation.y: -0.00001
@@ -5503,7 +5736,9 @@ Rectangle {
             id: directionalLight3
             x: -143.434
             y: 706.918
+
             visible: false
+
             z: -1033.84485
             eulerRotation.z: 121.91115
             eulerRotation.y: 160.63445
@@ -5513,7 +5748,9 @@ Rectangle {
             id: directionalLight1
             x: 780.197
             y: 1070.734
+
             visible: false
+
             z: 0
             eulerRotation.z: -87.26819
             eulerRotation.y: 87.98039
@@ -5523,14 +5760,17 @@ Rectangle {
             id: directionalLight
             x: -889.202
             y: 1070.734
+
             opacity: 1
             visible: true
             castsShadow: false
+
             eulerRotation.z: 87.91602
             eulerRotation.y: -89.02125
             eulerRotation.x: -28.00166
             z: 30.54141
         }
+
 
         Mesa_80cm {
             id: mesa_80cm
@@ -5543,6 +5783,7 @@ Rectangle {
 
 
         }
+
     }
     Component.onCompleted: {
         socket_comm.startOkey();

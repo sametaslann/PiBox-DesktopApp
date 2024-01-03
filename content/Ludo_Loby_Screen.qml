@@ -1,3 +1,4 @@
+
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 
@@ -12,7 +13,7 @@ Page {
         y: 0
         width: 1920
         height: 1080
-        source: "images/OIG.jpeg"
+        source: "images/back.jpg"
         scale: 1
         transformOrigin: Item.Center
         fillMode: Image.Stretch
@@ -23,8 +24,8 @@ Page {
             id: virtulizationFrame
             x: 108
             y: 110
-            width: 1244
-            height: 595
+            width: 1293
+            height: 898
 
             Loader{
                 id: loader
@@ -44,6 +45,7 @@ Page {
                 height: 31
                 text: "Game Screen"
                 font.pixelSize: 27
+                color:"white"
             }
         }
 
@@ -62,8 +64,14 @@ Page {
                 y: -26
                 width: 80
                 height: 20
-                text: "Player1"
                 font.pixelSize: 16
+
+                Connections {
+                        target: socket_comm
+                        onNewDataReceived: {
+                            textEdit.text = player1
+                        }
+                    }
             }
 
             TextEdit {
@@ -72,8 +80,14 @@ Page {
                 y: -26
                 width: 80
                 height: 20
-                text: "Player2"
                 font.pixelSize: 16
+
+                Connections {
+                        target: socket_comm
+                        onNewDataReceived: {
+                            textEdit1.text = player2
+                        }
+                    }
             }
 
             TextEdit {
@@ -82,8 +96,14 @@ Page {
                 y: 341
                 width: 80
                 height: 20
-                text: "Player3"
                 font.pixelSize: 16
+
+                Connections {
+                        target: socket_comm
+                        onNewDataReceived: {
+                            textEdit2.text = player3
+                        }
+                    }
             }
 
             TextEdit {
@@ -92,8 +112,14 @@ Page {
                 y: 339
                 width: 80
                 height: 20
-                text: "Player4"
                 font.pixelSize: 16
+
+                Connections {
+                        target: socket_comm
+                        onNewDataReceived: {
+                            textEdit3.text = player4
+                        }
+                    }
             }
         }
         Loader{
@@ -109,7 +135,7 @@ Page {
             }
         }
 
-        Button {
+        RoundButton {
             id: button
             x: 1457
             y: 911
@@ -124,64 +150,6 @@ Page {
 
 
         }
-
-        ListView {
-            id: waiterList
-            x: 105
-            y: 782
-            width: 304
-            height: 267
-            model: ListModel {
-                ListElement {
-                    name: "Player4"
-                    colorCode: "yellow"
-                }
-
-                ListElement {
-                    name: "Player1"
-                    colorCode: "red"
-                }
-
-                ListElement {
-                    name: "Player2"
-                    colorCode: "blue"
-                }
-
-                ListElement {
-                    name: "Player3"
-                    colorCode: "green"
-                }
-            }
-            delegate: Item {
-                x: 5
-                width: 80
-                height: 40
-                Row {
-                    id: row1
-                    spacing: 10
-                    Rectangle {
-                        width: 40
-                        height: 40
-                        color: colorCode
-                    }
-
-                    Text {
-                        text: name
-                        anchors.verticalCenter: parent.verticalCenter
-                        font.bold: true
-                    }
-                }
-            }
-
-            Text {
-                id: text2
-                x: 3
-                y: -45
-                width: 224
-                height: 31
-                text: "Waiter List"
-                font.pixelSize: 27
-            }
-        }
     }
 }
+

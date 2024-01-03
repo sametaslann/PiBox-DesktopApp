@@ -11,10 +11,12 @@
 OkeyController::OkeyController(QObject *parent)
     : QObject{parent}
 {
+
     setPlayer1Text("empty");
     setPlayer2Text("empty");
     setPlayer3Text("empty");
     setPlayer4Text("empty");
+
 }
 
 QQmlListProperty<QObject> OkeyController::getPlayer1Cells()
@@ -22,20 +24,25 @@ QQmlListProperty<QObject> OkeyController::getPlayer1Cells()
     return QQmlListProperty<QObject>(this, &player1Cells);
 }
 
+
+
 QQmlListProperty<QObject> OkeyController::getPlayer2Cells()
 {
     return QQmlListProperty<QObject>(this, &player2Cells);
 }
+
 
 QQmlListProperty<QObject> OkeyController::getPlayer3Cells()
 {
     return QQmlListProperty<QObject>(this, &player3Cells);
 }
 
+
 QQmlListProperty<QObject> OkeyController::getPlayer4Cells()
 {
     return QQmlListProperty<QObject>(this, &player4Cells);
 }
+
 
 QQmlListProperty<QObject> OkeyController::getRedTiles()
 {
@@ -46,6 +53,7 @@ QQmlListProperty<QObject> OkeyController::getBlueTiles()
 {
     return QQmlListProperty<QObject>(this, &blueTiles);
 }
+
 
 QQmlListProperty<QObject> OkeyController::getYellowTiles()
 {
@@ -61,6 +69,7 @@ QQmlListProperty<QObject> OkeyController::getFakeTiles()
 {
     return QQmlListProperty<QObject>(this, &fakeTiles);
 }
+
 
 QQmlListProperty<QObject> OkeyController::getThrowns()
 {
@@ -142,4 +151,5 @@ void OkeyController::setPlayer4Text(const QString &text)
         emit player4TextChanged();
     }
 }
+
 

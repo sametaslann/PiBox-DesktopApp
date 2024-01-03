@@ -1,6 +1,7 @@
 #include "ludoworker.h"
 
 
+
 LudoWorker::LudoWorker(LudoController &controller, QTcpSocket &socket, QObject *parent): ludoController(controller), socket(socket) {}
 
 void LudoWorker::run()
@@ -59,5 +60,6 @@ std::vector<char*> LudoWorker::split(char *str, const char *delimiter)
     }
 
     return tokens;
+
 
 }

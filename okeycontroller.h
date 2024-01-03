@@ -3,26 +3,33 @@
 
 #include <QObject>
 #include <QVector3D>
+
 #include<QSpotLight>
 #include <QQuickItem>
+
 
 class OkeyController : public QObject
 {
     Q_OBJECT
 
+
     //cells
+
     Q_PROPERTY(QQmlListProperty<QObject> player1Cells READ getPlayer1Cells NOTIFY player1CellsChanged)
     Q_PROPERTY(QQmlListProperty<QObject> player2Cells READ getPlayer2Cells NOTIFY player2CellsChanged)
     Q_PROPERTY(QQmlListProperty<QObject> player3Cells READ getPlayer3Cells NOTIFY player3CellsChanged)
     Q_PROPERTY(QQmlListProperty<QObject> player4Cells READ getPlayer4Cells NOTIFY player4CellsChanged)
 
 
+
     //tiles
+
     Q_PROPERTY(QQmlListProperty<QObject> redTiles READ getRedTiles NOTIFY redTilesChanged)
     Q_PROPERTY(QQmlListProperty<QObject> blueTiles READ getBlueTiles NOTIFY blueTilesChanged)
     Q_PROPERTY(QQmlListProperty<QObject> yellowTiles READ getYellowTiles NOTIFY yellowTilesChanged)
     Q_PROPERTY(QQmlListProperty<QObject> blackTiles READ getBlackTiles NOTIFY blackTilesChanged)
     Q_PROPERTY(QQmlListProperty<QObject> fakeTiles READ getFakeTiles NOTIFY fakeTilesChanged)
+
 
     //throwns
     Q_PROPERTY(QQmlListProperty<QObject> throwns READ getThrowns NOTIFY thrownsChanged)
@@ -43,10 +50,12 @@ public:
     explicit OkeyController(QObject *parent = nullptr);
 
     //cells
+
     QQmlListProperty<QObject> getPlayer1Cells();
     QQmlListProperty<QObject> getPlayer2Cells();
     QQmlListProperty<QObject> getPlayer3Cells();
     QQmlListProperty<QObject> getPlayer4Cells();
+
 
     QList<QObject*> player1Cells;
     QList<QObject*> player2Cells;
@@ -56,17 +65,21 @@ public:
 
 
     //tiles
+
     QQmlListProperty<QObject> getRedTiles();
     QQmlListProperty<QObject> getBlueTiles();
     QQmlListProperty<QObject> getYellowTiles();
     QQmlListProperty<QObject> getBlackTiles();
     QQmlListProperty<QObject> getFakeTiles();
 
+
+
     QList<QObject*> redTiles;
     QList<QObject*> blueTiles;
     QList<QObject*> yellowTiles;
     QList<QObject*> blackTiles;
     QList<QObject*> fakeTiles;
+
 
     //throwns
     QQmlListProperty<QObject> getThrowns();
@@ -106,17 +119,21 @@ public slots:
 private:
 
 
+
 signals:
     void player1CellsChanged(); // dummy
     void player2CellsChanged(); // dummy
     void player3CellsChanged(); // dummy
     void player4CellsChanged(); // dummy
 
+
+
     void redTilesChanged();     // dummy
     void blueTilesChanged();    // dummy
     void yellowTilesChanged();  // dummy
     void blackTilesChanged();   // dummy
     void fakeTilesChanged();    // dummy
+
 
     void thrownsChanged();      //dummy
     void jokerTileChanged();    // dummy
@@ -126,6 +143,7 @@ signals:
     void player2TextChanged();
     void player3TextChanged();
     void player4TextChanged();
+
 };
 
 #endif // OKEYCONTROLLER_H

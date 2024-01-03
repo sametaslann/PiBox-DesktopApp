@@ -1,3 +1,4 @@
+
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 
@@ -12,15 +13,15 @@ Page {
         y: 0
         width: 1920
         height: 1080
-        source: "images/OIG.jpeg"
+        source: "images/back.jpg"
         fillMode: Image.Stretch
         transformOrigin: Item.Center
         scale: 1
 
         Image {
             id: image
-            x: 316
-            y: 252
+            x: 318
+            y: 197
             width: 486
             height: 536
             source: "images/OIG1.jpeg"
@@ -35,21 +36,23 @@ Page {
                 textFormat: Text.RichText
             }
 
-            Button {
+            RoundButton {
                 id: button
                 x: 246
                 y: 644
                 width: 248
                 height: 84
                 text: "View Loby"
-                anchors.verticalCenterOffset: 418
-                anchors.horizontalCenterOffset: 135
+                anchors.verticalCenterOffset: 425
+                anchors.horizontalCenterOffset: 0
                 font.pointSize: 17
 
                 anchors.centerIn: parent
                 onClicked : {
                     //socket_comm.start(); // start new thread
+
                     pageLoader.source = "Ludo_Loby_Screen.qml";
+
                 }
             }
             ComboBox {
@@ -65,27 +68,54 @@ Page {
                                 ListElement { text: "Öğe 3" }
                             }
             }
-            Button {
+            RoundButton {
                 id: button3
                 x: 0
                 y: 644
                 width: 248
                 height: 84
                 text: "Add New Loby"
-                anchors.verticalCenterOffset: 418
-                anchors.horizontalCenterOffset: -119
+                anchors.verticalCenterOffset: 515
+                anchors.horizontalCenterOffset: 0
                 font.pointSize: 17
-                visible: false
                 anchors.centerIn: parent
                 onClicked : {
-                    comboBox.model.append({ "text": "Yeni Öğe" })
+                    popup.open()
+                    //comboBox.model.append({ "text": "Yeni Öğe" })
                     //pageLoader.source = "Ludo_Loby_Screen.qml";
 
 
                 }
             }
 
+        }
+        Popup {
+            id: popup
+            width: 300
+            height: 200
+            modal: true
+            focus: true
+            closePolicy: Popup.CloseOnEscape
 
+            Column {
+                anchors.fill: parent
+                spacing: 10 // Add spacing between children
+
+                TextField {
+                    id: textEditor
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    placeholderText: qsTr("Enter a loby password")
+                    height: parent.height - 50 // Adjust height to leave space for the button
+
+
+                }
+
+                Button {
+                    text: "Enter"
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    onClicked: popup.close()
+                }
+            }
         }
         Loader {
             id: pageLoader
@@ -106,11 +136,11 @@ Page {
         }
         Image {
             id: image1
-            x: 1143
-            y: 252
+            x: 1134
+            y: 197
             width: 486
             height: 536
-            source: "images/OIG2.jpeg"
+            source: "images/table.png"
             fillMode: Image.PreserveAspectFit
 
             Text {
@@ -124,15 +154,15 @@ Page {
                 textFormat: Text.RichText
             }
 
-            Button {
+            RoundButton {
                 id: button1
                 x: 238
                 y: 642
                 width: 248
                 height: 84
                 text: "View Loby"
-                anchors.verticalCenterOffset: 416
-                anchors.horizontalCenterOffset: 126
+                anchors.verticalCenterOffset: 412
+                anchors.horizontalCenterOffset: 0
                 font.pointSize: 17
 
                 anchors.centerIn: parent
@@ -155,20 +185,20 @@ Page {
                                 ListElement { text: "Öğe 3" }
                             }
             }
-            Button {
+            RoundButton {
                 id: button4
                 x: -9
                 y: 642
                 width: 248
                 height: 84
                 text: "Add New Loby"
-                anchors.verticalCenterOffset: 416
-                anchors.horizontalCenterOffset: -119
+                anchors.verticalCenterOffset: 510
+                anchors.horizontalCenterOffset: 0
                 font.pointSize: 17
-                visible: false
                 anchors.centerIn: parent
                 onClicked : {
-                    comboBox.model.append({ text: "Yeni Öğe" })
+                    popup.open()
+                    //comboBox.model.append({ text: "Yeni Öğe" })
                     //pageLoader.source = "Ludo_Loby_Screen.qml";
                 }
             }
@@ -195,3 +225,4 @@ Page {
         id: __materialLibrary__
     }
 }
+

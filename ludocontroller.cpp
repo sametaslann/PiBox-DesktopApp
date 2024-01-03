@@ -7,6 +7,7 @@ LudoController::LudoController(QObject *parent)
 {
 
 
+
 }
 
 QQmlListProperty<QObject> LudoController::getPlates()
@@ -18,4 +19,5 @@ QQmlListProperty<QObject> LudoController::getPlates()
 QQmlListProperty<QObject> LudoController::getPawns()
 {
     return QQmlListProperty<QObject>(this, &pawns);
+
 }

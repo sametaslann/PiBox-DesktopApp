@@ -1,6 +1,5 @@
+#include "socket.h"
 
-    #include "socket.h"
-    //#include "src/mydata.h"
     
     Lobies::Lobies(QString loby_number, QString game_type, QString player1, QString player2, QString player3, QString player4){
         this->loby_number = loby_number;
@@ -37,15 +36,16 @@
         write_to_server(d.constData());
     }
     
+
     void Socket::newDataReceived(QString &player1, QString &player2, QString &player3, QString &player4){
         QByteArray d = "GETLOBBIES|" + token.toUtf8();
         write_to_server(d.constData());
-    
+
         QByteArray authResp = read_from_server();
-    
+
         qDebug()<<authResp;
         QList<QByteArray> lobbies = authResp.split('/');
-    
+
         for(int i=1; i<lobbies.size()-1; i++){
             QList<QByteArray> list = lobbies.at(i).split('|');
             QString lobi_number = QString(list.at(0));
@@ -54,21 +54,21 @@
             player2 = QString(list.at(3));
             player3 = QString(list.at(4));
             player4 = QString(list.at(5));
-    
+
             Lobies a(lobi_number, game_type, player1, player2, player3, player4);
             loby.append(a);
         }
         //ok/#lobi|oyun türü|empty|empty|emtpy|empty/#lobi|oyun türü|empty|empty|emtpy|empty
         //create lobi, istek at, CREATELOBBY|Token|oyun türü
-    
+
         if(lobbies.at(0) == "OK"){
             qDebug()<<"OK";
         }
         else{
             qDebug()<<"Error";
         }
-    
-    
+
+
     }
     
     bool Socket::login_request(const QString &username, const QString  &password){
@@ -101,19 +101,6 @@
         }
     
     }
-    
-  
-    
-  
-    
-   
-    
-    
-    
-    
-   
-    
-
 
 
 Socket::Socket(LudoController &controller, OkeyController &okeyController, QObject *parent)

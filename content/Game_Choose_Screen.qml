@@ -96,6 +96,7 @@ Page {
             modal: true
             focus: true
             closePolicy: Popup.CloseOnEscape
+            anchors.centerIn: parent // Bu satırı ekleyin
 
             Column {
                 anchors.fill: parent
@@ -106,8 +107,6 @@ Page {
                     anchors.horizontalCenter: parent.horizontalCenter
                     placeholderText: qsTr("Enter a loby password")
                     height: parent.height - 50 // Adjust height to leave space for the button
-
-
                 }
 
                 Button {
@@ -117,6 +116,7 @@ Page {
                 }
             }
         }
+
         Loader {
             id: pageLoader
             anchors.fill: parent

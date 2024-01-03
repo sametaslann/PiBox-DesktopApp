@@ -55,6 +55,36 @@ Item {
         Loader {
             id: pageLoader
         }
+        Popup {
+            id: popup
+            width: 300
+            height: 200
+            modal: true
+            focus: true
+            closePolicy: Popup.CloseOnEscape
+
+            // Ekranın boyutlarına bağlı olarak x ve y koordinatlarını hesapla
+            x: (parent.width - width) / 2
+            y: parent.height - height
+
+            Column {
+                anchors.fill: parent
+                spacing: 10
+
+                Label {
+                    text: "Username or Password is wrong"
+                    // Diğer label özellikleri
+                }
+
+                Button {
+                    text: "Close"
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    onClicked: popup.close()
+                }
+            }
+        }
+
+
         RoundButton {
             id: button
             x: 886
@@ -79,6 +109,9 @@ Item {
                 if(res)
                 {
                     Qt.createComponent("Game_Choose_Screen.qml").createObject(parent)
+                }
+                else{
+                    popup.open()
                 }
 
 

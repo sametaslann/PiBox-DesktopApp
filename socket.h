@@ -38,24 +38,18 @@ public:
     explicit Socket(LudoController &controller,OkeyController &okeyController, QObject* parent = nullptr);
     QList<Lobies> loby;
 
-
     Q_INVOKABLE void startOkey();
     Q_INVOKABLE void stopOkey();
     Q_INVOKABLE void startLudo();
     Q_INVOKABLE void stopLudo();
 
-
-
-
     QByteArray read_from_server();
     void write_to_server(const char * request);
 
-
     void CreateLobby(QString game_type, QString &password);
     QString token;
+
     void newDataReceived(QString &player1, QString &player2, QString &player3, QString &player4);
-
-
 
 
 public slots:
@@ -76,7 +70,6 @@ private:
     LudoWorker *ludoWorker;
 
 
-signals:
 
 };
 

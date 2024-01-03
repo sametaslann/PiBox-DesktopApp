@@ -30,11 +30,8 @@ int main(int argc, char *argv[])
     OkeyController okeyController; // Instantiate the custom C++ object
     engine.rootContext()->setContextProperty("okeyController", &okeyController);
 
-
-
     Socket socketThread(ludoController, okeyController);
     engine.rootContext()->setContextProperty("socket_comm", &socketThread);
-
 
     //socketThread.start();
 

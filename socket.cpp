@@ -133,7 +133,7 @@ void Socket::stopLudo(){
 void Socket::startOkey()
 {
     if(isConnectedSuccesfully){
-        okeyWorker = new OkeyWorker(okeyController, *socket);
+        okeyWorker = new OkeyWorker(okeyController, *socket, token);
         connect(okeyWorker, &OkeyWorker::animateTile, this, &Socket::handleAnimateTiles);
         okeyWorker->start();        
     }

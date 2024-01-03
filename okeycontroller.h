@@ -4,13 +4,16 @@
 #include <QObject>
 #include <QVector3D>
 
+#include<QSpotLight>
 #include <QQuickItem>
+
+
 class OkeyController : public QObject
 {
     Q_OBJECT
 
 
-
+    //cells
 
     Q_PROPERTY(QQmlListProperty<QObject> player1Cells READ getPlayer1Cells NOTIFY player1CellsChanged)
     Q_PROPERTY(QQmlListProperty<QObject> player2Cells READ getPlayer2Cells NOTIFY player2CellsChanged)
@@ -19,20 +22,34 @@ class OkeyController : public QObject
 
 
 
+    //tiles
+
     Q_PROPERTY(QQmlListProperty<QObject> redTiles READ getRedTiles NOTIFY redTilesChanged)
     Q_PROPERTY(QQmlListProperty<QObject> blueTiles READ getBlueTiles NOTIFY blueTilesChanged)
     Q_PROPERTY(QQmlListProperty<QObject> yellowTiles READ getYellowTiles NOTIFY yellowTilesChanged)
     Q_PROPERTY(QQmlListProperty<QObject> blackTiles READ getBlackTiles NOTIFY blackTilesChanged)
     Q_PROPERTY(QQmlListProperty<QObject> fakeTiles READ getFakeTiles NOTIFY fakeTilesChanged)
 
-    //Q_PROPERTY(QQmlListProperty<QObject> thrown1 READ getThrown1 NOTIFY thrown1Changed)
-   // Q_PROPERTY(QQmlListProperty<QObject> thrown2 READ getThrown2 NOTIFY thrown2Changed)
-    //Q_PROPERTY(QQmlListProperty<QObject> thrown3 READ getThrown3 NOTIFY thrown3Changed)
-    //Q_PROPERTY(QQmlListProperty<QObject> thrown4 READ getThrown4 NOTIFY thrown4Changed)
+
+    //throwns
+    Q_PROPERTY(QQmlListProperty<QObject> throwns READ getThrowns NOTIFY thrownsChanged)
+
+    //joker tile
+    Q_PROPERTY(QObject* jokerTile READ getJokerTile WRITE setJokerTile NOTIFY jokerTileChanged)
+
+    //spotlight
+    Q_PROPERTY(QQmlListProperty<QObject> spotLights READ getspotLights NOTIFY spotLightsChanged)
 
 
+    //texts
+    Q_PROPERTY(QString player1Text READ getPlayer1Text WRITE setPlayer1Text NOTIFY player1TextChanged)
+    Q_PROPERTY(QString player2Text READ getPlayer2Text WRITE setPlayer2Text NOTIFY player2TextChanged)
+    Q_PROPERTY(QString player3Text READ getPlayer3Text WRITE setPlayer3Text NOTIFY player3TextChanged)
+    Q_PROPERTY(QString player4Text READ getPlayer4Text WRITE setPlayer4Text NOTIFY player4TextChanged)
 public:
     explicit OkeyController(QObject *parent = nullptr);
+
+    //cells
 
     QQmlListProperty<QObject> getPlayer1Cells();
     QQmlListProperty<QObject> getPlayer2Cells();
@@ -40,6 +57,14 @@ public:
     QQmlListProperty<QObject> getPlayer4Cells();
 
 
+    QList<QObject*> player1Cells;
+    QList<QObject*> player2Cells;
+    QList<QObject*> player3Cells;
+    QList<QObject*> player4Cells;
+
+
+
+    //tiles
 
     QQmlListProperty<QObject> getRedTiles();
     QQmlListProperty<QObject> getBlueTiles();
@@ -47,14 +72,6 @@ public:
     QQmlListProperty<QObject> getBlackTiles();
     QQmlListProperty<QObject> getFakeTiles();
 
-    //QQmlListProperty<QObject> getThrown1();
-    //QQmlListProperty<QObject> getThrown2();
-    //QQmlListProperty<QObject> getThrown3();
-    //QQmlListProperty<QObject> getThrown4();
-    QList<QObject*> player1Cells;
-    QList<QObject*> player2Cells;
-    QList<QObject*> player3Cells;
-    QList<QObject*> player4Cells;
 
 
     QList<QObject*> redTiles;
@@ -64,16 +81,43 @@ public:
     QList<QObject*> fakeTiles;
 
 
+    //throwns
+    QQmlListProperty<QObject> getThrowns();
+    QList<QObject*> throwns;
+
+    //joker Tile
+    QObject *getJokerTile();
+    void setJokerTile(QObject *object);
+    QObject* jokerTile;
+
+
+    //spotlights
+    QQmlListProperty<QObject> getspotLights();
+    QList<QObject*> spotLights;
+
+
+    //texts
+    QString getPlayer1Text() const;
+    QString getPlayer2Text() const;
+    QString getPlayer3Text() const;
+    QString getPlayer4Text() const;
+
+    void setPlayer1Text(const QString &text);
+    void setPlayer2Text(const QString &text);
+    void setPlayer3Text(const QString &text);
+    void setPlayer4Text(const QString &text);
+
+    QString player1Text;
+    QString player2Text;
+    QString player3Text;
+    QString player4Text;
+
+
 public slots:
-    void setPlayer1Cells();
-    void moveTile();
+
+
 private:
 
-
-    //QList<QObject*> thrown1;
-    //QList<QObject*> thrown2;
-    //QList<QObject*> thrown3;
-    //QList<QObject*> thrown4;
 
 
 signals:
@@ -81,12 +125,24 @@ signals:
     void player2CellsChanged(); // dummy
     void player3CellsChanged(); // dummy
     void player4CellsChanged(); // dummy
+
+
+
     void redTilesChanged();     // dummy
     void blueTilesChanged();    // dummy
     void yellowTilesChanged();  // dummy
     void blackTilesChanged();   // dummy
     void fakeTilesChanged();    // dummy
 
+
+    void thrownsChanged();      //dummy
+    void jokerTileChanged();    // dummy
+    void spotLightsChanged();
+
+    void player1TextChanged();
+    void player2TextChanged();
+    void player3TextChanged();
+    void player4TextChanged();
 
 };
 

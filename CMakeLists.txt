@@ -7,7 +7,9 @@ project(PiBoxApp LANGUAGES CXX)
 
 set(CMAKE_AUTOMOC ON)
 
-find_package(Qt6 6.2 REQUIRED COMPONENTS Core Gui Qml Quick Network )
+
+find_package(Qt6 6.2 REQUIRED COMPONENTS Core Gui Qml Quick Network Widgets 3DRender 3DExtras)
+
 
 if (Qt6_VERSION VERSION_GREATER_EQUAL 6.3)
     qt_standard_project_setup()
@@ -18,8 +20,9 @@ qt_add_executable(PiBoxApp src/main.cpp
     socket.h socket.cpp
     okeycontroller.h okeycontroller.cpp
     okeyworker.h okeyworker.cpp
-    ludoworker.h ludoworker.cpp
-)
+
+    ludoworker.h ludoworker.cpp)
+
 
 qt_add_resources(PiBoxApp "configuration"
     PREFIX "/"
@@ -33,6 +36,11 @@ target_link_libraries(PiBoxApp PRIVATE
     Qt6::Qml
     Qt6::Quick
     Qt6::Network
+
+    Qt6::Widgets
+    Qt6::3DRender
+    Qt6::3DExtras
+
 )
 
 if (BUILD_QDS_COMPONENTS)

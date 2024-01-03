@@ -12,7 +12,9 @@ Page {
         y: 0
         width: 1920
         height: 1080
+
         source: "images/back.jpg"
+
         scale: 1
         transformOrigin: Item.Center
         fillMode: Image.Stretch
@@ -21,11 +23,13 @@ Page {
 
         Frame {
 
+
             id: virtulizationFrame
             x: 108
             y: 110
             width: 1305
             height: 898
+
 
 
             Loader{
@@ -46,6 +50,7 @@ Page {
                 text: "Game Screen"
                 font.pixelSize: 27
                 color: "white"
+
             }
         }
 
@@ -55,7 +60,9 @@ Page {
             y: 125
             width: 406
             height: 324
+
             source: "images/table.png"
+
             fillMode: Image.PreserveAspectFit
 
             TextEdit {
@@ -111,7 +118,9 @@ Page {
             }
         }
 
+
         RoundButton {
+
             id: button
             x: 1457
             y: 911
@@ -121,12 +130,14 @@ Page {
             font.pointSize: 27
 
             onClicked : {
-                //socket_comm.stopOkey();
+                socket_comm.stopOkey();
+
                 //okeyController.moveTile();
                 pageLoader.source = "Game_Choose_Screen.qml";
             }
 
 
         }
+
     }
 }

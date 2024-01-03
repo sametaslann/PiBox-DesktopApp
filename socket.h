@@ -10,8 +10,8 @@
 #include <QThread>
 #include <QPropertyAnimation>
 #include <QParallelAnimationGroup>
-
 #include <QString>
+#include <QMessageBox>
 
 class Lobies{
 
@@ -28,6 +28,7 @@ public:
 
 };
 
+
 class Socket : public QObject
 {
     Q_OBJECT
@@ -37,28 +38,31 @@ public:
     explicit Socket(LudoController &controller,OkeyController &okeyController, QObject* parent = nullptr);
     QList<Lobies> loby;
 
+
     Q_INVOKABLE void startOkey();
     Q_INVOKABLE void stopOkey();
+    Q_INVOKABLE void startLudo();
+    Q_INVOKABLE void stopLudo();
 
-    //Q_INVOKABLE void startLudo();
-    //Q_INVOKABLE void stopLudo();
+
+
 
     QByteArray read_from_server();
     void write_to_server(const char * request);
 
-    void CreateLobby(QString game_type, QString &password);
-    bool isLudoActive() const;
-    bool isOkeyActive() const;
-    QString token;
 
+    void CreateLobby(QString game_type, QString &password);
+    QString token;
     void newDataReceived(QString &player1, QString &player2, QString &player3, QString &player4);
 
-signals:
+
+
 
 public slots:
     bool login_request(const QString &username, const QString &password);
-    //void handleAnimateTiles(QObject *sourceTile, QObject *destinationTile);
-    //void handleAnimatePawns(QObject *sourcePawn, QObject *destPlate);
+    void handleAnimateTiles(QObject *sourceTile, QObject *destinationTile);
+    void handleAnimatePawns(QObject *sourcePawn, QObject *destPlate);
+
 private:
     QTcpSocket* socket;
     LudoController &ludoController;
@@ -70,6 +74,9 @@ private:
 
     OkeyWorker *okeyWorker;
     LudoWorker *ludoWorker;
+
+
+signals:
 
 };
 

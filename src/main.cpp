@@ -1,7 +1,7 @@
 // Copyright (C) 2021 The Qt Company Ltd.
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only
 
-#include <QGuiApplication>
+#include <QApplication>
 #include <QQmlApplicationEngine>
 #include <QQuickItem>
 
@@ -11,7 +11,7 @@
 #include "import_qml_components_plugins.h"
 #include "import_qml_plugins.h"
 #include "socket.h"
-//#include "mydata.h"
+
 #include <QQmlContext>
 
 
@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 {
     set_qt_environment();
 
-    QGuiApplication app(argc, argv);
+    QApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
 
@@ -30,9 +30,8 @@ int main(int argc, char *argv[])
     OkeyController okeyController; // Instantiate the custom C++ object
     engine.rootContext()->setContextProperty("okeyController", &okeyController);
 
-//    MyData myData;
 
-  //  engine.rootContext()->setContextProperty("myData", &myData);
+
     Socket socketThread(ludoController, okeyController);
     engine.rootContext()->setContextProperty("socket_comm", &socketThread);
 
@@ -56,5 +55,6 @@ int main(int argc, char *argv[])
     if (engine.rootObjects().isEmpty()) {
         return -1;
     }
+
     return app.exec();
 }

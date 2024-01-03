@@ -1,3 +1,4 @@
+
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 //import "/Users/e.kabalci2018/Desktop/Desktop-main/Desktop-main/src/main.h"
@@ -86,3 +87,4 @@ Item {
         }
     }
 }
+

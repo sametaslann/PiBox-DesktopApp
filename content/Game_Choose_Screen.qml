@@ -19,8 +19,8 @@ Page {
 
         Image {
             id: image
-            x: 316
-            y: 252
+            x: 318
+            y: 197
             width: 486
             height: 536
             source: "images/OIG1.jpeg"
@@ -49,6 +49,7 @@ Page {
                 anchors.centerIn: parent
                 onClicked : {
                     //socket_comm.start(); // start new thread
+
                     pageLoader.source = "Ludo_Loby_Screen.qml";
 
                 }
@@ -78,14 +79,42 @@ Page {
                 font.pointSize: 17
                 anchors.centerIn: parent
                 onClicked : {
-                    comboBox.model.append({ "text": "Yeni Öğe" })
+                    popup.open()
+                    //comboBox.model.append({ "text": "Yeni Öğe" })
                     //pageLoader.source = "Ludo_Loby_Screen.qml";
 
 
                 }
             }
 
+        }
+        Popup {
+            id: popup
+            width: 300
+            height: 200
+            modal: true
+            focus: true
+            closePolicy: Popup.CloseOnEscape
 
+            Column {
+                anchors.fill: parent
+                spacing: 10 // Add spacing between children
+
+                TextField {
+                    id: textEditor
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    placeholderText: qsTr("Enter a loby password")
+                    height: parent.height - 50 // Adjust height to leave space for the button
+
+
+                }
+
+                Button {
+                    text: "Enter"
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    onClicked: popup.close()
+                }
+            }
         }
         Loader {
             id: pageLoader
@@ -106,8 +135,8 @@ Page {
         }
         Image {
             id: image1
-            x: 1143
-            y: 252
+            x: 1134
+            y: 197
             width: 486
             height: 536
             source: "images/table.png"
@@ -138,6 +167,7 @@ Page {
                 anchors.centerIn: parent
                 onClicked : {
                     //socket_comm.startOkey();
+
                     pageLoader.source = "Okey_loby_screen.qml";
                 }
             }
@@ -166,7 +196,8 @@ Page {
                 font.pointSize: 17
                 anchors.centerIn: parent
                 onClicked : {
-                    comboBox.model.append({ text: "Yeni Öğe" })
+                    popup.open()
+                    //comboBox.model.append({ text: "Yeni Öğe" })
                     //pageLoader.source = "Ludo_Loby_Screen.qml";
                 }
             }

@@ -1,82 +1,80 @@
+
+
 /*
 This is a UI file (.ui.qml) that is intended to be edited in Qt Design Studio only.
 It is supposed to be strictly declarative and only uses a subset of QML. If you edit
 this file manually, you might introduce QML code that is not supported by Qt Design Studio.
 Check out https://doc.qt.io/qtcreator/creator-quick-ui-forms.html for details on .ui.qml files.
 */
-
-import QtQuick 6.2
-import QtQuick.Controls 6.2
+import QtQuick 6.5
+import QtQuick.Controls 6.5
+import QtQuick3D 6.5
 import PiBox
-import QtQuick3D 6.2
-import Quick3DAssets.Pawn
+import Quick3DAssets.Ludo0
+//import Quick3DAssets.Okey
+import Quick3DAssets.Okey
+
 
 Rectangle {
-    id: rectangle
     width: Constants.width
     height: Constants.height
 
     color: Constants.backgroundColor
 
-    Button {
-        id: button
-        text: qsTr("Press me")
-        anchors.verticalCenter: parent.verticalCenter
-        checkable: true
-        anchors.horizontalCenter: parent.horizontalCenter
+    View3D {
+        id: view3D
+        anchors.fill: parent
 
-        Connections {
-            target: button
-            onClicked: animation.start()
+        environment: sceneEnvironment
+
+        SceneEnvironment {
+            id: sceneEnvironment
+            antialiasingMode: SceneEnvironment.MSAA
+            antialiasingQuality: SceneEnvironment.High
         }
-    }
 
-    Text {
-        id: label
-        text: qsTr("Hello PiBox")
-        anchors.top: button.bottom
-        font.family: Constants.font.family
-        anchors.topMargin: 45
-
-        SequentialAnimation {
-            id: animation
-
-            ColorAnimation {
-                id: colorAnimation1
-                target: rectangle
-                property: "color"
-                to: "#2294c6"
-                from: Constants.backgroundColor
+        Node {
+            id: scene
+            DirectionalLight {
+                id: directionalLight
+                x: -0
+                y: 168.472
+                z: 52.73455
+                eulerRotation.z: 0.00002
+                eulerRotation.y: -0.00001
+                eulerRotation.x: -60.65488
             }
 
-            ColorAnimation {
-                id: colorAnimation2
-                target: rectangle
-                property: "color"
-                to: Constants.backgroundColor
-                from: "#2294c6"
+            PerspectiveCamera {
+                id: sceneCamera
+                x: -0
+                y: 159.953
+                eulerRotation.z: 0.00001
+                eulerRotation.y: -0
+                eulerRotation.x: -33.23155
+                z: 290.7511
+            }
+
+            Ludo0 {
+                id: ludo0
             }
         }
     }
 
     Item {
         id: __materialLibrary__
-    }
-
-    Pawn {
-        id: pawn
-        x: 8.184
-        z: -2.56848
-    }
-    states: [
-        State {
-            name: "clicked"
-            when: button.checked
-
-            PropertyChanges {
-                target: label
-                text: qsTr("Button Checked")
-            }
+        DefaultMaterial {
+            id: defaultMaterial
+            objectName: "Default Material"
+            diffuseColor: "#4aee45"
         }
-    ]
+    }
+
+    Text {
+        text: qsTr("Hello PiBox")
+        anchors.top: parent.top
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.topMargin: 100
+        font.family: Constants.font.family
+    }
 }

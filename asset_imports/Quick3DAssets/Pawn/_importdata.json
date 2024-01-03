@@ -88,7 +88,7 @@
             "description": "This step will perform a global scale of the model.",
             "name": "Enable Global Scale",
             "type": "Boolean",
-            "value": true
+            "value": false
         },
         "globalScaleValue": {
             "conditions": [

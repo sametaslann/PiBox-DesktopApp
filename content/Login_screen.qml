@@ -108,7 +108,9 @@ Item {
 
                 if(res)
                 {
+
                     Qt.createComponent("Game_Choose_Screen.qml").createObject(parent)
+                    socket_comm.getLobbies();
                 }
                 else{
                     popup.open()

@@ -1,7 +1,7 @@
 #include "okeyworker.h"
 
 
-OkeyWorker::OkeyWorker(OkeyController &controller, QString token, QObject *parent): okeyController(controller), token(token) {
+OkeyWorker::OkeyWorker(OkeyController &controller, QString token, int lobbyID, QObject *parent): okeyController(controller), token(token), lobbyId(lobbyID) {
 
 }
 

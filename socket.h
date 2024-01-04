@@ -32,6 +32,8 @@ public:
 class Socket : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(QStringList comboModelOkey READ comboModelOkey WRITE setComboModelOkey NOTIFY comboModelOkeyChanged)
+    Q_PROPERTY(QStringList comboModelLudo READ comboModelLudo WRITE setComboModelLudo NOTIFY comboModelLudoChanged)
 
 public:
 
@@ -49,11 +51,18 @@ public:
     void CreateLobby(QString game_type, QString &password);
     QString token;
 
-    void newDataReceived(QString &player1, QString &player2, QString &player3, QString &player4);
 
+    QStringList comboModelOkey() const;
+    void setComboModelOkey(const QStringList &model);
+    QStringList m_comboModelOkey;
+
+    QStringList comboModelLudo() const;
+    void setComboModelLudo(const QStringList &model);
+    QStringList m_comboModelLudo;
 
 public slots:
 
+    void getLobbies();
     bool login_request(const QString &username, const QString &password);
     void handleAnimateTiles(QObject *sourceTile, QObject *destinationTile);
     void handleAnimatePawns(QObject *sourcePawn, QObject *destPlate);
@@ -69,8 +78,15 @@ private:
 
     OkeyWorker *okeyWorker;
     LudoWorker *ludoWorker;
+
     int lastPlayer;
     int lastDice;
+    int activatedLobbyOkey;
+    int activatedLobbyLudo;
+
+signals:
+    void comboModelOkeyChanged();
+    void comboModelLudoChanged();
 };
 
 

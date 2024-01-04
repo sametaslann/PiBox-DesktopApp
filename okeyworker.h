@@ -14,7 +14,7 @@ class OkeyWorker : public QThread
     Q_OBJECT
 public:
 
-    explicit OkeyWorker(OkeyController &controller, QString token, QObject *parent = nullptr);
+    explicit OkeyWorker(OkeyController &controller, QString token, int lobbyID , QObject *parent = nullptr);
 
 public slots:
     void run() override;
@@ -28,10 +28,13 @@ private:
     int charToInt(char c);
     bool updateBoard(std::vector<char *> playerString, QList<QObject *> playerBoard);
 
+    QObject *findSourceTile(char *tileString);
+
+
     bool isFirst = true;
     QString token;
+    int lobbyId;
 
-    QObject *findSourceTile(char *tileString);
 signals:
     void animateTile(QObject *sourceTile, QObject *destinationTile);
 

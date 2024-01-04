@@ -61,12 +61,11 @@ Page {
                 y: 564
                 width: 486
                 height: 68
-
-                model: ListModel {
-                    ListElement { text: "Öğe 1" }
-                    ListElement { text: "Öğe 2" }
-                    ListElement { text: "Öğe 3" }
+                model: socket_comm.comboModelLudo
+                onActivated:{
+                    socket_comm.activatedLobbyLudo = index
                 }
+
             }
             RoundButton {
                 id: button3
@@ -179,11 +178,10 @@ Page {
                 width: 486
                 height: 68
 
-                model: ListModel {
-                                ListElement { text: "Öğe 1" }
-                                ListElement { text: "Öğe 2" }
-                                ListElement { text: "Öğe 3" }
-                            }
+                model: socket_comm.comboModelOkey
+                onActivated:{
+                    socket_comm.activatedLobbyOkey = currentIndex
+                }
             }
             RoundButton {
                 id: button4

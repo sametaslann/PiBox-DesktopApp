@@ -2,7 +2,7 @@
 
 
 
-LudoWorker::LudoWorker(LudoController &controller,QString token, QObject *parent): ludoController(controller), token(token) {}
+LudoWorker::LudoWorker(LudoController &controller,QString token, int lobbyID ,QObject *parent): ludoController(controller), token(token), lobbyId(lobbyID) {}
 
 void LudoWorker::run()
 {

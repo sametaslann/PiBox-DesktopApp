@@ -11,7 +11,7 @@ class LudoWorker : public QThread
 {
     Q_OBJECT
 public:
-    explicit LudoWorker(LudoController &controller, QString token ,QObject *parent = nullptr);
+    explicit LudoWorker(LudoController &controller, QString token, int lobbyID ,QObject *parent = nullptr);
 
 public slots:
     void run() override;
@@ -22,6 +22,7 @@ private:
     std::vector<char *> split(char *str, const char *delimiter);
     int charToInt(char c);
     QString token;
+    int lobbyId;
 
 
 signals:

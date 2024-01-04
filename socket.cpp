@@ -37,7 +37,7 @@
     }
     
 
-    void Socket::newDataReceived(QString &player1, QString &player2, QString &player3, QString &player4){
+    void Socket::getLobbies(){
         QByteArray d = "GETLOBBIES|" + token.toUtf8();
         write_to_server(d.constData());
 
@@ -45,19 +45,38 @@
 
         qDebug()<<authResp;
         QList<QByteArray> lobbies = authResp.split('/');
+        QStringList new_model_okey;
+        QStringList new_model_ludo;
 
-        for(int i=1; i<lobbies.size()-1; i++){
+        int countOkey = 0;
+        int countLudo = 0;
+        QString lobiName;
+        for(int i=1; i<lobbies.size(); i++){
             QList<QByteArray> list = lobbies.at(i).split('|');
             QString lobi_number = QString(list.at(0));
             QString game_type = QString(list.at(1));
-            player1 = QString(list.at(2));
-            player2 = QString(list.at(3));
-            player3 = QString(list.at(4));
-            player4 = QString(list.at(5));
 
-            Lobies a(lobi_number, game_type, player1, player2, player3, player4);
-            loby.append(a);
+
+
+            if(game_type == "LUDO")
+            {
+                countLudo++;
+                lobiName = "Lobby " + QString::number(countLudo);
+                new_model_ludo.append(lobiName);
+            }
+
+
+            else if(game_type == "OKEY")
+            {
+                countOkey++;
+                lobiName = "Lobby " + QString::number(countOkey);
+                new_model_okey.append(lobiName);
+            }
+
         }
+
+        setComboModelOkey(new_model_okey);
+        setComboModelLudo(new_model_ludo);
         //ok/#lobi|oyun türü|empty|empty|emtpy|empty/#lobi|oyun türü|empty|empty|emtpy|empty
         //create lobi, istek at, CREATELOBBY|Token|oyun türü
 
@@ -106,6 +125,7 @@
 Socket::Socket(LudoController &controller, OkeyController &okeyController, QObject *parent)
     :QObject{parent}, ludoController(controller), okeyController(okeyController) {
     connect_to_server();
+
 }
 
 
@@ -113,7 +133,7 @@ Socket::Socket(LudoController &controller, OkeyController &okeyController, QObje
 
 void Socket::startLudo()
 {
-    ludoWorker = new LudoWorker(ludoController, token);
+    ludoWorker = new LudoWorker(ludoController, token, activatedLobbyLudo);
     connect(ludoWorker, &LudoWorker::animatePawn, this, &Socket::handleAnimatePawns);
     connect(ludoWorker, &LudoWorker::animateDice, this, &Socket::handleAnimateDice);
     ludoWorker->start();
@@ -127,7 +147,7 @@ void Socket::stopLudo(){
 
 void Socket::startOkey()
 {
-    okeyWorker = new OkeyWorker(okeyController, token);
+    okeyWorker = new OkeyWorker(okeyController, token, activatedLobbyOkey);
     connect(okeyWorker, &OkeyWorker::animateTile, this, &Socket::handleAnimateTiles);
     okeyWorker->start();
 }
@@ -277,6 +297,34 @@ std::vector<char*> Socket::split(char *str, const char *delimiter)
     qDebug() << "Debug2";
     return tokens;
 
+}
+
+
+QStringList Socket::comboModelOkey() const
+{
+    return m_comboModelOkey;
+}
+
+void Socket::setComboModelOkey(const QStringList &model)
+{
+    if (m_comboModelOkey != model) {
+        m_comboModelOkey = model;
+        emit comboModelOkeyChanged();
+    }
+}
+
+
+QStringList Socket::comboModelLudo() const
+{
+    return m_comboModelLudo;
+}
+
+void Socket::setComboModelLudo(const QStringList &model)
+{
+    if (m_comboModelLudo != model) {
+        m_comboModelLudo = model;
+        emit comboModelLudoChanged();
+    }
 }
 
 

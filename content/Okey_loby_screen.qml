@@ -37,7 +37,7 @@ Page {
                 x: 0
                 y: 0
                 width: 1225
-                height: 571
+                height: 898
                 source: "qrc:/qt/qml/Quick3DAssets/Okey/Okey.qml"
             }
 
@@ -139,5 +139,9 @@ Page {
 
         }
 
+    }
+
+    Item {
+        id: __materialLibrary__
     }
 }

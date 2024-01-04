@@ -63,10 +63,10 @@ Page {
                 height: 68
 
                 model: ListModel {
-                                ListElement { text: "Öğe 1" }
-                                ListElement { text: "Öğe 2" }
-                                ListElement { text: "Öğe 3" }
-                            }
+                    ListElement { text: "Öğe 1" }
+                    ListElement { text: "Öğe 2" }
+                    ListElement { text: "Öğe 3" }
+                }
             }
             RoundButton {
                 id: button3

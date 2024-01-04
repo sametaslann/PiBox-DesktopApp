@@ -32,7 +32,7 @@ Page {
                 x: 0
                 y: 0
                 width: 1225
-                height: 571
+                height: 898
 
                 source: "Ludo_game_screen.qml"
             }
@@ -145,11 +145,16 @@ Page {
             font.pointSize: 27
 
             onClicked : {
+                socket_comm.stopLudo();
                 pageLoader.source = "Game_Choose_Screen.qml";
             }
 
 
         }
+    }
+
+    Item {
+        id: __materialLibrary__
     }
 }
 

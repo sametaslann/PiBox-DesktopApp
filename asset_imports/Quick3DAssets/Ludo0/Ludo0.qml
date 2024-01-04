@@ -19,22 +19,9 @@ Node {
             scale.z: 10
             scale.y: 10
             scale.x: 10
-            Node{
-                eulerRotation.z: -0
-                eulerRotation.y: -0
-                eulerRotation.x: 5.94158
-                Model {
-                    id: ludo_ludo3
-                    x: 0
-                    y: 0
-                    source: "meshes/ludo_ludo.mesh"
-                    eulerRotation.z: 3.63037
-                    eulerRotation.y: -102.63065
-                    eulerRotation.x: 4.53215
-                    z: 0
-                    materials: ludo_blinn6_material
-                }
-            }
+
+
+
 
 
             Model {
@@ -49,7 +36,80 @@ Node {
                 materials: ludo_lambert2_material
 
             }
+
+
         }
+        Node
+        {
+            id: diceParent
+            x: -0
+            y: 7.681
+            eulerRotation.z: 0
+            eulerRotation.y: 0
+            eulerRotation.x: 0
+            z: -0.24254
+
+            Component.onCompleted: {
+                ludoController.dice = diceParent
+            }
+
+            function stopAnimations() {
+                animationY.running = false;
+                animationX.running = false;
+                animationZ.running = false;
+            }
+
+            function startAnimations() {
+                    animationY.running = true;
+                    animationX.running = true;
+                    animationZ.running = true;
+            }
+
+            PropertyAnimation on eulerRotation.y {
+                id: animationY
+                running: false
+                loops: 1
+                from: 0
+                to: 3600
+                duration: 1500
+            }
+            PropertyAnimation on eulerRotation.x {
+                id: animationX
+                running: false
+                loops: 1
+                from: 0
+                to: 3600
+                duration: 1500
+            }
+            PropertyAnimation on eulerRotation.z {
+                id: animationZ
+                running: false
+                loops:1
+                from: 0
+                to: 3600
+                duration: 1500
+            }
+
+
+            Model {
+                id: dice
+                scale.z: 8.55313
+                scale.y: 8.55313
+                scale.x: 8.55313
+                x: 0
+                y: -5.745
+                z: -0.06461
+                source: "meshes/ludo_ludo.mesh"
+                eulerRotation.z: 0
+                eulerRotation.y: 0
+                eulerRotation.x: 0
+                materials: ludo_blinn6_material
+
+
+
+            }
+        }
+
 
 
         Node {
@@ -1380,10 +1440,10 @@ Node {
 
             Model {
                 id: red_pawn1
-                x: -40.067
+                x: -57.02
                 y: 7.749
                 source: "meshes/chess_Pawn_0.mesh"
-                z: 39.58661
+                z: 70.4119
                 scale.z: 2.6
                 scale.y: 2.6
                 scale.x: 2.6
@@ -1394,10 +1454,10 @@ Node {
 
             Model {
                 id: red_pawn2
-                x: -40.308
+                x: -48.888
                 y: 7.996
                 source: "meshes/chess_Pawn_0.mesh"
-                z: 27.44495
+                z: 70.16283
                 scale.z: 2.6
                 scale.y: 2.6
                 scale.x: 2.6
@@ -1406,11 +1466,11 @@ Node {
             }
             Model {
                 id: red_pawn3
-                x: -28.425
+                x: -40.229
                 y: 7.82
                 source: "meshes/chess_Pawn_0.mesh"
                 scale.z: 2.6
-                z: 39.65848
+                z: 70.57515
                 scale.y: 2.6
                 scale.x: 2.6
                 eulerRotation.x: -90
@@ -1419,10 +1479,10 @@ Node {
 
             Model {
                 id: red_pawn4
-                x: -28.185
+                x: -31.863
                 y: 8.575
                 source: "meshes/chess_Pawn_0.mesh"
-                z: 27.72942
+                z: 72.84435
                 scale.z: 2.6
                 scale.y: 2.6
                 scale.x: 2.6
@@ -1432,10 +1492,10 @@ Node {
 
             Model {
                 id: green_pawn1
-                x: -40.4
+                x: -43.319
                 y: 7.646
                 source: "meshes/chess_Pawn_0.mesh"
-                z: -28.29114
+                z: -66.67564
                 scale.z: 2.6
                 scale.y: 2.6
                 scale.x: 2.6
@@ -1445,10 +1505,10 @@ Node {
 
             Model {
                 id: green_pawn2
-                x: -40.641
+                x: -34.728
                 y: 7.893
                 source: "meshes/chess_Pawn_0.mesh"
-                z: -40.4328
+                z: -67.87891
                 scale.z: 2.6
                 scale.y: 2.6
                 scale.x: 2.6
@@ -1458,10 +1518,10 @@ Node {
 
             Model {
                 id: green_pawn3
-                x: -28.758
+                x: -54.09
                 y: 7.717
                 source: "meshes/chess_Pawn_0.mesh"
-                z: -28.21927
+                z: -67.29008
                 scale.z: 2.6
                 scale.y: 2.6
                 scale.x: 2.6
@@ -1471,10 +1531,10 @@ Node {
 
             Model {
                 id: green_pawn4
-                x: -28.518
+                x: -26.507
                 y: 8.472
                 source: "meshes/chess_Pawn_0.mesh"
-                z: -40.14833
+                z: -67.01297
                 scale.z: 2.6
                 scale.y: 2.6
                 scale.x: 2.6
@@ -1484,10 +1544,10 @@ Node {
 
             Model {
                 id: yellow_Pawn1
-                x: 27.449
+                x: 59.275
                 y: 7.089
                 source: "meshes/chess_Pawn_0.mesh"
-                z: -28.40665
+                z: -66.82545
                 scale.z: 2.6
                 scale.y: 2.6
                 scale.x: 2.6
@@ -1497,10 +1557,10 @@ Node {
 
             Model {
                 id: yellow_Pawn2
-                x: 27.208
+                x: 32.372
                 y: 7.336
                 source: "meshes/chess_Pawn_0.mesh"
-                z: -40.54831
+                z: -67.24146
                 scale.z: 2.6
                 scale.y: 2.6
                 scale.x: 2.6
@@ -1511,10 +1571,10 @@ Node {
 
             Model {
                 id: yellow_Pawn3
-                x: 39.091
+                x: 50.828
                 y: 7.16
                 source: "meshes/chess_Pawn_0.mesh"
-                z: -28.33478
+                z: -67.07595
                 scale.z: 2.6
                 scale.y: 2.6
                 scale.x: 2.6
@@ -1526,10 +1586,10 @@ Node {
 
             Model {
                 id: yellow_Pawn4
-                x: 39.331
+                x: 42.203
                 y: 7.915
                 source: "meshes/chess_Pawn_0.mesh"
-                z: -40.26384
+                z: -67.45576
                 scale.z: 2.6
                 scale.y: 2.6
                 scale.x: 2.6
@@ -1539,10 +1599,10 @@ Node {
 
             Model {
                 id: blue_pawn1
-                x: 27.584
+                x: 30.948
                 y: 8.977
                 source: "meshes/chess_Pawn_0.mesh"
-                z: 39.51197
+                z: 68.35419
                 scale.z: 2.6
                 scale.y: 2.6
                 scale.x: 2.6
@@ -1553,10 +1613,10 @@ Node {
             Model {
                 id: blue_pawn2
 
-                x: 27.039
+                x: 48.109
                 y: 7.667
                 source: "meshes/chess_Pawn_0.mesh"
-                z: 27.27528
+                z: 67.42081
                 scale.z: 2.6
                 scale.y: 2.6
                 scale.x: 2.6
@@ -1571,7 +1631,7 @@ Node {
                 x: 39.281
                 y: 7.891
                 source: "meshes/chess_Pawn_0.mesh"
-                z: 38.93591
+                z: 68.34415
                 scale.z: 2.6
                 scale.y: 2.6
                 scale.x: 2.6
@@ -1581,9 +1641,9 @@ Node {
 
             Model {
                 id: blue_pawn4
-                x: 39.339
+                x: 57.166
                 y: 7.974
-                z: 27.27873
+                z: 66.93346
                 //x: 0.24
                 //y: -0.232
                 source: "meshes/chess_Pawn_0.mesh"
@@ -1653,7 +1713,7 @@ Node {
             id: ludo_blinn6_material
             baseColorMap: ludo_blinn6_Base_Color
             objectName: "ludo_blinn6_material"
-            baseColor: "#ff666666"
+            //baseColor: "#d8a8a8"
 
             Texture {
                 id: ludo_blinn6_Base_Color
@@ -1711,6 +1771,7 @@ Node {
 
         }
     }
+
     Component.onCompleted: {
         socket_comm.startLudo();
     }

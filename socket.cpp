@@ -21,7 +21,7 @@
     void Socket::connect_to_server()
     {
         socket = new QTcpSocket();
-        socket->connectToHost("10.42.0.1", 8080);
+        socket->connectToHost("127.0.0.1", 8080);
     
         if(socket->waitForConnected())
              qDebug() << "Connection established to server";
@@ -113,44 +113,29 @@ Socket::Socket(LudoController &controller, OkeyController &okeyController, QObje
 
 void Socket::startLudo()
 {
-    if(isConnectedSuccesfully){
-
-        ludoWorker = new LudoWorker(ludoController, *socket);
-        connect(ludoWorker, &LudoWorker::animatePawn, this, &Socket::handleAnimatePawns);
-        ludoWorker->start();
-    }
-    else
-    {
-        QMessageBox::critical(nullptr, "Connection Error", "Failed to connect to the server. Please check your connection.");
-    }
-
+    ludoWorker = new LudoWorker(ludoController, token);
+    connect(ludoWorker, &LudoWorker::animatePawn, this, &Socket::handleAnimatePawns);
+    connect(ludoWorker, &LudoWorker::animateDice, this, &Socket::handleAnimateDice);
+    ludoWorker->start();
 }
 void Socket::stopLudo(){
-    if(isConnectedSuccesfully)
-        ludoWorker->requestInterruption();
+
+    ludoWorker->requestInterruption();
+    ludoWorker->quit();
+    ludoWorker->wait();
 }
 
 void Socket::startOkey()
 {
-    if(isConnectedSuccesfully){
-        okeyWorker = new OkeyWorker(okeyController, *socket, token);
-        connect(okeyWorker, &OkeyWorker::animateTile, this, &Socket::handleAnimateTiles);
-        okeyWorker->start();        
-    }
-    else
-    {
-         QMessageBox::critical(nullptr, "Connection Error", "Failed to connect to the server. Please check your connection.");
-    }
-
+    okeyWorker = new OkeyWorker(okeyController, token);
+    connect(okeyWorker, &OkeyWorker::animateTile, this, &Socket::handleAnimateTiles);
+    okeyWorker->start();
 }
 
 void Socket::stopOkey(){
-    if(isConnectedSuccesfully)
-    {
-         okeyWorker->requestInterruption();
-         okeyWorker->terminate();
-    }
-
+    okeyWorker->requestInterruption();
+    okeyWorker->quit();
+    okeyWorker->wait();
 }
 
 void Socket::handleAnimateTiles(QObject *sourceTile, QObject *destinationTile) {
@@ -190,7 +175,6 @@ void Socket::handleAnimateTiles(QObject *sourceTile, QObject *destinationTile) {
 
 void Socket::handleAnimatePawns(QObject *sourcePawn, QObject *destPlate) {
 
-
     QParallelAnimationGroup *parallelGroup = new QParallelAnimationGroup;
 
     QPropertyAnimation *animationX = new QPropertyAnimation(sourcePawn, "x");
@@ -202,7 +186,7 @@ void Socket::handleAnimatePawns(QObject *sourcePawn, QObject *destPlate) {
     QPropertyAnimation *animationZ = new QPropertyAnimation(sourcePawn, "z");
     animationZ->setStartValue(sourcePawn->property("z"));
     animationZ->setEndValue(destPlate->property("z"));
-    animationZ->setDuration(500); // 100 milliseconds
+    animationZ->setDuration(500); // 500 milliseconds
 
     // Add animations to the parallel group
     parallelGroup->addAnimation(animationX);
@@ -212,6 +196,56 @@ void Socket::handleAnimatePawns(QObject *sourcePawn, QObject *destPlate) {
     // Start parallel animations
     parallelGroup->start();
 
+}
+
+void Socket::handleAnimateDice(int diceResult, int nextPlayer)
+{
+    qDebug()<< "next: "<<nextPlayer;
+    qDebug()<< "last: "<<lastPlayer;
+
+    qDebug() << ludoController.dice->property("rotation");
+    if(nextPlayer == lastPlayer && diceResult != 6)
+    {
+            QQuaternion  rotation;
+        switch (diceResult) {
+            case 1:
+                rotation = QQuaternion::fromAxisAndAngle(QVector3D(0.0f, 0.0f, 1.0f), 90);
+                break;
+
+            case 2:
+                rotation = QQuaternion::fromAxisAndAngle(QVector3D(1.0f, 0.0f, 0.0f), 90);
+                break;
+
+            case 3:
+                rotation = QQuaternion::fromAxisAndAngle(QVector3D(1.0f, 0.0f, 0.0f), 180);
+                break;
+
+            case 4:
+                 rotation = QQuaternion::fromAxisAndAngle(QVector3D(0.0f, 0.0f, 1.0f), -90);
+                break;
+
+            case 5:
+                rotation = QQuaternion::fromAxisAndAngle(QVector3D(0.0f, 0.0f, 1.0f), 0);
+                break;
+
+            case 6:
+                rotation = QQuaternion::fromAxisAndAngle(QVector3D(1.0f, 0.0f, 0.0f), -90);
+                break;
+
+            default:
+                rotation = QQuaternion::fromAxisAndAngle(QVector3D(1.0f, 0.0f, 0.0f), -90);
+                break;
+        }
+
+        QMetaObject::invokeMethod(ludoController.dice, "stopAnimations");
+        ludoController.dice->setProperty("rotation", rotation);
+
+
+    }
+    else{
+        QMetaObject::invokeMethod(ludoController.dice, "startAnimations");
+        lastPlayer = nextPlayer;
+    }
 }
 
 

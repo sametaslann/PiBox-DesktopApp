@@ -93,7 +93,6 @@ void OkeyController::setJokerTile(QObject *object)
 
     if (jokerTile != object) {
         jokerTile = object;
-
     }
 }
 

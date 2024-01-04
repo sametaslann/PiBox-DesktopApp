@@ -7,29 +7,28 @@
 #include <QThread>
 #include <QTimer>
 #include <string>
-#include<QSpotLight>
-
+#include <QMessageBox>
 
 class OkeyWorker : public QThread
 {
     Q_OBJECT
 public:
 
-    explicit OkeyWorker(OkeyController &controller, QTcpSocket &socket, QString token, QObject *parent = nullptr);
+    explicit OkeyWorker(OkeyController &controller, QString token, QObject *parent = nullptr);
 
 public slots:
     void run() override;
 
 private:
     OkeyController &okeyController;
-    QTcpSocket &socket;
+    QTcpSocket *okeySocket;
 
     std::vector<char *> split(char *str, const char *delimiter);
 
     int charToInt(char c);
     bool updateBoard(std::vector<char *> playerString, QList<QObject *> playerBoard);
 
-    bool isFirst = false;
+    bool isFirst = true;
     QString token;
 
     QObject *findSourceTile(char *tileString);

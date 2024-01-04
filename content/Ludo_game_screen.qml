@@ -6,8 +6,8 @@ import Quick3DAssets.Ludo0
 import QtQuick3D.Helpers
 
 Rectangle {
-    width: Constants.width
-    height: Constants.height
+    width: 1293
+    height: 898
     color: "transparent"
 
 
@@ -33,11 +33,11 @@ Rectangle {
             PerspectiveCamera {
                 id: cameraNode
                 x: -0
-                y: 69.378
+                y: 30.378
                 eulerRotation.z: 0.00001
                 eulerRotation.y: -0
                 eulerRotation.x: -20.30178
-                z: 261.68396
+                z: 121.68396
             }
         }
 

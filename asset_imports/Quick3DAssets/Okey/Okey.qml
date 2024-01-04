@@ -2,17 +2,15 @@ import QtQuick
 import QtQuick3D
 import QtQuick3D.Helpers
 import QtQuick.Timeline
-
 import Quick3DAssets.Mesa_80cm
-
 import QtQuick.Controls 6.5
 import QtQuick.Layouts
 import QtQuick.Studio.Components
 
 
 Rectangle {
-    width: Constants.width
-    height: Constants.height
+    width: 1305
+    height: 898
     color: "transparent"
 
     View3D {
@@ -35,12 +33,12 @@ Rectangle {
             PerspectiveCamera {
                 id: cameraNode
 
-                x: 53.724
-                y: 17.755
-                eulerRotation.z: -2.82732
-                eulerRotation.y: 41.21214
-                eulerRotation.x: -17.14724
-                z: 55.93619
+                x: 3.724
+                y: 20.755
+
+                z: 105.93619
+                eulerRotation.y: 0
+                eulerRotation.x: -20
 
             }
         }
@@ -3833,7 +3831,6 @@ Rectangle {
                             Text {
 
                                 anchors.top: parent.top
-
                                 anchors.horizontalCenter: parent.horizontalCenter
                                 font.pixelSize: 4
                                 color: "#d1d0cc"

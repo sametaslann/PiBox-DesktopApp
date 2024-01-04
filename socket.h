@@ -53,10 +53,11 @@ public:
 
 
 public slots:
+
     bool login_request(const QString &username, const QString &password);
     void handleAnimateTiles(QObject *sourceTile, QObject *destinationTile);
     void handleAnimatePawns(QObject *sourcePawn, QObject *destPlate);
-
+    void handleAnimateDice(int diceResult, int nextPlayer);
 private:
     QTcpSocket* socket;
     LudoController &ludoController;
@@ -68,9 +69,8 @@ private:
 
     OkeyWorker *okeyWorker;
     LudoWorker *ludoWorker;
-
-
-
+    int lastPlayer;
+    int lastDice;
 };
 
 

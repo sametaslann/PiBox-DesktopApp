@@ -21,3 +21,18 @@ QQmlListProperty<QObject> LudoController::getPawns()
     return QQmlListProperty<QObject>(this, &pawns);
 
 }
+
+QObject *LudoController::getDice()
+{
+    return dice;
+}
+
+
+void LudoController::setDice(QObject *object)
+{
+
+    if (dice != object) {
+        dice = object;
+
+    }
+}

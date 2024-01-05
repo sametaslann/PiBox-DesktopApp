@@ -71,7 +71,7 @@ Node {
                 loops: 1
                 from: 0
                 to: 3600
-                duration: 1500
+                duration: 800
             }
             PropertyAnimation on eulerRotation.x {
                 id: animationX
@@ -79,7 +79,7 @@ Node {
                 loops: 1
                 from: 0
                 to: 3600
-                duration: 1500
+                duration: 800
             }
             PropertyAnimation on eulerRotation.z {
                 id: animationZ

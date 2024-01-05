@@ -45,10 +45,10 @@ Rectangle {
 
         OrbitCameraController {
             anchors.fill: parent
-            anchors.rightMargin: 64
-            anchors.bottomMargin: 16
-            anchors.leftMargin: -64
-            anchors.topMargin: -16
+            anchors.rightMargin: 192
+            anchors.bottomMargin: 449
+            anchors.leftMargin: -192
+            anchors.topMargin: -449
             origin: originNode
             camera: cameraNode
         }
@@ -141,8 +141,8 @@ Rectangle {
                 Model {
                     id: p1_thrown2
                     x: -27.369
-                    y: 28.354
-                    z: -3.32955
+                    y: 28.36
+                    z: -3.14808
                     source: "meshes/box038.mesh"
                     scale.z: 1
                     scale.y: 1
@@ -156,9 +156,9 @@ Rectangle {
                 }
                 Model {
                     id: p2_thrown2
-                    x: -27.645
-                    y: -25.232
-                    z: -3.32957
+                    x: -27.659
+                    y: -25.233
+                    z: -2.92315
                     source: "meshes/box038.mesh"
                     scale.z: 1
                     scale.y: 1
@@ -174,8 +174,8 @@ Rectangle {
                 Model {
                     id: p3_thrown2
                     x: 26.511
-                    y: -25.175
-                    z: -3.32958
+                    y: -25.182
+                    z: -3.1275
                     source: "meshes/box038.mesh"
                     scale.z: 1
                     scale.y: 1
@@ -190,9 +190,9 @@ Rectangle {
 
                 Model {
                     id: p4_thrown2
-                    x: 29.551
+                    x: 29.555
                     y: 21.461
-                    z: -3.32957
+                    z: -3.19575
                     source: "meshes/box038.mesh"
                     scale.z: 1
                     scale.y: 1
@@ -965,12 +965,14 @@ Rectangle {
 
                 PrincipledMaterial {
                     id: material__43_material
+                    attenuationColor: "#050a05"
                     objectName: "material__43_material"
                     baseColor: "#adad81"
                 }
 
                 PrincipledMaterial {
                     id: material__47_material
+                    attenuationColor: "#f2f6f2"
                     objectName: "material__47_material"
                     baseColor: "#f72424"
                 }
@@ -1558,7 +1560,7 @@ Rectangle {
 
                     x: -0.221
                     y: 0.97
-                    z: 1.09963
+                    z: 1.0287
 
                     source: "meshes/box040.mesh"
                     materials: [

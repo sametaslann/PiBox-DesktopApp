@@ -24,6 +24,8 @@ public:
     QString player4;
 
     Lobies(QString loby_number, QString game_type, QString player1, QString player2, QString player3, QString player4);
+
+
     Lobies();
 
 };
@@ -34,6 +36,7 @@ class Socket : public QObject
     Q_OBJECT
     Q_PROPERTY(QStringList comboModelOkey READ comboModelOkey WRITE setComboModelOkey NOTIFY comboModelOkeyChanged)
     Q_PROPERTY(QStringList comboModelLudo READ comboModelLudo WRITE setComboModelLudo NOTIFY comboModelLudoChanged)
+    Q_PROPERTY(QStringList leaderBoard READ getLeaderBoard NOTIFY leaderBoardChanged)
 
 public:
 
@@ -60,6 +63,10 @@ public:
     void setComboModelLudo(const QStringList &model);
     QStringList m_comboModelLudo;
 
+    QStringList m_leaderBoard;
+    QStringList getLeaderBoard();
+
+    void setLeaderBoard(const QStringList &model);
 public slots:
 
     void getLobbies();
@@ -67,6 +74,7 @@ public slots:
     void handleAnimateTiles(QObject *sourceTile, QObject *destinationTile);
     void handleAnimatePawns(QObject *sourcePawn, QObject *destPlate);
     void handleAnimateDice(int diceResult, int nextPlayer);
+    void getLeaders();
 private:
     QTcpSocket* socket;
     LudoController &ludoController;
@@ -87,6 +95,7 @@ private:
 signals:
     void comboModelOkeyChanged();
     void comboModelLudoChanged();
+    void leaderBoardChanged();
 };
 
 

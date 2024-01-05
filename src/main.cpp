@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     set_qt_environment();
 
     QApplication app(argc, argv);
-
+    //app.setWindowIcon(QIcon(":/icon/app.ico"));
     QQmlApplicationEngine engine;
 
     LudoController ludoController; // Instantiate the custom C++ object

@@ -9,7 +9,7 @@ void OkeyWorker::run()
 {
 
     okeySocket = new QTcpSocket();
-    okeySocket->connectToHost("127.0.0.1", 8080);
+    okeySocket->connectToHost("10.42.0.1", 8080);
 
     if(okeySocket->waitForConnected())
         qDebug() << "Okey socket opened succesfully";
@@ -29,7 +29,7 @@ void OkeyWorker::run()
         okeySocket->waitForReadyRead();
         data = okeySocket->readAll();
 
-        qDebug() << data.size();
+
         //QByteArray datax = "OK/B4_1|Y10_2|B13_1|K5_2|R4_1|R10_1|K11_2|K9_2|K6_2|B6_2|Y5_2|Y13_1|B12_1|B1_2|K2_1|E|E|E|E|E|E|E|E|E|E|E|E|E|E|E/R8_2|E|E|E|K1_1|K4_2|E|K2_2|E|K4_1|E|E|E|R13_2|B13_2|Y6_2|B6_1|E|E|E|Y3_1|E|E|Y11_1|B2_1|B3_2|E|E|Y10_1|E/Y2_1|Y2_2|Y7_1|Y7_2|R7_1|R8_1|R12_1|E|R5_2|K5_1|E|E|E|E|E|E|E|B1_1|E|B3_1|B4_2|B11_1|E|R5_1|E|E|E|E|E|E/E|B7_1|R3_2|Y1_2|K3_2|B10_1|B8_1|R6_1|Y1_1|B8_2|R9_2|R2_1|B2_2|Y8_1|E|E|E|Y9_2|E|E|E|E|E|E|E|E|E|E|E|E/E|E|E|E/R1_1|B7_2/huseyin";
 
         if(data.size() <1){
@@ -43,10 +43,15 @@ void OkeyWorker::run()
         {
 
             std::vector<char*> playerTexts = split(lines.at(8), "|");
-            okeyController.setPlayer1Text(playerTexts[0]);
-            okeyController.setPlayer2Text(playerTexts[1]);
-            okeyController.setPlayer3Text(playerTexts[2]);
-            okeyController.setPlayer4Text(playerTexts[3]);
+            if(playerTexts.size() == 4)
+            {
+                okeyController.setPlayer1Text(playerTexts[0]);
+                okeyController.setPlayer2Text(playerTexts[1]);
+                okeyController.setPlayer3Text(playerTexts[2]);
+                okeyController.setPlayer4Text(playerTexts[3]);
+            }
+
+
 
             std::vector<char*> player1String = split(lines.at(1), "|");
             updateBoard(player1String, okeyController.player1Cells);
@@ -62,11 +67,20 @@ void OkeyWorker::run()
 
 
             std::vector<char*> thrownsString = split(lines.at(5), "|");
+            //qDebug() << thrownsString;
             updateBoard(thrownsString, okeyController.throwns);
 
             std::vector<char*> jokerTileString = split(lines.at(6), "|");
 
+            if(strcmp(jokerTileString.at(1),"E") == 0)
+            {
+                QMessageBox::information(nullptr, "Game Over", "Tile is finished");
+                break;
+            }
+
+
             QObject* givenJokerTile = findSourceTile(jokerTileString.at(0));
+
             givenJokerTile->setProperty("x", okeyController.jokerTile->property("x"));
             givenJokerTile->setProperty("y", okeyController.jokerTile->property("y"));
             givenJokerTile->setProperty("z", okeyController.jokerTile->property("z"));
@@ -75,11 +89,15 @@ void OkeyWorker::run()
 
             int nextPlayer = std::stoi(lines.at(7));
             if(nextPlayer >-1 && nextPlayer < 4)
-                okeyController.spotLights.at(0)->setProperty("visible", true);
-
+            {
+                qDebug() << nextPlayer;
+                qDebug() << (nextPlayer+3) % 4;
+                okeyController.spotLights.at((nextPlayer+3) % 4)->setProperty("visible", false);
+                okeyController.spotLights.at(nextPlayer)->setProperty("visible", true);
+            }
         }
 
-        QThread::msleep(250);
+        QThread::msleep(500);
         isFirst = false;
      }
     qDebug()<< "finished";
@@ -103,9 +121,6 @@ bool OkeyWorker::updateBoard(std::vector<char*> playerString, QList<QObject*> pl
                 counter++;
                 continue;
             }
-
-
-
 
             QObject *sourceTile = findSourceTile(a);
             QObject *destinationTile = playerBoard.at(counter);

@@ -19,6 +19,7 @@ qt6_add_qml_module(content
         Screen01.qml
         Screen01.ui.qml
         images/Ludo_screen.qml
+        Leader_board.qml
     RESOURCES
         images/back.jpg
         images/OIG.jpeg
@@ -29,5 +30,6 @@ qt6_add_qml_module(content
         images/table.png
         images/unnamed.png
         images/wood.jpg
+
 
 )

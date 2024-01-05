@@ -8,7 +8,7 @@ void LudoWorker::run()
 {
 
     ludoSocket = new QTcpSocket();
-    ludoSocket->connectToHost("127.0.0.1", 8080);
+    ludoSocket->connectToHost("10.42.0.1", 8080);
 
     if(ludoSocket->waitForConnected())
         qDebug() << "Okey socket opened succesfully";
@@ -54,7 +54,7 @@ void LudoWorker::run()
 
         }
 
-        QThread::sleep(1);
+        QThread::msleep(250);
     }
 }
 

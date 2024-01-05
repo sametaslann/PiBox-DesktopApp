@@ -18,6 +18,21 @@ Page {
         transformOrigin: Item.Center
         scale: 1
 
+        RoundButton{
+                    id:leaderboard
+                    x: 853
+                    y: 368
+                    width: 214
+                    height: 83
+                    text:"LeaderBoard"
+                    font.pixelSize: 23
+                    onClicked: {
+                        socket_comm.getLeaders();
+                        pageLoader.source = "Leader_board.qml";
+                    }
+
+                }
+
         Image {
             id: image
             x: 318
@@ -55,7 +70,7 @@ Page {
 
                 }
             }
-            ComboBox {
+           /* ComboBox {
                 id: comboBox
                 x: 0
                 y: 564
@@ -66,8 +81,8 @@ Page {
                     socket_comm.activatedLobbyLudo = index
                 }
 
-            }
-            RoundButton {
+            }*/
+            /*RoundButton {
                 id: button3
                 x: 0
                 y: 644
@@ -85,7 +100,7 @@ Page {
 
 
                 }
-            }
+            }*/
 
         }
         Popup {
@@ -171,7 +186,7 @@ Page {
                     pageLoader.source = "Okey_loby_screen.qml";
                 }
             }
-            ComboBox {
+            /*ComboBox {
                 id: comboBox1
                 x: 0
                 y: 564
@@ -182,8 +197,8 @@ Page {
                 onActivated:{
                     socket_comm.activatedLobbyOkey = currentIndex
                 }
-            }
-            RoundButton {
+            }*/
+            /*RoundButton {
                 id: button4
                 x: -9
                 y: 642
@@ -199,7 +214,7 @@ Page {
                     //comboBox.model.append({ text: "Yeni Öğe" })
                     //pageLoader.source = "Ludo_Loby_Screen.qml";
                 }
-            }
+            }*/
 
 
         }

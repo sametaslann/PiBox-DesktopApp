@@ -21,7 +21,7 @@
     void Socket::connect_to_server()
     {
         socket = new QTcpSocket();
-        socket->connectToHost("127.0.0.1", 8080);
+        socket->connectToHost("10.42.0.1", 8080);
     
         if(socket->waitForConnected())
              qDebug() << "Connection established to server";
@@ -91,34 +91,44 @@
     }
     
     bool Socket::login_request(const QString &username, const QString  &password){
-    
-        qDebug() << "Username:" << username;
-        qDebug() << "Password:" << password;
-    
-        QByteArray data = "LOGIN|" + username.toUtf8() + "|" + password.toUtf8();
-        write_to_server(data.constData());
-        //send to entered username adn password to socket
-    
-        QByteArray authResp = read_from_server();
-        //QByteArray part1 = authResp.at(0);
-    
-        qDebug()<<authResp;
-    
-        QList<QByteArray> list = authResp.split('|');
-    
-        // Convert QByteArray to QString
-        QString resultCode = QString(list.at(0));
-        QString authToken = QString(list.at(1));
-        token = authToken;
-    
-        if(resultCode == "OK"){
-            qDebug()<<"Kod Ok";
-            return 1;
+
+        if(isConnectedSuccesfully)
+        {
+
+            qDebug() << "Username:" << username;
+            qDebug() << "Password:" << password;
+
+            QByteArray data = "LOGIN|" + username.toUtf8() + "|" + password.toUtf8();
+            write_to_server(data.constData());
+            //send to entered username adn password to socket
+
+            QByteArray authResp = read_from_server();
+            //QByteArray part1 = authResp.at(0);
+
+            qDebug()<<authResp;
+
+            QList<QByteArray> list = authResp.split('|');
+
+            // Convert QByteArray to QString
+            QString resultCode = QString(list.at(0));
+            QString authToken = QString(list.at(1));
+            token = authToken;
+
+            if(resultCode == "OK"){
+                qDebug()<<"Kod Ok";
+                return 1;
+            }
+            else{
+                return 0;
+            }
         }
+
         else{
-            return 0;
+            QMessageBox::critical(nullptr, "Connection Error", "Failed to connect to the server. Please try again");
+            connect_to_server();
+            return 2;
         }
-    
+
     }
 
 
@@ -285,16 +295,16 @@ void Socket::write_to_server(const char *request){
 
 std::vector<char*> Socket::split(char *str, const char *delimiter)
 {
-    qDebug() << "Debug1";
+
     std::vector<char*> tokens;
     qDebug() << delimiter;
     char *ptr = std::strtok(str,delimiter);
-    qDebug() << "Debug1.5";
+
     while(ptr!=nullptr){
         tokens.push_back(ptr);
         ptr = std::strtok(nullptr, delimiter);
     }
-    qDebug() << "Debug2";
+
     return tokens;
 
 }
@@ -325,6 +335,55 @@ void Socket::setComboModelLudo(const QStringList &model)
         m_comboModelLudo = model;
         emit comboModelLudoChanged();
     }
+}
+
+QStringList Socket::getLeaderBoard()
+{
+    return m_leaderBoard;
+}
+
+void Socket::setLeaderBoard(const QStringList &model)
+{
+    if (m_leaderBoard != model) {
+        m_leaderBoard = model;
+        emit leaderBoardChanged();
+    }
+}
+
+
+void Socket::getLeaders(){
+
+    QByteArray d = "GETUSERSTATS|" + token.toUtf8();
+    //OK/admin|0|0|0|0/huseyin|0|0|1|0/test1|0|0|0|0/doruk|0|0|0|1/abdullah|0|0|0|1/samet|0|0|0|1/baris|0|0|0|0/
+    //1)ludo loss, 2)ludo win, 3)okey loss, 4)okey win
+
+    write_to_server((d.constData()));
+
+    QByteArray res = read_from_server();
+
+    std::vector<char* > lines = split(res.data(), "/");
+
+
+    QStringList leader_board;
+    for (int i = 1; i < lines.size(); ++i) {
+
+
+        std::vector<char*> params = split(lines.at(i), "|");
+
+
+        qDebug() <<"here";
+        leader_board.append(QString::fromUtf8(params.at(0)));
+
+        int ludoScore = std::stoi(params.at(2))*10 - std::stoi(params.at(1)) * 7;
+        int okeyScore = std::stoi(params.at(4))*10 - std::stoi(params.at(3)) * 7;
+
+        leader_board.append(QString::number(ludoScore));
+        leader_board.append(QString::number(okeyScore));
+    }
+
+    setLeaderBoard(leader_board);
+
+
 }
 
 

@@ -58,11 +58,14 @@ Rectangle {
             DirectionalLight {
                 id: directionalLight
                 x: -0
-                y: 168.472
-                z: 52.73455
-                eulerRotation.z: 0.00002
-                eulerRotation.y: -0.00001
-                eulerRotation.x: -60.65488
+                y: 170.878
+                bakeMode: Light.BakeModeAll
+                scope: ludo0
+                brightness: 1.5
+                z: 5.57966
+                eulerRotation.z: 0.00022
+                eulerRotation.y: -0.00021
+                eulerRotation.x: -87.07966
             }
 
             Ludo0 {

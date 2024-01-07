@@ -1834,13 +1834,13 @@ Rectangle {
                 Model {
 
                     id: blue12_1
-                    eulerRotation.z: 0
-                    eulerRotation.y: 0
-                    eulerRotation.x: 90
+                    eulerRotation.z: 0.00005
+                    eulerRotation.y: -0.00005
+                    eulerRotation.x: -46.54071
 
-                    x: -0.221
-                    y: 0.97
-                    z: 1.09963
+                    x: 20.824
+                    y: 41.989
+                    z: 22.03768
 
                     source: "meshes/box054.mesh"
                     materials: [

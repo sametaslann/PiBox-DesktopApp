@@ -106,13 +106,13 @@ Item {
             onClicked: {
                 const res = socket_comm.login_request(username.text, password.text);
 
-                if(res === 1)
+                if(res)
                 {
 
                     Qt.createComponent("Game_Choose_Screen.qml").createObject(parent)
                     socket_comm.getLobbies();
                 }
-                else if(res === 0){
+                else{
                     popup.open()
                 }
 

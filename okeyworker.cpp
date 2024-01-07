@@ -9,7 +9,7 @@ void OkeyWorker::run()
 {
 
     okeySocket = new QTcpSocket();
-    okeySocket->connectToHost("10.42.0.1", 8080);
+    okeySocket->connectToHost("127.0.0.1", 8090);
 
     if(okeySocket->waitForConnected())
         qDebug() << "Okey socket opened succesfully";
@@ -28,6 +28,8 @@ void OkeyWorker::run()
         okeySocket->waitForBytesWritten();
         okeySocket->waitForReadyRead();
         data = okeySocket->readAll();
+
+        qDebug() << data.data();
 
 
         //QByteArray datax = "OK/B4_1|Y10_2|B13_1|K5_2|R4_1|R10_1|K11_2|K9_2|K6_2|B6_2|Y5_2|Y13_1|B12_1|B1_2|K2_1|E|E|E|E|E|E|E|E|E|E|E|E|E|E|E/R8_2|E|E|E|K1_1|K4_2|E|K2_2|E|K4_1|E|E|E|R13_2|B13_2|Y6_2|B6_1|E|E|E|Y3_1|E|E|Y11_1|B2_1|B3_2|E|E|Y10_1|E/Y2_1|Y2_2|Y7_1|Y7_2|R7_1|R8_1|R12_1|E|R5_2|K5_1|E|E|E|E|E|E|E|B1_1|E|B3_1|B4_2|B11_1|E|R5_1|E|E|E|E|E|E/E|B7_1|R3_2|Y1_2|K3_2|B10_1|B8_1|R6_1|Y1_1|B8_2|R9_2|R2_1|B2_2|Y8_1|E|E|E|Y9_2|E|E|E|E|E|E|E|E|E|E|E|E/E|E|E|E/R1_1|B7_2/huseyin";
@@ -50,6 +52,9 @@ void OkeyWorker::run()
                 okeyController.setPlayer3Text(playerTexts[2]);
                 okeyController.setPlayer4Text(playerTexts[3]);
             }
+            else{
+                qDebug("Error in player names");
+            }
 
 
 
@@ -70,7 +75,9 @@ void OkeyWorker::run()
             //qDebug() << thrownsString;
             updateBoard(thrownsString, okeyController.throwns);
 
+
             std::vector<char*> jokerTileString = split(lines.at(6), "|");
+            qDebug()<< jokerTileString.at(1);
 
             if(strcmp(jokerTileString.at(1),"E") == 0)
             {

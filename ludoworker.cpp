@@ -8,10 +8,10 @@ void LudoWorker::run()
 {
 
     ludoSocket = new QTcpSocket();
-    ludoSocket->connectToHost("10.42.0.1", 8080);
+    ludoSocket->connectToHost("127.0.0.1", 8090);
 
     if(ludoSocket->waitForConnected())
-        qDebug() << "Okey socket opened succesfully";
+        qDebug() << "LUDO socket opened succesfully";
     else
         QMessageBox::critical(nullptr, "Connection Error", "Failed to connect to the server. Please check your connection.");
 
@@ -40,8 +40,28 @@ void LudoWorker::run()
         if(strcmp(lines.at(0),"OK") ==0)
         {
 
-            std::vector<char*> dice = split(lines.at(2), "|");
-            emit animateDice(std::stoi(dice.at(0)), std::stoi(dice.at(1)));
+            std::vector<char*> otherInfos = split(lines.at(2), "|");
+            int playerId = std::stoi(otherInfos.at(1));
+
+
+
+            int pawn_color_index = playerId*4;
+
+            ludoController.pawns[pawn_color_index+3 % 4]->children()[0]->setProperty("visible", false);
+            ludoController.pawns[pawn_color_index+3 % 4]->children()[0]->setProperty("visible", false);
+            ludoController.pawns[pawn_color_index+3 % 4]->children()[0]->setProperty("visible", false);
+            ludoController.pawns[pawn_color_index+3 % 4]->children()[0]->setProperty("visible", false);
+
+
+            ludoController.pawns[pawn_color_index]->children()[0]->setProperty("visible", true);
+            ludoController.pawns[pawn_color_index + 1]->children()[0]->setProperty("visible", true);
+            ludoController.pawns[pawn_color_index + 2]->children()[0]->setProperty("visible", true);
+            ludoController.pawns[pawn_color_index + 3]->children()[0]->setProperty("visible", true);
+
+
+            emit animateDice(std::stoi(otherInfos.at(0)), playerId);
+
+
 
             std::vector<char*> pawns = split(lines.at(1), "|");
             int i=0;

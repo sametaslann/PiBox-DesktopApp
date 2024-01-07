@@ -21,17 +21,17 @@ Item {
 
         ScrollView {
             anchors.fill: parent
-            anchors.rightMargin: 688
+            anchors.rightMargin: 601
             anchors.bottomMargin: 159
-            anchors.leftMargin: 243
+            anchors.leftMargin: 44
             anchors.topMargin: 231
             GridLayout {
                 id: gridLayout
-                x: 0
+                x: -11
                 y: 10
-                width: 950
+                width: 1293
                 height: 678
-                columns: 3
+                columns: 4
                 rows: 5
                 columnSpacing: 2
                 rowSpacing: 2
@@ -73,7 +73,7 @@ Item {
         }
         Label {
             id: label
-            x: 312
+            x: 95
             y: 201
             width: 247
             height: 79
@@ -84,7 +84,7 @@ Item {
         }
         Label {
             id: label2
-            x: 925
+            x: 746
             y: 201
             width: 247
             height: 79
@@ -95,7 +95,7 @@ Item {
 
         Label {
             id: label3
-            x: 618
+            x: 400
             y: 201
             width: 247
             height: 79
@@ -105,7 +105,7 @@ Item {
         }
         RoundButton {
                     id: button
-                    x: 1393
+                    x: 1501
                     y: 492
                     width: 331
                     height: 97
@@ -113,11 +113,21 @@ Item {
                     font.pointSize: 27
 
                     onClicked : {
-
                         pageLoader.source = "Game_Choose_Screen.qml";
                     }
 
 
+        }
+
+                Label {
+                    id: label4
+                    x: 1061
+                    y: 201
+                    width: 247
+                    height: 79
+                    color: "#ffffff"
+                    text: qsTr("TOTAL SCORE")
+                    font.pointSize: 22
                 }
     }
 }

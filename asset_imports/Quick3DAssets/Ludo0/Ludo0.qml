@@ -1,5 +1,5 @@
 import QtQuick
-import Qt3D.Render
+
 import QtQuick3D
 import Quick3DAssets.Pawn
 import QtQuick.Controls
@@ -19,9 +19,6 @@ Node {
             scale.z: 10
             scale.y: 10
             scale.x: 10
-
-
-
 
 
             Model {
@@ -60,9 +57,9 @@ Node {
             }
 
             function startAnimations() {
-                    animationY.running = true;
-                    animationX.running = true;
-                    animationZ.running = true;
+                animationY.running = true;
+                animationX.running = true;
+                animationZ.running = true;
             }
 
             PropertyAnimation on eulerRotation.y {
@@ -1436,33 +1433,78 @@ Node {
                 ludoController.pawns = pawns.children;
             }
 
-
-
             Model {
                 id: red_pawn1
-                x: -57.02
-                y: 7.749
+
+                x: -48.952
+                y: 8.575
                 source: "meshes/chess_Pawn_0.mesh"
-                z: 70.4119
+                eulerRotation.z: -180
+                eulerRotation.y: -180
+                z: 69.75686
                 scale.z: 2.6
                 scale.y: 2.6
                 scale.x: 2.6
                 materials: red_Pawns_Material
-                eulerRotation.x: -90
+                eulerRotation.x: -87.6564
+                SpotLight {
+                    id: red_light1
+                    objectName: red_light1
+                    x: 0.091
+                    y: -0.016
+                    opacity: 1
+                    visible: false
+                    color: "#fdffffff"
+                    z: 15.34518
+                    PropertyAnimation on brightness{
+                        running: true
+                        loops: Animation.Infinite
+                        duration: 850
+                        to:15
+                        from: 0
+                    }
+                    coneAngle: 10
+                    castsShadow: false
+                    brightness: 0.1
+                    ambientColor: "#000000"
+                }
+
+
             }
 
 
             Model {
                 id: red_pawn2
-                x: -48.888
+                x: -58.005
                 y: 7.996
                 source: "meshes/chess_Pawn_0.mesh"
-                z: 70.16283
+                z: 69.95655
                 scale.z: 2.6
                 scale.y: 2.6
                 scale.x: 2.6
                 materials: red_Pawns_Material
                 eulerRotation.x: -90
+
+                SpotLight {
+                    id: red_light2
+                    x: 0.091
+                    y: -0.016
+                    opacity: 1
+                    visible: false
+                    color: "#fdffffff"
+                    z: 16.00262
+                    PropertyAnimation on brightness{
+                        running: true
+                        loops: Animation.Infinite
+                        duration: 850
+                        to:15
+                        from: 1
+                    }
+                    coneAngle: 10
+                    castsShadow: false
+                    brightness: 0.1
+                    ambientColor: "#000000"
+                }
             }
             Model {
                 id: red_pawn3
@@ -1470,11 +1512,32 @@ Node {
                 y: 7.82
                 source: "meshes/chess_Pawn_0.mesh"
                 scale.z: 2.6
-                z: 70.57515
+                z: 69.98987
                 scale.y: 2.6
                 scale.x: 2.6
                 eulerRotation.x: -90
                 materials: red_Pawns_Material
+
+                SpotLight {
+                    id: red_light3
+                    x: 0.091
+                    y: -0.016
+                    opacity: 1
+                    visible: false
+                    color: "#fdffffff"
+                    z: 15.34518
+                    PropertyAnimation on brightness{
+                        running: true
+                        loops: Animation.Infinite
+                        duration: 850
+                        to:15
+                        from: 1
+                    }
+                    coneAngle: 10
+                    castsShadow: false
+                    brightness: 0.1
+                    ambientColor: "#000000"
+                }
             }
 
             Model {
@@ -1482,64 +1545,170 @@ Node {
                 x: -31.863
                 y: 8.575
                 source: "meshes/chess_Pawn_0.mesh"
-                z: 72.84435
+                z: 69.75686
                 scale.z: 2.6
                 scale.y: 2.6
                 scale.x: 2.6
                 materials: red_Pawns_Material
                 eulerRotation.x: -90
+
+                SpotLight {
+                    id: red_light4
+                    x: 0.091
+                    y: -0.016
+                    opacity: 1
+                    visible: false
+                    color: "#fdffffff"
+                    z: 15.34518
+                    PropertyAnimation on brightness{
+                        running: true
+                        loops: Animation.Infinite
+                        duration: 850
+                        to:15
+                        from: 1
+                    }
+                    coneAngle: 10
+                    castsShadow: false
+                    brightness: 0.1
+                    ambientColor: "#000000"
+                }
             }
+
 
             Model {
                 id: green_pawn1
-                x: -43.319
+                x: -53.978
                 y: 7.646
                 source: "meshes/chess_Pawn_0.mesh"
-                z: -66.67564
+                z: -68.5414
                 scale.z: 2.6
                 scale.y: 2.6
                 scale.x: 2.6
                 materials: green_Pawns_Material
                 eulerRotation.x: -90
+
+                SpotLight {
+                    id: green_light1
+                    x: 0.091
+                    y: -0.016
+                    opacity: 1
+                    visible: false
+                    color: "#fdfcf8fe"
+                    z: 15.50231
+                    PropertyAnimation on brightness{
+                        running: true
+                        loops: Animation.Infinite
+                        duration: 850
+                        to:15
+                        from: 1
+                    }
+                    coneAngle: 10
+                    castsShadow: false
+                    brightness: 0.1
+                    ambientColor: "#000000"
+                }
             }
 
             Model {
                 id: green_pawn2
-                x: -34.728
+                x: -43.259
                 y: 7.893
                 source: "meshes/chess_Pawn_0.mesh"
-                z: -67.87891
+                z: -69.03117
                 scale.z: 2.6
                 scale.y: 2.6
                 scale.x: 2.6
                 materials: green_Pawns_Material
                 eulerRotation.x: -90
+
+                SpotLight {
+                    id: green_light2
+                    x: 0.091
+                    y: -0.016
+                    opacity: 1
+                    visible: false
+                    color: "#fdfcf8fe"
+                    z: 15.50231
+                    PropertyAnimation on brightness{
+                        running: true
+                        loops: Animation.Infinite
+                        duration: 850
+                        to:15
+                        from: 1
+                    }
+                    coneAngle: 10
+                    castsShadow: false
+                    brightness: 0.1
+                    ambientColor: "#000000"
+                }
             }
 
             Model {
                 id: green_pawn3
-                x: -54.09
+                x: -22.061
                 y: 7.717
                 source: "meshes/chess_Pawn_0.mesh"
-                z: -67.29008
+                z: -68.69618
                 scale.z: 2.6
                 scale.y: 2.6
                 scale.x: 2.6
                 materials: green_Pawns_Material
                 eulerRotation.x: -90
+
+                SpotLight {
+                    id: green_light3
+                    x: 0.091
+                    y: -0.016
+                    opacity: 1
+                    visible: false
+                    color: "#fdfcf8fe"
+                    z: 15.50231
+                    PropertyAnimation on brightness{
+                        running: true
+                        loops: Animation.Infinite
+                        duration: 850
+                        to:15
+                        from: 1
+                    }
+                    coneAngle: 10
+                    castsShadow: false
+                    brightness: 0.1
+                    ambientColor: "#000000"
+                }
             }
 
             Model {
                 id: green_pawn4
-                x: -26.507
+                x: -32.887
                 y: 8.472
                 source: "meshes/chess_Pawn_0.mesh"
-                z: -67.01297
+                z: -68.49947
                 scale.z: 2.6
                 scale.y: 2.6
                 scale.x: 2.6
                 materials: green_Pawns_Material
                 eulerRotation.x: -90
+
+                SpotLight {
+                    id: green_light4
+                    x: 0.091
+                    y: -0.016
+                    opacity: 1
+                    visible: false
+                    color: "#fdfcf8fe"
+                    z: 15.50231
+                    PropertyAnimation on brightness{
+                        running: true
+                        loops: Animation.Infinite
+                        duration: 850
+                        to:15
+                        from: 1
+                    }
+                    coneAngle: 10
+                    castsShadow: false
+                    brightness: 0.1
+                    ambientColor: "#000000"
+                }
             }
 
             Model {
@@ -1553,6 +1722,26 @@ Node {
                 scale.x: 2.6
                 materials: yellow_Pawns_Material
                 eulerRotation.x: -90
+                SpotLight {
+                    id: yellow_light1
+                    x: 0.091
+                    y: -0.016
+                    opacity: 1
+                    visible: false
+                    color: "#fdffffff"
+                    z: 15.50231
+                    PropertyAnimation on brightness{
+                        running: true
+                        loops: Animation.Infinite
+                        duration: 850
+                        to:15
+                        from: 1
+                    }
+                    coneAngle: 10
+                    castsShadow: false
+                    brightness: 0.1
+                    ambientColor: "#000000"
+                }
             }
 
             Model {
@@ -1566,6 +1755,26 @@ Node {
                 scale.x: 2.6
                 materials: yellow_Pawns_Material
                 eulerRotation.x: -90
+                SpotLight {
+                    id: yellow_light2
+                    x: 0.091
+                    y: -0.016
+                    opacity: 1
+                    visible: false
+                    color: "#fdffffff"
+                    z: 15.50231
+                    PropertyAnimation on brightness{
+                        running: true
+                        loops: Animation.Infinite
+                        duration: 850
+                        to:15
+                        from: 1
+                    }
+                    coneAngle: 10
+                    castsShadow: false
+                    brightness: 0.1
+                    ambientColor: "#000000"
+                }
             }
 
 
@@ -1580,6 +1789,26 @@ Node {
                 scale.x: 2.6
                 materials: yellow_Pawns_Material
                 eulerRotation.x: -90
+                SpotLight {
+                    id: yellow_light3
+                    x: 0.091
+                    y: -0.016
+                    opacity: 1
+                    visible: false
+                    color: "#fdffffff"
+                    z: 15.50231
+                    PropertyAnimation on brightness{
+                        running: true
+                        loops: Animation.Infinite
+                        duration: 850
+                        to:15
+                        from: 1
+                    }
+                    coneAngle: 10
+                    castsShadow: false
+                    brightness: 0.1
+                    ambientColor: "#000000"
+                }
             }
 
 
@@ -1595,6 +1824,26 @@ Node {
                 scale.x: 2.6
                 materials: yellow_Pawns_Material
                 eulerRotation.x: -90
+                SpotLight {
+                    id: yellow_light4
+                    x: 0.091
+                    y: -0.016
+                    opacity: 1
+                    visible: false
+                    color: "#fdffffff"
+                    z: 15.50231
+                    PropertyAnimation on brightness{
+                        running: true
+                        loops: Animation.Infinite
+                        duration: 850
+                        to:15
+                        from: 1
+                    }
+                    coneAngle: 10
+                    castsShadow: false
+                    brightness: 0.1
+                    ambientColor: "#000000"
+                }
             }
 
             Model {
@@ -1608,6 +1857,27 @@ Node {
                 scale.x: 2.6
                 materials: blue_Pawns_Material
                 eulerRotation.x: -90
+
+                SpotLight {
+                    id: blue_light1
+                    x: 0.091
+                    y: -0.016
+                    opacity: 1
+                    visible: false
+                    color: "#fdffffff"
+                    z: 15.50231
+                    PropertyAnimation on brightness{
+                        running: true
+                        loops: Animation.Infinite
+                        duration: 850
+                        to:15
+                        from: 1
+                    }
+                    coneAngle: 10
+                    castsShadow: false
+                    brightness: 0.1
+                    ambientColor: "#000000"
+                }
             }
 
             Model {
@@ -1623,6 +1893,27 @@ Node {
                 materials: blue_Pawns_Material
                 eulerRotation.x: -90
 
+                SpotLight {
+                    id: blue_light2
+                    x: 0.091
+                    y: -0.016
+                    opacity: 1
+                    visible: false
+                    color: "#fdffffff"
+                    z: 16.09289
+                    PropertyAnimation on brightness{
+                        running: true
+                        loops: Animation.Infinite
+                        duration: 850
+                        to:15
+                        from: 1
+                    }
+                    coneAngle: 10
+                    castsShadow: false
+                    brightness: 0.1
+                    ambientColor: "#000000"
+                }
+
 
             }
 
@@ -1637,13 +1928,35 @@ Node {
                 scale.x: 2.6
                 materials: blue_Pawns_Material
                 eulerRotation.x: -90
+                SpotLight {
+                    id: blue_light3
+                    x: 0.091
+                    y: -0.016
+                    opacity: 1
+                    visible: false
+                    color: "#fdffffff"
+                    z: 16.06238
+                    PropertyAnimation on brightness{
+                        running: true
+                        loops: Animation.Infinite
+                        duration: 850
+                        to:15
+                        from: 1
+                    }
+                    coneAngle: 10
+                    castsShadow: false
+                    brightness: 0.1
+                    ambientColor: "#000000"
+                }
+
+
             }
 
             Model {
                 id: blue_pawn4
                 x: 57.166
                 y: 7.974
-                z: 66.93346
+                z: 68.48412
                 //x: 0.24
                 //y: -0.232
                 source: "meshes/chess_Pawn_0.mesh"
@@ -1653,6 +1966,27 @@ Node {
                 scale.x: 2.6
                 materials: blue_Pawns_Material
                 eulerRotation.x: -90
+
+                SpotLight {
+                    id: blue_light4
+                    x: 0.091
+                    y: -0.016
+                    opacity: 1
+                    visible: false
+                    color: "#fdffffff"
+                    z: 16.06238
+                    PropertyAnimation on brightness{
+                        running: true
+                        loops: Animation.Infinite
+                        duration: 850
+                        to:15
+                        from: 1
+                    }
+                    coneAngle: 10
+                    castsShadow: false
+                    brightness: 0.1
+                    ambientColor: "#000000"
+                }
             }
         }
 

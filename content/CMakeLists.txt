@@ -11,17 +11,19 @@ qt6_add_qml_module(content
     QML_FILES
         App.qml
         Game_Choose_Screen.qml
+        Leader_board.qml
         Login_screen.qml
         Ludo_game_screen.qml
         Ludo_Loby_Screen.qml
         Okey_game_screen.qml
         Okey_loby_screen.qml
+        Progress_bar.qml
         Screen01.qml
         Screen01.ui.qml
         images/Ludo_screen.qml
-        Leader_board.qml
     RESOURCES
         images/back.jpg
+        images/background.jpg
         images/OIG.jpeg
         images/OIG1.jpeg
         images/OIG2.jpeg
@@ -30,6 +32,5 @@ qt6_add_qml_module(content
         images/table.png
         images/unnamed.png
         images/wood.jpg
-
 
 )

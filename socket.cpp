@@ -21,7 +21,7 @@
     void Socket::connect_to_server()
     {
         socket = new QTcpSocket();
-        socket->connectToHost("10.42.0.1", 8080);
+        socket->connectToHost("127.0.0.1", 8090);
     
         if(socket->waitForConnected())
              qDebug() << "Connection established to server";
@@ -365,6 +365,7 @@ void Socket::getLeaders(){
 
 
     QStringList leader_board;
+
     for (int i = 1; i < lines.size(); ++i) {
 
 
@@ -374,11 +375,12 @@ void Socket::getLeaders(){
         qDebug() <<"here";
         leader_board.append(QString::fromUtf8(params.at(0)));
 
-        int ludoScore = std::stoi(params.at(2))*10 - std::stoi(params.at(1)) * 7;
-        int okeyScore = std::stoi(params.at(4))*10 - std::stoi(params.at(3)) * 7;
+        int ludoScore = std::stoi(params.at(2)) - std::stoi(params.at(1));
+        int okeyScore = std::stoi(params.at(4)) - std::stoi(params.at(3));
 
         leader_board.append(QString::number(ludoScore));
         leader_board.append(QString::number(okeyScore));
+        leader_board.append(QString::number(okeyScore + ludoScore));
     }
 
     setLeaderBoard(leader_board);

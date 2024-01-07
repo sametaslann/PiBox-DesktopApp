@@ -159,6 +159,7 @@ void Socket::startOkey()
 {
     okeyWorker = new OkeyWorker(okeyController, token, activatedLobbyOkey);
     connect(okeyWorker, &OkeyWorker::animateTile, this, &Socket::handleAnimateTiles);
+    connect(okeyWorker, &OkeyWorker::notify, this, &Socket::handleNotificiations);
     okeyWorker->start();
 }
 
@@ -169,6 +170,9 @@ void Socket::stopOkey(){
 }
 
 void Socket::handleAnimateTiles(QObject *sourceTile, QObject *destinationTile) {
+
+    if(okeyWorker->isInterruptionRequested())
+        return;
 
     QParallelAnimationGroup *parallelGroup = new QParallelAnimationGroup;
 
@@ -278,6 +282,10 @@ void Socket::handleAnimateDice(int diceResult, int nextPlayer)
     }
 }
 
+void Socket::handleNotificiations(QString notificiation){
+    okeyController.notifications.append(notificiation);
+    emit okeyController.notificationsChanged();
+}
 
 QByteArray Socket::read_from_server(){
 

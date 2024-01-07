@@ -18,6 +18,8 @@ void OkeyWorker::run()
 
 
     QByteArray data;
+    std::vector<std::string> savedThrowns = {"E", "E", "E", "E"};
+
     while(!isInterruptionRequested())
     {
 
@@ -47,10 +49,59 @@ void OkeyWorker::run()
             std::vector<char*> playerTexts = split(lines.at(8), "|");
             if(playerTexts.size() == 4)
             {
-                okeyController.setPlayer1Text(playerTexts[0]);
-                okeyController.setPlayer2Text(playerTexts[1]);
-                okeyController.setPlayer3Text(playerTexts[2]);
-                okeyController.setPlayer4Text(playerTexts[3]);
+
+                if(playerTexts[0] != okeyController.player1Text )
+                {
+                    qDebug() << playerTexts[0] << "---" << okeyController.player1Text;
+                    QString notificiation;
+                    if(okeyController.player1Text != "empty")
+                        notificiation = okeyController.player1Text + " disconnected";
+
+                    else
+                        notificiation = QString::fromUtf8(playerTexts[0]) + " connected";
+
+                    emit notify(notificiation);
+                    okeyController.setPlayer1Text(playerTexts[0]);
+
+                }
+                if(playerTexts[1] != okeyController.player2Text)
+                {
+                    QString notificiation;
+                    if(okeyController.player2Text != "empty")
+                        notificiation = okeyController.player2Text + " disconnected";
+
+                    else
+                        notificiation = QString::fromUtf8(playerTexts[1]) + " connected";
+
+                    emit notify(notificiation);
+                    okeyController.setPlayer2Text(playerTexts[1]);
+
+                }
+                if(playerTexts[2] != okeyController.player3Text)
+                {
+                    QString notificiation;
+                    if(okeyController.player3Text != "empty")
+                        notificiation = okeyController.player3Text + " disconnected";
+
+                    else
+                        notificiation = QString::fromUtf8(playerTexts[2]) + " connected";
+
+                    emit notify(notificiation);
+                    okeyController.setPlayer3Text(playerTexts[2]);
+
+                }
+                if(playerTexts[3] != okeyController.player4Text)
+                {
+                    QString notificiation;
+                    if(okeyController.player4Text != "empty")
+                        notificiation = okeyController.player4Text + " disconnected";
+
+                    else
+                        notificiation = QString::fromUtf8(playerTexts[3]) + " connected";
+
+                    emit notify(notificiation);
+                    okeyController.setPlayer4Text(playerTexts[3]);
+                }
             }
             else{
                 qDebug("Error in player names");
@@ -72,6 +123,14 @@ void OkeyWorker::run()
 
 
             std::vector<char*> thrownsString = split(lines.at(5), "|");
+
+            for (int i = 0; i < 4; ++i) {
+                if(std::strcmp(savedThrowns[i].c_str(), thrownsString[i]) != 0)
+                {
+                    QString notificiation = QString::fromUtf8(playerTexts[i]) + " throwed"  + QString::fromUtf8(thrownsString[i]);
+                    emit notify(notificiation);
+                }
+            }
             //qDebug() << thrownsString;
             updateBoard(thrownsString, okeyController.throwns);
 

@@ -113,7 +113,7 @@ Item {
                     font.pointSize: 27
 
                     onClicked : {
-                        pageLoader.source = "Game_Choose_Screen.qml";
+                        mainLoader.source = "qrc:/qt/qml/content/Game_Choose_Screen.qml";
                     }
 
 

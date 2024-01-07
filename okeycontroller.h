@@ -46,6 +46,9 @@ class OkeyController : public QObject
     Q_PROPERTY(QString player2Text READ getPlayer2Text WRITE setPlayer2Text NOTIFY player2TextChanged)
     Q_PROPERTY(QString player3Text READ getPlayer3Text WRITE setPlayer3Text NOTIFY player3TextChanged)
     Q_PROPERTY(QString player4Text READ getPlayer4Text WRITE setPlayer4Text NOTIFY player4TextChanged)
+
+    //notifications
+    Q_PROPERTY(QStringList notifications READ getNotifications NOTIFY notificationsChanged)
 public:
     explicit OkeyController(QObject *parent = nullptr);
 
@@ -112,6 +115,10 @@ public:
     QString player3Text;
     QString player4Text;
 
+    //notifications
+    QStringList notifications;
+    QStringList getNotifications();
+
 
 public slots:
 
@@ -143,6 +150,8 @@ signals:
     void player2TextChanged();
     void player3TextChanged();
     void player4TextChanged();
+
+    void notificationsChanged(); //dummy
 
 };
 

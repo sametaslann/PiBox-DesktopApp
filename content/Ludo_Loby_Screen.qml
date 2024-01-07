@@ -129,17 +129,17 @@ Page {
                     }
             }
         }*/
-        Loader{
+        Item{
             id: pageLoader
             anchors.fill: parent
-            asynchronous: true
+            /*asynchronous: true
             source: ""
 
             onLoaded: {
                 button.visible=false
                 waiterList.visible = false
                 pageLoader.parent.children.remove(pageLoader);
-            }
+            }*/
 
             Text {
                 id: player1
@@ -232,7 +232,7 @@ Page {
                             }
                 }
 
-               Component.onCompleted: {
+               /*Component.onCompleted: {
                    let mostAppear = notificationColumn.children.length-8;
                     mostAppear = mostAppear >= 0 ? mostAppear : 0;
                    for (var i = notificationColumn.children.length; i >= 0; i--) {
@@ -242,7 +242,7 @@ Page {
                                        item.opacity =  2* (i/notificationColumn.children.length); // Weaker color towards the top1
                                    }
                                }
-               }
+               }*/
             }
 
 
@@ -418,7 +418,7 @@ Page {
 
             onClicked : {
                 socket_comm.stopLudo();
-                pageLoader.source = "Game_Choose_Screen.qml";
+                mainLoader.source = "qrc:/qt/qml/content/Game_Choose_Screen.qml";
             }
 
 

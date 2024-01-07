@@ -9,12 +9,12 @@ ApplicationWindow {
     height: 1080
     title: "PiBox Games"
 
-    StackView {
-        id: stackView
+    Loader {
+        id: mainLoader
         anchors.fill: parent
 
-        initialItem: Loader {
+        //initialItem: Loader {
             source: "qrc:/qt/qml/content/Login_screen.qml"
-        }
+        //}
     }
 }

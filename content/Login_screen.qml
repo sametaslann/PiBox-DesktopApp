@@ -1,6 +1,7 @@
 
 import QtQuick 2.15
 import QtQuick.Controls 2.15
+
 //import "/Users/e.kabalci2018/Desktop/Desktop-main/Desktop-main/src/main.h"
 
 Item {
@@ -14,7 +15,7 @@ Item {
         y: 0
         width: 1920
         height: 1080
-        source: "images/back.jpg"
+        source: "images/background.jpg"
         scale: 1
         transformOrigin: Item.Center
         fillMode: Image.Stretch
@@ -36,21 +37,44 @@ Item {
             y: 432
             width: 315
             height: 78
+            color: "#060606"
+
+            placeholderTextColor: "#878787"
+            font.pointSize: 15
             placeholderText: qsTr("Username")
 
-
+            // Wrap the TextField in a Rectangle to add a border radius
+            background: Rectangle {
+                            radius: 20
+                            border.color: "#C9C9C9"
+                            border.width: 1
+                        }
         }
 
 
         TextField {
             id: password
+
             x: 786
-            y: 574
+            y: 550
             width: 315
             height: 78
-            visible: true
-            clip: false
+            color: "#060606"
+            echoMode: TextInput.Password
+
+            placeholderTextColor: "#878787"
+            font.pointSize: 15
+            //color: "transparent"
+            //background: "transparent"
+            //selectedTextColor: "#000000"
             placeholderText: qsTr("Password")
+
+            // Wrap the TextField in a Rectangle to add a border radius
+            background: Rectangle {
+                            radius: 20
+                            border.color: "#C9C9C9"
+                            border.width: 1
+                        }
         }
         Loader {
             id: pageLoader
@@ -92,24 +116,33 @@ Item {
             width: 149
             height: 88
             text: "Login"
+
             font.pointSize: 17
 
             anchors.fill: parent
-            anchors.rightMargin: 847
-            anchors.bottomMargin: 302
+            anchors.rightMargin: 819
+            anchors.bottomMargin: 291
             anchors.verticalCenterOffset: 0
             anchors.horizontalCenterOffset: -28
-            anchors.leftMargin: 814
-            anchors.topMargin: 722
+            anchors.leftMargin: 786
+            anchors.topMargin: 711
 
             anchors.centerIn: parent
+
+            background: Rectangle {
+                            radius: 20
+                            border.color: "#C9C9C9"
+                            border.width: 1
+                            color: "#bbdde5"
+
+                        }
             onClicked: {
                 const res = socket_comm.login_request(username.text, password.text);
 
                 if(res)
                 {
-
-                    Qt.createComponent("Game_Choose_Screen.qml").createObject(parent)
+                    mainLoader.source = "qrc:/qt/qml/content/Game_Choose_Screen.qml"
+                    //Qt.createComponent("Game_Choose_Screen.qml").createObject(parent)
                     socket_comm.getLobbies();
                 }
                 else{

@@ -24,11 +24,14 @@ qt6_add_qml_module(content
     RESOURCES
         images/back.jpg
         images/background.jpg
+        images/ludo.png
         images/OIG.jpeg
         images/OIG1.jpeg
+        images/OIG1.png
         images/OIG2.jpeg
         images/OIG3.jpeg
         images/okey.jpg
+        images/okey.png
         images/table.png
         images/unnamed.png
         images/wood.jpg

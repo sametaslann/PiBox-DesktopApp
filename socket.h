@@ -24,10 +24,7 @@ public:
     QString player4;
 
     Lobies(QString loby_number, QString game_type, QString player1, QString player2, QString player3, QString player4);
-
-
     Lobies();
-
 };
 
 
@@ -75,6 +72,7 @@ public slots:
     void handleAnimatePawns(QObject *sourcePawn, QObject *destPlate);
     void handleAnimateDice(int diceResult, int nextPlayer);
     void getLeaders();
+    void handleNotificiations(QString notificiation);
 private:
     QTcpSocket* socket;
     LudoController &ludoController;

@@ -37,6 +37,7 @@ private:
 
 signals:
     void animateTile(QObject *sourceTile, QObject *destinationTile);
+    void notify(QString notificiation);
 
 };
 

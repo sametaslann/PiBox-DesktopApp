@@ -13,23 +13,30 @@ Page {
         y: 0
         width: 1920
         height: 1080
-        source: "images/back.jpg"
+        source: "images/background.jpg"
         fillMode: Image.Stretch
         transformOrigin: Item.Center
         scale: 1
 
         RoundButton{
                     id:leaderboard
-                    x: 853
-                    y: 368
+                    x: 868
+                    y: 59
                     width: 214
                     height: 83
                     text:"LeaderBoard"
                     font.pixelSize: 23
                     onClicked: {
                         socket_comm.getLeaders();
-                        pageLoader.source = "Leader_board.qml";
+                        mainLoader.source = "qrc:/qt/qml/content/Leader_board.qml";
                     }
+                    background: Rectangle {
+                                    radius: 20
+                                    border.color: "#C9C9C9"
+                                    border.width: 1
+                                    color: "#bbdde5"
+
+                                }
 
                 }
 
@@ -39,14 +46,14 @@ Page {
             y: 197
             width: 486
             height: 536
-            source: "images/OIG1.jpeg"
+            source: "images/ludo.png"
             fillMode: Image.PreserveAspectFit
 
             Text {
                 id: text1
                 x: 0
                 y: -173
-                text: "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\nhr { height: 1px; border-width: 0; }\nli.unchecked::marker { content: \"\\2610\"; }\nli.checked::marker { content: \"\\2612\"; }\n</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:72pt;\">Ludo Game</span></p></body></html>"
+                //text: "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\nhr { height: 1px; border-width: 0; }\nli.unchecked::marker { content: \"\\2610\"; }\nli.checked::marker { content: \"\\2612\"; }\n</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:72pt;\">Ludo Game</span></p></body></html>"
                 font.pixelSize: 12
                 textFormat: Text.RichText
             }
@@ -54,11 +61,12 @@ Page {
             RoundButton {
                 id: button
                 x: 246
-                y: 644
+                y: 642
+
                 width: 248
                 height: 84
                 text: "View Loby"
-                anchors.verticalCenterOffset: 425
+                anchors.verticalCenterOffset: 423
                 anchors.horizontalCenterOffset: 0
                 font.pointSize: 17
 
@@ -66,9 +74,16 @@ Page {
                 onClicked : {
                     //socket_comm.start(); // start new thread
 
-                    pageLoader.source = "Ludo_Loby_Screen.qml";
+                    mainLoader.source = "qrc:/qt/qml/content/Ludo_Loby_Screen.qml";
 
                 }
+                background: Rectangle {
+                                radius: 20
+                                border.color: "#C9C9C9"
+                                border.width: 1
+                                color: "#8cbeca"
+
+                            }
             }
            /* ComboBox {
                 id: comboBox
@@ -131,7 +146,7 @@ Page {
             }
         }
 
-        Loader {
+       /* Loader {
             id: pageLoader
             anchors.fill: parent
             asynchronous: true
@@ -147,14 +162,14 @@ Page {
 
 
             }
-        }
+        }*/
         Image {
             id: image1
             x: 1134
             y: 197
             width: 486
             height: 536
-            source: "images/table.png"
+            source: "images/okey.png"
             fillMode: Image.PreserveAspectFit
 
             Text {
@@ -163,7 +178,7 @@ Page {
                 y: -163
                 width: 470
                 height: 125
-                text: "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\nhr { height: 1px; border-width: 0; }\nli.unchecked::marker { content: \"\\2610\"; }\nli.checked::marker { content: \"\\2612\"; }\n</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:72pt;\">Okey Game</span></p></body></html>"
+                //text: "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\nhr { height: 1px; border-width: 0; }\nli.unchecked::marker { content: \"\\2610\"; }\nli.checked::marker { content: \"\\2612\"; }\n</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:72pt;\">Okey Game</span></p></body></html>"
                 font.pixelSize: 12
                 textFormat: Text.RichText
             }
@@ -175,7 +190,7 @@ Page {
                 width: 248
                 height: 84
                 text: "View Loby"
-                anchors.verticalCenterOffset: 412
+                anchors.verticalCenterOffset: 417
                 anchors.horizontalCenterOffset: 0
                 font.pointSize: 17
 
@@ -183,8 +198,15 @@ Page {
                 onClicked : {
                     //socket_comm.startOkey();
 
-                    pageLoader.source = "Okey_loby_screen.qml";
+                    mainLoader.source = "qrc:/qt/qml/content/Okey_loby_screen.qml";
                 }
+                background: Rectangle {
+                                radius: 20
+                                border.color: "#C9C9C9"
+                                border.width: 1
+                                color: "#8cbeca"
+
+                            }
             }
             /*ComboBox {
                 id: comboBox1
@@ -229,7 +251,7 @@ Page {
 
             anchors.centerIn: parent
             onClicked : {
-                Qt.createComponent("Login_screen.qml").createObject(parent);
+                mainLoader.source = "qrc:/qt/qml/content/Login_screen.qml"
             }
         }
     }

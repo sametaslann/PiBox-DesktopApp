@@ -129,7 +129,7 @@ Page {
                     }
             }
         }*/
-        Loader{
+        Item{
             id: pageLoader
             anchors.fill: parent
             //asynchronous: true
@@ -147,7 +147,7 @@ Page {
                 y: 60
                 width: 89
                 height: 30
-                text: "Player 1"
+                text: okeyController.player1Text
                 font.letterSpacing: 1
                 color: "#ff0000"
                 font.pixelSize: 22
@@ -160,7 +160,7 @@ Page {
                 y: 100
                 width: 89
                 height: 30
-                text: "Player 2"
+                text: okeyController.player2Text
                 font.letterSpacing: 1
                 color: "#17a81a"
                 font.pixelSize: 22
@@ -173,7 +173,7 @@ Page {
                 y: 140
                 width: 89
                 height: 30
-                text: "Player 3"
+                text: okeyController.player3Text
                 font.letterSpacing: 1
                 color: "#e3f414"
                 font.pixelSize: 22
@@ -187,7 +187,7 @@ Page {
                 y: 180
                 width: 89
                 height: 30
-                text: "Player 4"
+                text: okeyController.player4Text
                 font.letterSpacing: 1
                 color: "#3314f4"
                 font.pixelSize: 22
@@ -210,7 +210,7 @@ Page {
 
                             // Populate the scroll view with rectangles
                             Repeater {
-                                model: 20
+                                model: okeyController.notifications//20
 
                                 Rectangle {
                                     width: scrollView.width-5
@@ -222,11 +222,10 @@ Page {
                                     border.width: 1
 
                                     Text {
-                                        anchors.centerIn: parent.left
+                                        //anchors.centerIn: parent.left
                                         leftPadding: 15
                                         topPadding: 8
-                                        text: "Notification " + (index + 1)
-
+                                        text: modelData
                                     }
                                 }
                             }
@@ -418,7 +417,7 @@ Page {
 
             onClicked : {
                 socket_comm.stopOkey();
-                pageLoader.source = "Game_Choose_Screen.qml";
+                mainLoader.source = "qrc:/qt/qml/content/Game_Choose_Screen.qml";
             }
 
 

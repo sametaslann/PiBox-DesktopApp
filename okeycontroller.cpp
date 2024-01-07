@@ -152,3 +152,12 @@ void OkeyController::setPlayer4Text(const QString &text)
 }
 
 
+QStringList OkeyController::getNotifications()
+{
+    return notifications;
+}
+
+
+
+
+

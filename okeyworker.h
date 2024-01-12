@@ -35,6 +35,7 @@ private:
     QString token;
     int lobbyId;
 
+    void reset_okey_game(QVariant x, QVariant y, QVariant z, QVariant rotation);
 signals:
     void animateTile(QObject *sourceTile, QObject *destinationTile);
     void notify(QString notificiation);

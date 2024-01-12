@@ -28,6 +28,7 @@ private:
 signals:
     void animatePawn(QObject *sourcePawn, QObject *destPawn);
     void animateDice(int diceResult, int nextPlayer);
+    void notify(QString notificiation);
 };
 
 #endif // LUDOWORKER_H

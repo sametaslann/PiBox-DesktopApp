@@ -1449,7 +1449,7 @@ Node {
                 eulerRotation.x: -87.6564
                 SpotLight {
                     id: red_light1
-                    objectName: red_light1
+                    //objectName: red_light1
                     x: 0.091
                     y: -0.016
                     opacity: 1

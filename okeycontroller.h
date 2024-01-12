@@ -14,7 +14,6 @@ class OkeyController : public QObject
 
 
     //cells
-
     Q_PROPERTY(QQmlListProperty<QObject> player1Cells READ getPlayer1Cells NOTIFY player1CellsChanged)
     Q_PROPERTY(QQmlListProperty<QObject> player2Cells READ getPlayer2Cells NOTIFY player2CellsChanged)
     Q_PROPERTY(QQmlListProperty<QObject> player3Cells READ getPlayer3Cells NOTIFY player3CellsChanged)
@@ -23,7 +22,6 @@ class OkeyController : public QObject
 
 
     //tiles
-
     Q_PROPERTY(QQmlListProperty<QObject> redTiles READ getRedTiles NOTIFY redTilesChanged)
     Q_PROPERTY(QQmlListProperty<QObject> blueTiles READ getBlueTiles NOTIFY blueTilesChanged)
     Q_PROPERTY(QQmlListProperty<QObject> yellowTiles READ getYellowTiles NOTIFY yellowTilesChanged)
@@ -37,6 +35,9 @@ class OkeyController : public QObject
     //joker tile
     Q_PROPERTY(QObject* jokerTile READ getJokerTile WRITE setJokerTile NOTIFY jokerTileChanged)
 
+    //base tile
+    Q_PROPERTY(QObject* baseTile READ getBaseTile WRITE setBaseTile NOTIFY baseTileChanged)
+
     //spotlight
     Q_PROPERTY(QQmlListProperty<QObject> spotLights READ getspotLights NOTIFY spotLightsChanged)
 
@@ -46,14 +47,16 @@ class OkeyController : public QObject
     Q_PROPERTY(QString player2Text READ getPlayer2Text WRITE setPlayer2Text NOTIFY player2TextChanged)
     Q_PROPERTY(QString player3Text READ getPlayer3Text WRITE setPlayer3Text NOTIFY player3TextChanged)
     Q_PROPERTY(QString player4Text READ getPlayer4Text WRITE setPlayer4Text NOTIFY player4TextChanged)
-
     //notifications
     Q_PROPERTY(QStringList notifications READ getNotifications NOTIFY notificationsChanged)
+
+    //progress bars
+    Q_PROPERTY(QList<double> progressBar READ getProgressBar NOTIFY progressBarChanged)
+
 public:
     explicit OkeyController(QObject *parent = nullptr);
 
     //cells
-
     QQmlListProperty<QObject> getPlayer1Cells();
     QQmlListProperty<QObject> getPlayer2Cells();
     QQmlListProperty<QObject> getPlayer3Cells();
@@ -66,9 +69,7 @@ public:
     QList<QObject*> player4Cells;
 
 
-
     //tiles
-
     QQmlListProperty<QObject> getRedTiles();
     QQmlListProperty<QObject> getBlueTiles();
     QQmlListProperty<QObject> getYellowTiles();
@@ -93,6 +94,11 @@ public:
     void setJokerTile(QObject *object);
     QObject* jokerTile;
 
+
+    //base tile
+    QObject *getBaseTile();
+    void setBaseTile(QObject *object);
+    QObject* baseTile;
 
     //spotlights
     QQmlListProperty<QObject> getspotLights();
@@ -119,7 +125,9 @@ public:
     QStringList notifications;
     QStringList getNotifications();
 
-
+    //progress bars
+    QList<double> progressBar;
+    QList<double> getProgressBar() const;
 public slots:
 
 
@@ -144,6 +152,7 @@ signals:
 
     void thrownsChanged();      //dummy
     void jokerTileChanged();    // dummy
+    void baseTileChanged();
     void spotLightsChanged();
 
     void player1TextChanged();
@@ -151,7 +160,10 @@ signals:
     void player3TextChanged();
     void player4TextChanged();
 
-    void notificationsChanged(); //dummy
+    void notificationsChanged();
+
+    void progressBarChanged();
+    void popupOpen(QString status, QString player);
 
 };
 

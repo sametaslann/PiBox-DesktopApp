@@ -3,6 +3,7 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 
 //import "/Users/e.kabalci2018/Desktop/Desktop-main/Desktop-main/src/main.h"
+import QtQuick3D 6.5
 
 Item {
     id: loginpage
@@ -38,6 +39,7 @@ Item {
             width: 315
             height: 78
             color: "#060606"
+            focus: true
 
             placeholderTextColor: "#878787"
             font.pointSize: 15
@@ -45,10 +47,10 @@ Item {
 
             // Wrap the TextField in a Rectangle to add a border radius
             background: Rectangle {
-                            radius: 20
-                            border.color: "#C9C9C9"
-                            border.width: 1
-                        }
+                radius: 20
+                border.color: "#C9C9C9"
+                border.width: 1
+            }
         }
 
 
@@ -64,17 +66,20 @@ Item {
 
             placeholderTextColor: "#878787"
             font.pointSize: 15
-            //color: "transparent"
-            //background: "transparent"
-            //selectedTextColor: "#000000"
+
             placeholderText: qsTr("Password")
+
+            Keys.onReturnPressed: {
+                // Handle Enter key press
+                loginButton.click(null);
+            }
 
             // Wrap the TextField in a Rectangle to add a border radius
             background: Rectangle {
-                            radius: 20
-                            border.color: "#C9C9C9"
-                            border.width: 1
-                        }
+                radius: 20
+                border.color: "#C9C9C9"
+                border.width: 1
+            }
         }
         Loader {
             id: pageLoader
@@ -110,7 +115,7 @@ Item {
 
 
         RoundButton {
-            id: button
+            id: loginButton
             x: 886
             y: 714
             width: 149
@@ -153,6 +158,55 @@ Item {
 
             }
         }
+
+        Rectangle{
+            width: parent.width
+            height: parent.height
+            opacity: 0.534
+            visible: !socket_comm.isConnectedSuccesfully
+
+
+
+
+            Item { // square
+                id: square
+
+                anchors.centerIn: parent
+                property double minimum: Math.min(root.width, root.height)
+                width: 100;  height: 100
+                opacity: 1
+
+                Repeater {
+                    id: repeater
+
+                    model: 8
+
+                    delegate: Rectangle{
+                        color: 'black'
+
+                        property double b: 0.1
+                        property double a: 0.25
+
+                        width: ((b - a) / repeater.count * index + a) * square.height;  height: width
+                        radius: 0.5 * height
+
+                        x: 0.5 * square.width  + 0.5 * (square.width  - width )  * Math.cos(2 * Math.PI / repeater.count * index) - 0.5 * width
+                        y: 0.5 * square.height - 0.5 * (square.height - height)  * Math.sin(2 * Math.PI / repeater.count * index) - 0.5 * height
+                    }
+                }
+            }
+
+            Timer {
+                interval: 10
+                running: true
+                repeat:  true
+
+                onTriggered: square.rotation += 2 // degrees
+            }
+
+        }
+
+
     }
 }
 

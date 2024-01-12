@@ -778,6 +778,28 @@ Rectangle {
                 id: middle
 
                 Model {
+                    id: middle0
+                    x: -0.224
+                    y: 0.984
+                    z: 1.25787
+
+                    source: "meshes/box038.mesh"
+                    scale.z: 1
+                    scale.y: 1
+                    scale.x: 1
+                    materials: [
+                        material__43_material,
+                        material__47_material
+                    ]
+                    eulerRotation.z: 120.74925
+                    eulerRotation.y: 120.43478
+                    eulerRotation.x: 85.21795
+                    Component.onCompleted: {
+                        okeyController.baseTile = middle0
+                    }
+                }
+
+                Model {
                     id: middle1
                     x: -0.222
                     y: 1.008
@@ -1834,13 +1856,13 @@ Rectangle {
                 Model {
 
                     id: blue12_1
-                    eulerRotation.z: 0.00005
-                    eulerRotation.y: -0.00005
-                    eulerRotation.x: -46.54071
+                    eulerRotation.z: 0
+                    eulerRotation.y: 0
+                    eulerRotation.x: 90
 
-                    x: 20.824
-                    y: 41.989
-                    z: 22.03768
+                    x: -0.221
+                    y: 0.97
+                    z: 1.09963
 
                     source: "meshes/box054.mesh"
                     materials: [
@@ -2109,10 +2131,9 @@ Rectangle {
                     eulerRotation.x: 90
 
 
-                    x: -0.221
-                    y: 0.97
-                    z: 1.09963
-
+                    x: -0.224
+                    y: 0.984
+                    z: 1.25787
                     source: "meshes/box222.mesh"
                     materials: [
                         material__43_material,
@@ -5132,6 +5153,7 @@ Rectangle {
                     id: player4
                     x: 0
                     y: 0
+                    visible: true
                     z: 0
 
                     Node {

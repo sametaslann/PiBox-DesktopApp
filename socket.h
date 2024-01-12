@@ -13,32 +13,17 @@
 #include <QString>
 #include <QMessageBox>
 
-class Lobies{
-
-public:
-    QString loby_number;
-    QString game_type;
-    QString player1;
-    QString player2;
-    QString player3;
-    QString player4;
-
-    Lobies(QString loby_number, QString game_type, QString player1, QString player2, QString player3, QString player4);
-    Lobies();
-};
-
-
 class Socket : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QStringList comboModelOkey READ comboModelOkey WRITE setComboModelOkey NOTIFY comboModelOkeyChanged)
     Q_PROPERTY(QStringList comboModelLudo READ comboModelLudo WRITE setComboModelLudo NOTIFY comboModelLudoChanged)
     Q_PROPERTY(QStringList leaderBoard READ getLeaderBoard NOTIFY leaderBoardChanged)
+    Q_PROPERTY(bool isConnectedSuccesfully READ getIsConnectedSuccesfully WRITE setIsConnectedSuccesfully NOTIFY isConnectedSuccesfullyChanged)
 
 public:
 
     explicit Socket(LudoController &controller,OkeyController &okeyController, QObject* parent = nullptr);
-    QList<Lobies> loby;
 
     Q_INVOKABLE void startOkey();
     Q_INVOKABLE void stopOkey();
@@ -63,6 +48,10 @@ public:
     QStringList m_leaderBoard;
     QStringList getLeaderBoard();
 
+    bool isConnectedSuccesfully;
+    bool getIsConnectedSuccesfully();
+    void setIsConnectedSuccesfully(bool isConnected);
+
     void setLeaderBoard(const QStringList &model);
 public slots:
 
@@ -72,13 +61,14 @@ public slots:
     void handleAnimatePawns(QObject *sourcePawn, QObject *destPlate);
     void handleAnimateDice(int diceResult, int nextPlayer);
     void getLeaders();
-    void handleNotificiations(QString notificiation);
+    void handleOkeyNotificiations(QString notificiation);
+    void handleLudoNotificiations(QString notificiation);
 private:
     QTcpSocket* socket;
     LudoController &ludoController;
     OkeyController &okeyController;
 
-    bool isConnectedSuccesfully;
+
     void connect_to_server();
     std::vector<char *> split(char *str, const char *delimiter);
 
@@ -94,6 +84,7 @@ signals:
     void comboModelOkeyChanged();
     void comboModelLudoChanged();
     void leaderBoardChanged();
+    void isConnectedSuccesfullyChanged();
 };
 
 

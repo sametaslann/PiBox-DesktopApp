@@ -9,8 +9,8 @@ void OkeyWorker::run()
 {
 
     okeySocket = new QTcpSocket();
-    okeySocket->connectToHost("127.0.0.1", 8090);
-
+    okeySocket->connectToHost("10.42.0.1", 8080);
+    //okeySocket->connectToHost("127.0.0.1", 8080);
     if(okeySocket->waitForConnected())
         qDebug() << "Okey socket opened succesfully";
     else
@@ -20,9 +20,17 @@ void OkeyWorker::run()
     QByteArray data;
     std::vector<std::string> savedThrowns = {"E", "E", "E", "E"};
 
+    QVariant mainX = okeyController.redTiles[0]->property("x");
+    QVariant mainY = okeyController.redTiles[0]->property("y");
+    QVariant mainZ = okeyController.redTiles[0]->property("z");
+    QVariant mainRotation = okeyController.redTiles[0]->property("rotation");
+
+    bool isGameReseted = false;
+    QString notificiation;
+    bool winnerExist = false;
+
     while(!isInterruptionRequested())
     {
-
         char request[256];
         std::sprintf(request, "GETGAMEBOARD|%s", token.toStdString().c_str());
 
@@ -31,29 +39,35 @@ void OkeyWorker::run()
         okeySocket->waitForReadyRead();
         data = okeySocket->readAll();
 
-        qDebug() << data.data();
-
-
-        //QByteArray datax = "OK/B4_1|Y10_2|B13_1|K5_2|R4_1|R10_1|K11_2|K9_2|K6_2|B6_2|Y5_2|Y13_1|B12_1|B1_2|K2_1|E|E|E|E|E|E|E|E|E|E|E|E|E|E|E/R8_2|E|E|E|K1_1|K4_2|E|K2_2|E|K4_1|E|E|E|R13_2|B13_2|Y6_2|B6_1|E|E|E|Y3_1|E|E|Y11_1|B2_1|B3_2|E|E|Y10_1|E/Y2_1|Y2_2|Y7_1|Y7_2|R7_1|R8_1|R12_1|E|R5_2|K5_1|E|E|E|E|E|E|E|B1_1|E|B3_1|B4_2|B11_1|E|R5_1|E|E|E|E|E|E/E|B7_1|R3_2|Y1_2|K3_2|B10_1|B8_1|R6_1|Y1_1|B8_2|R9_2|R2_1|B2_2|Y8_1|E|E|E|Y9_2|E|E|E|E|E|E|E|E|E|E|E|E/E|E|E|E/R1_1|B7_2/huseyin";
-
         if(data.size() <1){
             QThread::msleep(1000);
             continue;
         }
+
+
+        qDebug() << data.data();
         std::vector<char*> lines = split(data.data(), "/");
 
-
-        if(lines.size() == 9  && strcmp(lines.at(0),"OK") == 0)
+        if(lines.size() == 12  && strcmp(lines.at(0),"OK") == 0)
         {
+
+            char *winner = lines.at(10);
+            if(strcmp(winner, "empty") != 0 && !winnerExist){
+                notificiation = QString::fromUtf8(winner) + " is the winner. Game Over";
+                emit notify(notificiation);
+                winnerExist = true;
+            }
+
+            if(strcmp(winner, "empty") == 0)
+                winnerExist = false;
 
             std::vector<char*> playerTexts = split(lines.at(8), "|");
             if(playerTexts.size() == 4)
-            {
-
-                if(playerTexts[0] != okeyController.player1Text )
+            {      
+                if(playerTexts[0] != okeyController.player1Text)
                 {
                     qDebug() << playerTexts[0] << "---" << okeyController.player1Text;
-                    QString notificiation;
+
                     if(okeyController.player1Text != "empty")
                         notificiation = okeyController.player1Text + " disconnected";
 
@@ -107,8 +121,60 @@ void OkeyWorker::run()
                 qDebug("Error in player names");
             }
 
+            //quit control
 
 
+
+            if(okeyController.player1Text == "empty" || okeyController.player2Text == "empty" || okeyController.player3Text == "empty" || okeyController.player4Text == "empty" )
+            {
+                if(isGameReseted)
+                    QThread::msleep(500);
+                else
+                {
+                    char *quitHappened = lines.at(11);
+                    if(strcmp(quitHappened, "empty") != 0)
+                    {
+                        notificiation = QString::fromUtf8(quitHappened) + " left the game. Game Over";
+                        emit notify(notificiation);
+                    }
+
+
+                    notificiation = "Game will be started again... Waiting players to join";
+                    emit notify(notificiation);
+                    reset_okey_game(mainX, mainY, mainZ, mainRotation);
+                    isGameReseted = true;
+                }
+                continue;
+            }
+            else{
+                isGameReseted = false;
+           }
+
+            //okeyController.notifications.append("notificiation");
+            //progress bars
+            std::vector<char*> finishRates = split(lines.at(9), "|");
+            int finishRate0 = QString::fromUtf8(finishRates[0]).toInt();
+            int finishRate1 = QString::fromUtf8(finishRates[1]).toInt();
+            int finishRate2 = QString::fromUtf8(finishRates[2]).toInt();
+            int finishRate3 = QString::fromUtf8(finishRates[3]).toInt();
+
+
+            //qDebug() << (double)finishRate0/14 ;
+            //qDebug() << (double)finishRate1/14 ;
+            //qDebug() << (double)finishRate2/14 ;
+            //qDebug() << (double)finishRate3/14 ;
+
+
+            okeyController.progressBar[0] = (double)finishRate0/14  ;
+            okeyController.progressBar[1] = (double)finishRate1/14  ;
+            okeyController.progressBar[2] = (double)finishRate2/14  ;
+            okeyController.progressBar[3] = (double)finishRate3/14  ;
+            emit okeyController.progressBarChanged();
+
+            qDebug() <<"after progress";
+
+
+            //Istakalar
             std::vector<char*> player1String = split(lines.at(1), "|");
             updateBoard(player1String, okeyController.player1Cells);
 
@@ -121,43 +187,61 @@ void OkeyWorker::run()
             std::vector<char*> player4String = split(lines.at(4), "|");
             updateBoard(player4String, okeyController.player4Cells);
 
-
+            //Throwns
             std::vector<char*> thrownsString = split(lines.at(5), "|");
 
             for (int i = 0; i < 4; ++i) {
-                if(std::strcmp(savedThrowns[i].c_str(), thrownsString[i]) != 0)
+                if(std::strcmp(thrownsString[i],"E")!=0 && std::strcmp(savedThrowns[i].c_str(), thrownsString[i]) != 0)
                 {
-                    QString notificiation = QString::fromUtf8(playerTexts[i]) + " throwed"  + QString::fromUtf8(thrownsString[i]);
+                    QString tile = QString::fromUtf8(thrownsString[i]);
+                    QString tileNumber;
+                    QString tileName;
+                    if(tile.size() == 4)
+                        tileNumber = tile[1];
+                    else
+                        tileNumber = QString::fromUtf8("1") + tile[2];
+
+                    if(tile[0] == 'R')
+                        tileName= "Red " + tileNumber;
+                    else if(tile[0] == 'Y')
+                        tileName= "Yellow " + tileNumber;
+                    else if(tile[0] == 'B')
+                        tileName= "Blue " + tileNumber;
+                    else if(tile[0] == 'K')
+                        tileName= "Black " + tileNumber;
+
+                    QString notificiation = QString::fromUtf8(playerTexts[i]) + " threw the "  + tileName;
                     emit notify(notificiation);
+                    savedThrowns[i] = thrownsString[i];
                 }
             }
-            //qDebug() << thrownsString;
+            qDebug() <<"after throwns";
+
             updateBoard(thrownsString, okeyController.throwns);
+            qDebug() <<"after throwns2  ";
 
-
+            //Okey(Joker) Tile
             std::vector<char*> jokerTileString = split(lines.at(6), "|");
-            qDebug()<< jokerTileString.at(1);
+
 
             if(strcmp(jokerTileString.at(1),"E") == 0)
             {
                 QMessageBox::information(nullptr, "Game Over", "Tile is finished");
                 break;
             }
-
-
-            QObject* givenJokerTile = findSourceTile(jokerTileString.at(0));
-
+            QObject* givenJokerTile = findSourceTile(jokerTileString.at(1));
             givenJokerTile->setProperty("x", okeyController.jokerTile->property("x"));
             givenJokerTile->setProperty("y", okeyController.jokerTile->property("y"));
             givenJokerTile->setProperty("z", okeyController.jokerTile->property("z"));
             givenJokerTile->setProperty("rotation", okeyController.jokerTile->property("rotation"));
 
 
+            //Spotlight for next player
             int nextPlayer = std::stoi(lines.at(7));
             if(nextPlayer >-1 && nextPlayer < 4)
             {
-                qDebug() << nextPlayer;
-                qDebug() << (nextPlayer+3) % 4;
+                //qDebug() << nextPlayer;
+                //qDebug() << (nextPlayer+3) % 4;
                 okeyController.spotLights.at((nextPlayer+3) % 4)->setProperty("visible", false);
                 okeyController.spotLights.at(nextPlayer)->setProperty("visible", true);
             }
@@ -168,6 +252,38 @@ void OkeyWorker::run()
      }
     qDebug()<< "finished";
 
+}
+
+void OkeyWorker::reset_okey_game(QVariant x, QVariant y, QVariant z, QVariant rotation){
+
+    foreach (auto *tile, okeyController.redTiles) {
+        //emit animateTile(tile, okeyController.baseTile);
+        tile->setProperty("x", okeyController.baseTile->property("x"));
+        tile->setProperty("y", okeyController.baseTile->property("y"));
+        tile->setProperty("z", okeyController.baseTile->property("z"));
+        tile->setProperty("rotation", okeyController.baseTile->property("rotation"));
+    }
+    QThread::msleep(200);
+    foreach (auto *tile, okeyController.blueTiles) {
+        tile->setProperty("x", okeyController.baseTile->property("x"));
+        tile->setProperty("y", okeyController.baseTile->property("y"));
+        tile->setProperty("z", okeyController.baseTile->property("z"));
+        tile->setProperty("rotation", okeyController.baseTile->property("rotation"));
+    }
+    QThread::msleep(200);
+    foreach (auto *tile, okeyController.yellowTiles) {
+        tile->setProperty("x", okeyController.baseTile->property("x"));
+        tile->setProperty("y", okeyController.baseTile->property("y"));
+        tile->setProperty("z", okeyController.baseTile->property("z"));
+        tile->setProperty("rotation", okeyController.baseTile->property("rotation"));
+    }
+    QThread::msleep(200);
+    foreach (auto *tile, okeyController.blackTiles) {
+        tile->setProperty("x", okeyController.baseTile->property("x"));
+        tile->setProperty("y", okeyController.baseTile->property("y"));
+        tile->setProperty("z", okeyController.baseTile->property("z"));
+        tile->setProperty("rotation", okeyController.baseTile->property("rotation"));
+    }
 }
 
 bool OkeyWorker::updateBoard(std::vector<char*> playerString, QList<QObject*> playerBoard)
@@ -181,7 +297,6 @@ bool OkeyWorker::updateBoard(std::vector<char*> playerString, QList<QObject*> pl
          foreach(char*a , playerString)
          {
 
-
             if(a[0] == 'E' || strlen(a) < 4){
 
                 counter++;
@@ -192,16 +307,16 @@ bool OkeyWorker::updateBoard(std::vector<char*> playerString, QList<QObject*> pl
             QObject *destinationTile = playerBoard.at(counter);
             sourceTile->setProperty("rotation", destinationTile->property("rotation"));
 
-            if(isFirst)
+            /*if(isFirst)
             {
                 sourceTile->setProperty("x", destinationTile->property("x"));
                 sourceTile->setProperty("y", destinationTile->property("y"));
                 sourceTile->setProperty("z", destinationTile->property("z"));
-            }
-            else{
+            }*/
+
                 emit animateTile(sourceTile, destinationTile);
                 //QThread::msleep(300);
-            }
+
 
             counter++;
          }
@@ -251,7 +366,7 @@ QObject* OkeyWorker::findSourceTile(char* tileString){
         sourceTile = okeyController.yellowTiles.at(number);
     else if(color == 'K')
         sourceTile = okeyController.blackTiles.at(number);
-    else if(color == 'F')
+    else
         sourceTile = okeyController.fakeTiles.at(number);
 
     return sourceTile;

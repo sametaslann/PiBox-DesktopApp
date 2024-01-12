@@ -17,13 +17,17 @@ OkeyController::OkeyController(QObject *parent)
     setPlayer3Text("empty");
     setPlayer4Text("empty");
 
+    progressBar.push_back(0.0);
+    progressBar.push_back(0.0);
+    progressBar.push_back(0.0);
+    progressBar.push_back(0.0);
+
 }
 
 QQmlListProperty<QObject> OkeyController::getPlayer1Cells()
 {
     return QQmlListProperty<QObject>(this, &player1Cells);
 }
-
 
 
 QQmlListProperty<QObject> OkeyController::getPlayer2Cells()
@@ -69,8 +73,6 @@ QQmlListProperty<QObject> OkeyController::getFakeTiles()
 {
     return QQmlListProperty<QObject>(this, &fakeTiles);
 }
-
-
 QQmlListProperty<QObject> OkeyController::getThrowns()
 {
     return QQmlListProperty<QObject>(this, &throwns);
@@ -94,6 +96,20 @@ void OkeyController::setJokerTile(QObject *object)
     if (jokerTile != object) {
         jokerTile = object;
     }
+}
+
+
+void OkeyController::setBaseTile(QObject *object)
+{
+
+    if (baseTile != object) {
+        baseTile = object;
+    }
+}
+
+QObject *OkeyController::getBaseTile()
+{
+    return baseTile;
 }
 
 QString OkeyController::getPlayer1Text() const
@@ -157,6 +173,9 @@ QStringList OkeyController::getNotifications()
     return notifications;
 }
 
+QList<double> OkeyController::getProgressBar() const {
+    return progressBar;
+}
 
 
 

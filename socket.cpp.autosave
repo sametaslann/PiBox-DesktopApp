@@ -223,13 +223,9 @@ void Socket::handleAnimatePawns(QObject *sourcePawn, QObject *destPlate) {
 
 void Socket::handleAnimateDice(int diceResult, int nextPlayer)
 {
-    qDebug()<< "next: "<<nextPlayer;
-    qDebug()<< "last: "<<lastPlayer;
 
     qDebug() << ludoController.dice->property("rotation");
-
-
-    if(nextPlayer == lastPlayer && diceResult != 6)
+    if(nextPlayer == lastPlayer)
     {
         QQuaternion  rotation;
         switch (diceResult) {
@@ -264,6 +260,8 @@ void Socket::handleAnimateDice(int diceResult, int nextPlayer)
 
         QMetaObject::invokeMethod(ludoController.dice, "stopAnimations");
         ludoController.dice->setProperty("rotation", rotation);
+
+
     }
     else{
         QMetaObject::invokeMethod(ludoController.dice, "startAnimations");
